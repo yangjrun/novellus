@@ -1,0 +1,555 @@
+/* 检查清单设置 */
+.checklist-setup {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.setup-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.setup-header h2 {
+  color: #2d3748;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.setup-header p {
+  color: #718096;
+  font-size: 16px;
+}
+
+.template-selection h3 {
+  color: #2d3748;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.template-card {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.template-card:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.template-card.selected {
+  border-color: #667eea;
+  background: #f7fafc;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.template-card h4 {
+  color: #2d3748;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+}
+
+.template-card p {
+  color: #718096;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.template-stats {
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.template-card.selected .template-stats {
+  background: #667eea;
+  color: white;
+}
+
+.setup-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cancel-btn,
+.create-btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.cancel-btn:hover {
+  background: #cbd5e0;
+}
+
+.create-btn {
+  background: #667eea;
+  color: white;
+}
+
+.create-btn:hover:not(:disabled) {
+  background: #5a67d8;
+}
+
+.create-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* 加载状态 */
+.checklist-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 检查清单界面 */
+.checklist-interface {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 头部 */
+.checklist-header {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  padding: 30px;
+}
+
+.header-info h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header-info p {
+  margin: 0 0 24px 0;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+.progress-section {
+  margin-bottom: 24px;
+}
+
+.progress-stats {
+  margin-bottom: 8px;
+}
+
+.progress-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: white;
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 5px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.report-btn,
+.complete-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.report-btn:hover,
+.complete-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 内容区域 */
+.checklist-content {
+  display: flex;
+  min-height: 600px;
+}
+
+/* 分类导航 */
+.category-nav {
+  width: 300px;
+  background: #f8f9fa;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.category-btn {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.category-btn:hover {
+  background: #e2e8f0;
+}
+
+.category-btn.active {
+  background: white;
+  border-left-color: #48bb78;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.category-progress {
+  display: block;
+  font-size: 12px;
+  color: #718096;
+  margin-bottom: 8px;
+}
+
+.category-progress-bar {
+  background: #e2e8f0;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.category-progress-fill {
+  background: #48bb78;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* 分类内容 */
+.category-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.category-section {
+  max-width: 800px;
+}
+
+.category-header {
+  margin-bottom: 30px;
+}
+
+.category-header h3 {
+  color: #2d3748;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.category-header p {
+  color: #718096;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* 检查项 */
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checklist-item {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.checklist-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checklist-item.priority-high {
+  border-left: 4px solid #f56565;
+}
+
+.checklist-item.priority-medium {
+  border-left: 4px solid #ed8936;
+}
+
+.checklist-item.priority-low {
+  border-left: 4px solid #48bb78;
+}
+
+.item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  flex: 1;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 12px;
+  margin-top: 2px;
+  transform: scale(1.2);
+  accent-color: #48bb78;
+  cursor: pointer;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.priority-badge.priority-high {
+  background: #fed7d7;
+  color: #e53e3e;
+}
+
+.priority-badge.priority-medium {
+  background: #feebc8;
+  color: #dd6b20;
+}
+
+.priority-badge.priority-low {
+  background: #c6f6d5;
+  color: #25855a;
+}
+
+.notes-toggle {
+  background: #e2e8f0;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.notes-toggle:hover {
+  background: #cbd5e0;
+}
+
+.item-description {
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.notes-section {
+  margin-top: 16px;
+}
+
+.notes-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.notes-input:focus {
+  outline: none;
+  border-color: #48bb78;
+}
+
+.existing-notes {
+  background: #edf2f7;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.existing-notes strong {
+  color: #2d3748;
+}
+
+/* 提示区域 */
+.checklist-tips {
+  background: #f7fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 20px 30px;
+}
+
+.checklist-tips h4 {
+  color: #2d3748;
+  font-size: 16px;
+  margin: 0 0 12px 0;
+}
+
+.checklist-tips ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #718096;
+}
+
+.checklist-tips li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .checklist-interface {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .checklist-content {
+    flex-direction: column;
+  }
+
+  .category-nav {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .category-btn {
+    min-width: 150px;
+    padding: 16px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+  }
+
+  .category-btn.active {
+    border-left: none;
+    border-bottom-color: #48bb78;
+  }
+
+  .category-content {
+    padding: 20px;
+  }
+
+  .category-header h3 {
+    font-size: 20px;
+  }
+
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .templates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checklist-tips {
+    padding: 16px 20px;
+  }
+}
