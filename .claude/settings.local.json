@@ -7,7 +7,12 @@
       "Bash(dir /s)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
-      "Read(//c/Users/jirun_yang/**)"
+      "Read(//c/Users/jirun_yang/**)",
+      "mcp__exa__web_search_exa",
+      "mcp__sequential-thinking__sequentialthinking",
+      "mcp__inner-monologue__inner-monologue",
+      "Bash(dir)",
+      "Bash(ren:*)"
     ],
     "deny": [],
     "ask": []

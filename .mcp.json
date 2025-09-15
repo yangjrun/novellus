@@ -24,7 +24,8 @@
       "command": "npx",
       "args": [
         "-y",
-        "exa-mcp-server"
+        "exa-mcp-server",
+        "--tools=web_search_exa,research_paper_search,twitter_search"
       ],
       "env": {
         "EXA_API_KEY": "b617505c-b6a5-4770-8960-b4f4216b957d"
