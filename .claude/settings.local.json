@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//c/Users/jirun_yang/AppData/Roaming/Claude/**)",
+      "Bash(tree:*)",
+      "Bash(dir /s)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Read(//c/Users/jirun_yang/**)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "fetch": {
+      "command": "python3",
+      "args": [
+        "-m",
+        "mcp_server_fetch"
+      ]
+    },
+    "inner-monologue": {
+      "command": "npx",
+      "args": [
+        "inner-monologue-mcp"
+      ]
+    },
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.exa.ai/mcp?exaApiKey=bf5c0cb7-bae0-4a2e-b12e-c9880188d2b9"
+      ]
+    }
+  }
+}

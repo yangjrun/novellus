@@ -1,0 +1,37 @@
+# Custom PostgreSQL Docker image for Novellus project
+FROM postgres:15-alpine
+
+# Set maintainer
+LABEL maintainer="Novellus Team"
+LABEL description="PostgreSQL database for Novellus MCP Server"
+
+# Install additional extensions
+RUN apk add --no-cache \
+    postgresql-contrib \
+    curl \
+    && rm -rf /var/cache/apk/*
+
+# Set default environment variables
+ENV POSTGRES_DB=novellus
+ENV POSTGRES_USER=novellus_user
+ENV POSTGRES_PASSWORD=changeme
+ENV PGDATA=/var/lib/postgresql/data/pgdata
+
+# Create custom init directory
+RUN mkdir -p /docker-entrypoint-initdb.d
+
+# Copy initialization scripts
+COPY init-scripts/*.sql /docker-entrypoint-initdb.d/
+
+# Set proper permissions
+RUN chown -R postgres:postgres /docker-entrypoint-initdb.d
+
+# Expose PostgreSQL port
+EXPOSE 5432
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=5 \
+    CMD pg_isready -U $POSTGRES_USER -d $POSTGRES_DB || exit 1
+
+# Use the default PostgreSQL entrypoint
+CMD ["postgres"]
