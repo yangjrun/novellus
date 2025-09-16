@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { InterviewSession, InterviewQuestion, InterviewAnswer } from '@types/index';
+import { InterviewSession, InterviewQuestion, InterviewAnswer } from '../types/index';
 import { InterviewService } from '@services/interviewService';
 import './InterviewInterface.css';
 

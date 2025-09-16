@@ -1,11 +1,15 @@
 /* 全局样式 */
 :root {
   --primary-color: #667eea;
+  --primary-color-dark: #5a67d8;
   --primary-dark: #5a67d8;
   --secondary-color: #764ba2;
   --success-color: #48bb78;
+  --success-color-dark: #38a169;
   --warning-color: #ed8936;
+  --warning-color-dark: #dd6b20;
   --error-color: #f56565;
+  --error-color-dark: #e53e3e;
   --info-color: #4299e1;
 
   --text-primary: #2d3748;
@@ -18,8 +22,11 @@
   --bg-muted: #edf2f7;
   --bg-dark: #2d3748;
 
+  --card-bg: #ffffff;
   --border-color: #e2e8f0;
   --border-light: #f1f5f9;
+
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);

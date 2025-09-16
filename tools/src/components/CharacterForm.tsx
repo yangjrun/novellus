@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Character } from '@types/index';
+import { Character } from '../types/index';
 import { CharacterService } from '@services/characterService';
 import './CharacterForm.css';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProjectChecklist, ChecklistProgress, ChecklistTemplate } from '@types/index';
+import { ProjectChecklist, ChecklistProgress, ChecklistTemplate } from '../types/index';
 import { ChecklistService } from '@services/checklistService';
 import './ChecklistInterface.css';
 

@@ -1,4 +1,4 @@
-import { InterviewQuestion, InterviewSession, InterviewAnswer } from '@types/index';
+import { InterviewQuestion, InterviewSession, InterviewAnswer } from '../types/index';
 import { StorageService, generateId } from '@utils/storage';
 
 export class InterviewService {

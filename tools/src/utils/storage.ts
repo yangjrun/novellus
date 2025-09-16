@@ -99,3 +99,6 @@ export const formatDate = (date: Date): string => {
 export const deepClone = <T>(obj: T): T => {
   return JSON.parse(JSON.stringify(obj));
 };
+
+// 导出storage实例供直接使用
+export { storage };

@@ -1,4 +1,4 @@
-import { Character, ExportFormat } from '@types/index';
+import { Character, ExportFormat } from '../types/index';
 import { StorageService, generateId } from '@utils/storage';
 import { saveAs } from 'file-saver';
 

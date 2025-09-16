@@ -1,4 +1,4 @@
-import { ChecklistTemplate, ChecklistCategory, ChecklistItem, ProjectChecklist, ChecklistProgress } from '@types/index';
+import { ChecklistTemplate, ChecklistCategory, ChecklistItem, ProjectChecklist, ChecklistProgress } from '../types/index';
 import { StorageService, generateId } from '@utils/storage';
 
 export class ChecklistService {

@@ -1,4 +1,4 @@
-import { DiagnosticTest, DiagnosticResult, DiagnosticIssue, Character } from '@types/index';
+import { DiagnosticTest, DiagnosticResult, DiagnosticIssue, Character } from '../types/index';
 
 export class DiagnosticService {
   private tests: Map<string, DiagnosticTest> = new Map();

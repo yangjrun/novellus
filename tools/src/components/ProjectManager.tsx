@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Character, Project } from '@types/index';
+import { Character, Project } from '../types/index';
 import { CharacterService } from '@services/characterService';
 import { generateId } from '@utils/storage';
 import './ProjectManager.css';
 
 interface ProjectManagerProps {
-  onToolSelect: (tool: 'character' | 'interview' | 'checklist' | 'diagnostic') => void;
+  onToolSelect: (tool: 'character' | 'interview' | 'checklist' | 'diagnostic' | 'narrative' | 'enhanced-character' | 'world-builder' | 'scene-creator') => void;
   onCharacterSelect: (character: Character) => void;
   onProjectSelect: (projectId: string) => void;
 }
@@ -82,8 +82,69 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
       </div>
 
       <div className="tools-grid">
+        {/* Phase 1 增强工具 */}
+        <div className="tool-category phase1-tools">
+          <h2>🚀 Phase 1 增强工具</h2>
+          <div className="tools-row">
+            <div className="tool-card enhanced" onClick={() => {
+              handleCreateProject();
+              onToolSelect('narrative');
+            }}>
+              <div className="tool-icon">📚</div>
+              <h3>叙事结构构建</h3>
+              <p>选择经典故事结构，规划情节节点，可视化故事发展</p>
+              <div className="tool-stats">
+                <span className="new-badge">新功能</span>
+                6种经典结构
+              </div>
+            </div>
+
+            <div className="tool-card enhanced" onClick={() => {
+              handleCreateProject();
+              onToolSelect('enhanced-character');
+            }}>
+              <div className="tool-icon">🎭</div>
+              <h3>深度角色创作</h3>
+              <p>AI辅助的增强版角色生成器，10步详细创建流程</p>
+              <div className="tool-stats">
+                <span className="new-badge">新功能</span>
+                AI智能建议
+              </div>
+            </div>
+          </div>
+
+          <div className="tools-row">
+            <div className="tool-card enhanced" onClick={() => {
+              handleCreateProject();
+              onToolSelect('world-builder');
+            }}>
+              <div className="tool-icon">🌍</div>
+              <h3>智能世界构建</h3>
+              <p>创建完整的世界观，文化系统，地理环境和历史背景</p>
+              <div className="tool-stats">
+                <span className="new-badge">新功能</span>
+                6种世界类型
+              </div>
+            </div>
+
+            <div className="tool-card enhanced" onClick={() => {
+              handleCreateProject();
+              onToolSelect('scene-creator');
+            }}>
+              <div className="tool-icon">🎬</div>
+              <h3>多维场景创作</h3>
+              <p>感官场景构建器，氛围营造工具，多感官体验设计</p>
+              <div className="tool-stats">
+                <span className="new-badge">新功能</span>
+                5种场景类型
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 基础工具 */}
         <div className="tool-category">
-          <h2>🎭 角色创作工具</h2>
+          <h2>📝 基础创作工具</h2>
           <div className="tools-row">
             <div className="tool-card" onClick={handleCreateCharacter}>
               <div className="tool-icon">👤</div>
@@ -103,10 +164,7 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="tool-category">
-          <h2>📖 情节创作工具</h2>
           <div className="tools-row">
             <div className="tool-card" onClick={() => {
               handleCreateProject();

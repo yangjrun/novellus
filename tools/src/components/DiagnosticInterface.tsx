@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DiagnosticResult, DiagnosticTest } from '@types/index';
+import { DiagnosticResult, DiagnosticTest } from '../types/index';
 import { DiagnosticService } from '@services/diagnosticService';
 import { CharacterService } from '@services/characterService';
 import './DiagnosticInterface.css';
