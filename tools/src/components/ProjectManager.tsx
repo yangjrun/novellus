@@ -5,7 +5,7 @@ import { generateId } from '@utils/storage';
 import './ProjectManager.css';
 
 interface ProjectManagerProps {
-  onToolSelect: (tool: 'character' | 'interview' | 'checklist' | 'diagnostic' | 'narrative' | 'enhanced-character' | 'world-builder' | 'scene-creator') => void;
+  onToolSelect: (tool: 'character' | 'interview' | 'checklist' | 'diagnostic' | 'narrative' | 'world-builder' | 'scene-creator') => void;
   onCharacterSelect: (character: Character) => void;
   onProjectSelect: (projectId: string) => void;
 }
@@ -101,11 +101,11 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
 
             <div className="tool-card enhanced" onClick={() => {
               handleCreateProject();
-              onToolSelect('enhanced-character');
+              onToolSelect('character');
             }}>
               <div className="tool-icon">🎭</div>
-              <h3>深度角色创作</h3>
-              <p>AI辅助的增强版角色生成器，10步详细创建流程</p>
+              <h3>角色创建</h3>
+              <p>统一角色创建器，支持快速、引导、专业三种模式</p>
               <div className="tool-stats">
                 <span className="new-badge">新功能</span>
                 AI智能建议
@@ -146,14 +146,6 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
         <div className="tool-category">
           <h2>📝 基础创作工具</h2>
           <div className="tools-row">
-            <div className="tool-card" onClick={handleCreateCharacter}>
-              <div className="tool-icon">👤</div>
-              <h3>角色工作表</h3>
-              <p>创建详细的角色档案，从外貌到心理全方位塑造</p>
-              <div className="tool-stats">
-                已创建 {characters.length} 个角色
-              </div>
-            </div>
 
             <div className="tool-card" onClick={() => onToolSelect('interview')}>
               <div className="tool-icon">💬</div>
@@ -261,7 +253,7 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
             <div className="step-number">1</div>
             <div className="step-content">
               <h3>创建角色</h3>
-              <p>使用角色工作表创建你的第一个角色</p>
+              <p>使用统一角色创建器开始你的创作之旅</p>
               <button onClick={handleCreateCharacter} className="step-btn">
                 开始创建
               </button>

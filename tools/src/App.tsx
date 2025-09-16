@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Flex,
@@ -8,24 +8,23 @@ import {
   Alert,
   Container,
   HStack,
-  VStack,
-  Badge,
   Menu,
   Portal,
   useBreakpointValue
 } from '@chakra-ui/react';
 import { Character, InterviewSession } from './types/index';
-import { CharacterForm } from '@components/CharacterForm';
 import { InterviewInterface } from '@components/InterviewInterface';
 import { ChecklistInterface } from '@components/ChecklistInterface';
 import { DiagnosticInterface } from '@components/DiagnosticInterface';
 import { ProjectManager } from '@components/ProjectManager';
 import { NarrativeStructureComponent } from '@components/NarrativeStructure';
-import { EnhancedCharacterCreator } from '@components/EnhancedCharacterCreator';
+import { UnifiedCharacterCreator } from '@components/UnifiedCharacterCreator';
 import { WorldBuilder } from '@components/WorldBuilder';
 import { SceneCreator } from '@components/SceneCreator';
+import { PromptGenerator } from '@components/PromptGenerator';
+import { ProjectDataViewer } from '@components/ProjectDataViewer';
 
-type ActiveTool = 'home' | 'character' | 'interview' | 'checklist' | 'diagnostic' | 'narrative' | 'enhanced-character' | 'world-builder' | 'scene-creator';
+type ActiveTool = 'home' | 'character' | 'interview' | 'checklist' | 'diagnostic' | 'narrative' | 'world-builder' | 'scene-creator' | 'prompt-generator' | 'project-data';
 
 interface AppState {
   activeTool: ActiveTool;
@@ -58,43 +57,14 @@ function App() {
     switch (state.activeTool) {
       case 'character':
         return (
-          <CharacterForm
-            character={state.currentCharacter}
-            onSave={handleCharacterSave}
-            onCancel={handleCancel}
-          />
-        );
-
-      case 'enhanced-character':
-        if (!state.currentProject) {
-          return (
-            <Alert.Root status="warning" maxW="md" mx="auto" mt={20}>
-              <Alert.Indicator />
-              <Alert.Content>
-                <Alert.Title>需要先选择项目</Alert.Title>
-                <Alert.Description>
-                  请先创建或选择一个项目使用增强版角色创作器
-                </Alert.Description>
-              </Alert.Content>
-              <Button
-                size="sm"
-                colorPalette="blue"
-                onClick={() => handleToolSwitch('home')}
-                ml={4}
-              >
-                返回首页
-              </Button>
-            </Alert.Root>
-          );
-        }
-        return (
-          <EnhancedCharacterCreator
+          <UnifiedCharacterCreator
             projectId={state.currentProject}
             character={state.currentCharacter}
             onSave={handleCharacterSave}
             onCancel={handleCancel}
           />
         );
+
 
       case 'interview':
         if (!state.currentCharacter?.id) {
@@ -213,6 +183,24 @@ function App() {
             projectId={state.currentProject}
             onComplete={handleCancel}
             onCancel={handleCancel}
+          />
+        );
+
+      case 'prompt-generator':
+        return (
+          <PromptGenerator
+            projectContext={state.currentProject ? { id: state.currentProject, name: 'Current Project' } : undefined}
+            onPromptGenerated={(prompt) => {
+              console.log('Prompt generated:', prompt);
+              // 可以在这里添加额外的处理逻辑
+            }}
+          />
+        );
+
+      case 'project-data':
+        return (
+          <ProjectDataViewer
+            onBack={() => handleToolSwitch('home')}
           />
         );
 
@@ -365,7 +353,6 @@ function App() {
                         fontWeight="medium"
                         px={4}
                         py={2}
-                        rightIcon="▼"
                         _hover={{
                           bg: 'rgba(255, 255, 255, 0.2)',
                           transform: 'translateY(-1px)'
@@ -402,20 +389,6 @@ function App() {
                               📚 叙事结构
                             </Menu.Item>
                             <Menu.Item
-                              value="enhanced-character"
-                              bg={state.activeTool === 'enhanced-character' ? 'blue.50' : 'transparent'}
-                              color={state.activeTool === 'enhanced-character' ? 'blue.600' : 'gray.700'}
-                              borderRadius="lg"
-                              py={3}
-                              px={4}
-                              fontSize="sm"
-                              fontWeight="medium"
-                              _hover={{ bg: 'blue.50', color: 'blue.600' }}
-                              onClick={() => handleToolSwitch('enhanced-character')}
-                            >
-                              🎭 深度角色
-                            </Menu.Item>
-                            <Menu.Item
                               value="world-builder"
                               bg={state.activeTool === 'world-builder' ? 'blue.50' : 'transparent'}
                               color={state.activeTool === 'world-builder' ? 'blue.600' : 'gray.700'}
@@ -443,6 +416,34 @@ function App() {
                             >
                               🎬 多维场景
                             </Menu.Item>
+                            <Menu.Item
+                              value="prompt-generator"
+                              bg={state.activeTool === 'prompt-generator' ? 'blue.50' : 'transparent'}
+                              color={state.activeTool === 'prompt-generator' ? 'blue.600' : 'gray.700'}
+                              borderRadius="lg"
+                              py={3}
+                              px={4}
+                              fontSize="sm"
+                              fontWeight="medium"
+                              _hover={{ bg: 'blue.50', color: 'blue.600' }}
+                              onClick={() => handleToolSwitch('prompt-generator')}
+                            >
+                              🎯 Prompt生成器
+                            </Menu.Item>
+                            <Menu.Item
+                              value="project-data"
+                              bg={state.activeTool === 'project-data' ? 'blue.50' : 'transparent'}
+                              color={state.activeTool === 'project-data' ? 'blue.600' : 'gray.700'}
+                              borderRadius="lg"
+                              py={3}
+                              px={4}
+                              fontSize="sm"
+                              fontWeight="medium"
+                              _hover={{ bg: 'blue.50', color: 'blue.600' }}
+                              onClick={() => handleToolSwitch('project-data')}
+                            >
+                              📊 项目数据库
+                            </Menu.Item>
                           </Menu.ItemGroup>
                         </Menu.Content>
                       </Menu.Positioner>
@@ -462,7 +463,6 @@ function App() {
                         fontWeight="medium"
                         px={4}
                         py={2}
-                        rightIcon="▼"
                         _hover={{
                           bg: 'rgba(255, 255, 255, 0.2)',
                           transform: 'translateY(-1px)'
@@ -492,7 +492,7 @@ function App() {
                             _hover={{ bg: 'blue.50', color: 'blue.600' }}
                             onClick={() => handleToolSwitch('character')}
                           >
-                            👤 角色工作表
+                            🎯 专业角色创作
                           </Menu.Item>
                           <Menu.Item
                             value="interview"
@@ -556,7 +556,6 @@ function App() {
                       fontWeight="medium"
                       px={4}
                       py={2}
-                      rightIcon="▼"
                       _hover={{
                         bg: 'rgba(255, 255, 255, 0.2)',
                         transform: 'translateY(-1px)'
@@ -595,20 +594,6 @@ function App() {
                             📚 叙事结构
                           </Menu.Item>
                           <Menu.Item
-                            value="enhanced-character"
-                            bg={state.activeTool === 'enhanced-character' ? 'blue.50' : 'transparent'}
-                            color={state.activeTool === 'enhanced-character' ? 'blue.600' : 'gray.700'}
-                            borderRadius="lg"
-                            py={3}
-                            px={4}
-                            fontSize="sm"
-                            fontWeight="medium"
-                            _hover={{ bg: 'blue.50', color: 'blue.600' }}
-                            onClick={() => handleToolSwitch('enhanced-character')}
-                          >
-                            🎭 角色创建
-                          </Menu.Item>
-                          <Menu.Item
                             value="world-builder"
                             bg={state.activeTool === 'world-builder' ? 'blue.50' : 'transparent'}
                             color={state.activeTool === 'world-builder' ? 'blue.600' : 'gray.700'}
@@ -636,6 +621,34 @@ function App() {
                           >
                             🎬 场景创建
                           </Menu.Item>
+                          <Menu.Item
+                            value="prompt-generator"
+                            bg={state.activeTool === 'prompt-generator' ? 'blue.50' : 'transparent'}
+                            color={state.activeTool === 'prompt-generator' ? 'blue.600' : 'gray.700'}
+                            borderRadius="lg"
+                            py={3}
+                            px={4}
+                            fontSize="sm"
+                            fontWeight="medium"
+                            _hover={{ bg: 'blue.50', color: 'blue.600' }}
+                            onClick={() => handleToolSwitch('prompt-generator')}
+                          >
+                            🎯 Prompt生成器
+                          </Menu.Item>
+                          <Menu.Item
+                            value="project-data"
+                            bg={state.activeTool === 'project-data' ? 'blue.50' : 'transparent'}
+                            color={state.activeTool === 'project-data' ? 'blue.600' : 'gray.700'}
+                            borderRadius="lg"
+                            py={3}
+                            px={4}
+                            fontSize="sm"
+                            fontWeight="medium"
+                            _hover={{ bg: 'blue.50', color: 'blue.600' }}
+                            onClick={() => handleToolSwitch('project-data')}
+                          >
+                            📊 项目数据库
+                          </Menu.Item>
                         </Menu.ItemGroup>
                         <Menu.Separator />
                         <Menu.ItemGroup>
@@ -654,7 +667,7 @@ function App() {
                             _hover={{ bg: 'blue.50', color: 'blue.600' }}
                             onClick={() => handleToolSwitch('character')}
                           >
-                            👤 角色工作表
+                            🎯 专业角色创作
                           </Menu.Item>
                           <Menu.Item
                             value="interview"

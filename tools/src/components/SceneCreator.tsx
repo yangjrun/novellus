@@ -22,6 +22,7 @@ import {
 } from '@chakra-ui/react';
 import { Scene } from '../types/index';
 import { SceneService } from '@services/sceneService';
+import { PromptGenerator } from './PromptGenerator';
 
 interface SceneCreatorProps {
   projectId: string;
@@ -38,6 +39,7 @@ export const SceneCreator: React.FC<SceneCreatorProps> = ({
   const [scenes, setScenes] = useState<Scene[]>([]);
   const [currentScene, setCurrentScene] = useState<Scene | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showPromptGenerator, setShowPromptGenerator] = useState(false);
 
   useEffect(() => {
     loadScenes();
@@ -57,6 +59,10 @@ export const SceneCreator: React.FC<SceneCreatorProps> = ({
   const handleCreateScene = (type: 'action' | 'dialogue' | 'description' | 'emotional' | 'transition') => {
     const newScene = sceneService.createSceneTemplate(projectId, type);
     setCurrentScene(newScene);
+  };
+
+  const handleCreateWithPrompt = () => {
+    setShowPromptGenerator(true);
   };
 
   const handleSaveScene = async () => {
@@ -82,6 +88,20 @@ export const SceneCreator: React.FC<SceneCreatorProps> = ({
           </VStack>
         </Center>
       </Container>
+    );
+  }
+
+  if (showPromptGenerator) {
+    return (
+      <PromptGenerator
+        category="scene"
+        projectId={projectId}
+        onBack={() => setShowPromptGenerator(false)}
+        onComplete={() => {
+          setShowPromptGenerator(false);
+          onComplete();
+        }}
+      />
     );
   }
 
@@ -114,7 +134,17 @@ export const SceneCreator: React.FC<SceneCreatorProps> = ({
 
         {/* Scene Types Section */}
         <Box>
-          <Heading size="lg" mb={6}>选择场景类型</Heading>
+          <HStack justify="space-between" align="center" mb={6}>
+            <Heading size="lg">选择场景类型</Heading>
+            <Button
+              colorPalette="blue"
+              variant="outline"
+              onClick={handleCreateWithPrompt}
+              size="md"
+            >
+              🤖 AI辅助创作
+            </Button>
+          </HStack>
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
             {[
               { type: 'action', name: '动作场景', icon: '⚔️', desc: '高能量的行动和冲突场景' },
@@ -150,11 +180,22 @@ export const SceneCreator: React.FC<SceneCreatorProps> = ({
             <Card.Root variant="subtle">
               <Card.Body py={12}>
                 <Center>
-                  <VStack gap={4}>
+                  <VStack gap={6}>
                     <Text fontSize="4xl">🎭</Text>
                     <Text color="fg.muted" textAlign="center">
-                      还没有创建任何场景。选择一个场景类型开始创作吧！
+                      还没有创建任何场景。选择创作方式开始吧！
                     </Text>
+                    <HStack gap={4}>
+                      <Button
+                        colorPalette="blue"
+                        onClick={handleCreateWithPrompt}
+                        size="lg"
+                      >
+                        🤖 AI辅助创作
+                      </Button>
+                      <Text color="fg.muted">或</Text>
+                      <Text color="fg.muted">选择上方场景类型进行传统创作</Text>
+                    </HStack>
                   </VStack>
                 </Center>
               </Card.Body>

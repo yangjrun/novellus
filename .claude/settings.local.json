@@ -34,7 +34,10 @@
       "Bash(tasklist:*)",
       "Bash(powershell:*)",
       "Bash(wmic:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(sed:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

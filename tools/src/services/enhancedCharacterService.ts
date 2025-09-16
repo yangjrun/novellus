@@ -547,6 +547,311 @@ export class EnhancedCharacterService {
     return suggestions[type] || [];
   }
 
+  // 生成角色对话样例
+  generateCharacterDialogue(character: Character, context: 'casual' | 'angry' | 'sad' | 'excited' | 'formal'): string[] {
+    const personality = character.personality.coreTraits;
+    const dialogues: string[] = [];
+
+    // 基于性格特质生成对话风格
+    if (personality.includes('幽默')) {
+      dialogues.push('哈，这可真是个有趣的局面。');
+      dialogues.push('你知道吗，这让我想起了一个笑话...');
+    }
+
+    if (personality.includes('严肃')) {
+      dialogues.push('我们需要认真对待这个问题。');
+      dialogues.push('这不是开玩笑的时候。');
+    }
+
+    if (personality.includes('温和')) {
+      dialogues.push('或许我们可以换个角度看这件事。');
+      dialogues.push('我理解你的感受，但是...');
+    }
+
+    if (personality.includes('冲动')) {
+      dialogues.push('我受够了！现在就行动！');
+      dialogues.push('别废话了，直接去做！');
+    }
+
+    // 基于价值观调整语言风格
+    if (character.personality.values.includes('正义')) {
+      dialogues.push('这样做是对的。');
+      dialogues.push('我们必须站在正确的一边。');
+    }
+
+    return dialogues.length > 0 ? dialogues : [
+      '嗯，我需要想想这个问题。',
+      '这确实值得考虑。'
+    ];
+  }
+
+  // 分析角色语言特征
+  analyzeCharacterVoice(character: Character): {
+    style: string;
+    vocabulary: string[];
+    mannerisms: string[];
+    emotionalRange: string[];
+  } {
+    const traits = character.personality.coreTraits;
+    const occupation = character.basicInfo.occupation;
+    const education = character.background.education;
+
+    let style = '中性';
+    const vocabulary: string[] = [];
+    const mannerisms: string[] = [];
+    const emotionalRange: string[] = [];
+
+    // 基于性格特质分析语言风格
+    if (traits.includes('幽默')) {
+      style = '幽默风趣';
+      mannerisms.push('经常开玩笑', '使用双关语');
+      vocabulary.push('俏皮话', '比喻', '讽刺');
+    }
+
+    if (traits.includes('严肃')) {
+      style = '严谨正式';
+      mannerisms.push('用词准确', '逻辑清晰');
+      vocabulary.push('专业术语', '正式用语');
+    }
+
+    if (traits.includes('文雅')) {
+      style = '文雅含蓄';
+      mannerisms.push('措辞委婉', '引经据典');
+      vocabulary.push('成语', '诗词', '典故');
+    }
+
+    // 基于职业调整语言特征
+    if (occupation.includes('教师') || occupation.includes('学者')) {
+      vocabulary.push('教育术语', '学术词汇');
+      mannerisms.push('喜欢解释', '举例说明');
+    }
+
+    if (occupation.includes('军人') || occupation.includes('警察')) {
+      vocabulary.push('命令式语言', '简短有力');
+      mannerisms.push('直接了当', '重视纪律');
+    }
+
+    // 情感表达范围
+    if (traits.includes('感性')) {
+      emotionalRange.push('情感丰富', '表达直接', '感情外露');
+    } else if (traits.includes('理性')) {
+      emotionalRange.push('情感克制', '逻辑优先', '冷静客观');
+    }
+
+    return {
+      style,
+      vocabulary,
+      mannerisms,
+      emotionalRange
+    };
+  }
+
+  // 设计角色冲突关系
+  designCharacterConflicts(character: Character, otherCharacters: Character[]): {
+    internalConflicts: string[];
+    interpersonalConflicts: Array<{
+      withCharacter: string;
+      conflictType: string;
+      description: string;
+      intensity: 'low' | 'medium' | 'high';
+    }>;
+    environmentalConflicts: string[];
+  } {
+    const internalConflicts: string[] = [];
+    const interpersonalConflicts: Array<{
+      withCharacter: string;
+      conflictType: string;
+      description: string;
+      intensity: 'low' | 'medium' | 'high';
+    }> = [];
+    const environmentalConflicts: string[] = [];
+
+    // 分析内在冲突
+    const traits = character.personality.coreTraits;
+    const values = character.personality.values;
+    const fears = character.personality.fears;
+    const desires = character.personality.desires;
+
+    // 价值观冲突
+    if (values.includes('自由') && values.includes('责任')) {
+      internalConflicts.push('自由与责任的两难抉择');
+    }
+    if (values.includes('正义') && values.includes('家庭')) {
+      internalConflicts.push('正义感与家庭利益的冲突');
+    }
+
+    // 恐惧与欲望的冲突
+    if (fears.includes('失败') && desires.includes('成功')) {
+      internalConflicts.push('对失败的恐惧阻碍了对成功的追求');
+    }
+    if (fears.includes('孤独') && desires.includes('独立')) {
+      internalConflicts.push('渴望独立但害怕孤独');
+    }
+
+    // 分析与其他角色的冲突
+    otherCharacters.forEach(other => {
+      const conflictPotential = this.analyzeConflictPotential(character, other);
+      if (conflictPotential.hasConflict) {
+        interpersonalConflicts.push({
+          withCharacter: other.basicInfo.name || '未知角色',
+          conflictType: conflictPotential.type,
+          description: conflictPotential.description,
+          intensity: conflictPotential.intensity
+        });
+      }
+    });
+
+    // 环境冲突
+    const occupation = character.basicInfo.occupation;
+    const socialStatus = character.basicInfo.socialStatus;
+
+    if (values.includes('平等') && socialStatus.includes('贵族')) {
+      environmentalConflicts.push('平等理念与贵族身份的矛盾');
+    }
+    if (values.includes('和平') && occupation.includes('军人')) {
+      environmentalConflicts.push('和平主义与军人职责的冲突');
+    }
+
+    return {
+      internalConflicts,
+      interpersonalConflicts,
+      environmentalConflicts
+    };
+  }
+
+  // 分析两个角色间的冲突潜力
+  private analyzeConflictPotential(char1: Character, char2: Character): {
+    hasConflict: boolean;
+    type: string;
+    description: string;
+    intensity: 'low' | 'medium' | 'high';
+  } {
+    // 价值观冲突
+    const values1 = char1.personality.values;
+    const values2 = char2.personality.values;
+
+    const opposingValues: Record<string, string[]> = {
+      '自由': ['秩序', '控制', '传统'],
+      '正义': ['利益', '权力', '效率'],
+      '和平': ['荣誉', '复仇', '征服'],
+      '个人主义': ['集体主义', '团队', '家庭']
+    };
+
+    for (const value1 of values1) {
+      for (const value2 of values2) {
+        if (opposingValues[value1]?.includes(value2)) {
+          return {
+            hasConflict: true,
+            type: '价值观冲突',
+            description: `${value1} vs ${value2} 的理念对立`,
+            intensity: 'high'
+          };
+        }
+      }
+    }
+
+    // 角色类型冲突
+    if (char1.storyRole.characterType === 'protagonist' && char2.storyRole.characterType === 'antagonist') {
+      return {
+        hasConflict: true,
+        type: '立场对立',
+        description: '主角与反角的根本对立',
+        intensity: 'high'
+      };
+    }
+
+    // 性格冲突
+    const traits1 = char1.personality.coreTraits;
+    const traits2 = char2.personality.coreTraits;
+
+    const conflictingTraits: Record<string, string[]> = {
+      '冲动': ['谨慎', '保守'],
+      '理性': ['感性', '直觉'],
+      '独立': ['依赖', '合作']
+    };
+
+    for (const trait1 of traits1) {
+      for (const trait2 of traits2) {
+        if (conflictingTraits[trait1]?.includes(trait2)) {
+          return {
+            hasConflict: true,
+            type: '性格冲突',
+            description: `${trait1} vs ${trait2} 的性格不合`,
+            intensity: 'medium'
+          };
+        }
+      }
+    }
+
+    return {
+      hasConflict: false,
+      type: '',
+      description: '',
+      intensity: 'low'
+    };
+  }
+
+  // 生成角色成长弧线建议
+  generateCharacterArcSuggestions(character: Character): {
+    arcType: string;
+    keyMilestones: string[];
+    challenges: string[];
+    transformation: string;
+  } {
+    const characterType = character.storyRole.characterType;
+    const traits = character.personality.coreTraits;
+    const fears = character.personality.fears;
+    const desires = character.personality.desires;
+    const weaknesses = character.personality.weaknesses;
+
+    let arcType = '平坦弧线';
+    const keyMilestones: string[] = [];
+    const challenges: string[] = [];
+    let transformation = '角色保持初始状态';
+
+    // 基于角色类型确定弧线类型
+    if (characterType === 'protagonist') {
+      if (weaknesses.length > 0) {
+        arcType = '成长弧线';
+        transformation = `从 ${weaknesses[0]} 成长为更强的自己`;
+
+        keyMilestones.push('初始状态：存在明显缺陷');
+        keyMilestones.push('触发事件：面临重大挑战');
+        keyMilestones.push('中点：尝试改变但遭遇挫折');
+        keyMilestones.push('危机：缺陷导致的最大冲突');
+        keyMilestones.push('高潮：克服缺陷，获得成长');
+
+        challenges.push(`克服 ${weaknesses[0]} 的弱点`);
+        if (fears.length > 0) {
+          challenges.push(`面对 ${fears[0]} 的恐惧`);
+        }
+      }
+    } else if (characterType === 'antagonist') {
+      if (traits.includes('野心') || traits.includes('权力欲')) {
+        arcType = '堕落弧线';
+        transformation = '从相对正常堕落为完全的反派';
+
+        keyMilestones.push('初始：具有某些正面特质');
+        keyMilestones.push('诱惑：权力或利益的诱惑');
+        keyMilestones.push('妥协：第一次道德妥协');
+        keyMilestones.push('沉沦：逐渐失去道德底线');
+        keyMilestones.push('堕落：完全转变为反派');
+      }
+    }
+
+    // 基于欲望添加挑战
+    desires.forEach(desire => {
+      challenges.push(`追求 ${desire} 的过程中面临的阻碍`);
+    });
+
+    return {
+      arcType,
+      keyMilestones,
+      challenges,
+      transformation
+    };
+  }
+
   // 生成角色背景故事片段
   generateBackgroundStory(character: Character, eventType: 'childhood' | 'trauma' | 'achievement'): string[] {
     const templates: Record<string, string[]> = {
@@ -590,6 +895,251 @@ export class EnhancedCharacterService {
       createdAt: new Date(data.createdAt),
       updatedAt: new Date(data.updatedAt)
     };
+  }
+
+  // 角色质量评估
+  assessCharacterQuality(character: Character): {
+    overall: number;
+    dimensions: {
+      completeness: number;
+      consistency: number;
+      depth: number;
+      believability: number;
+      uniqueness: number;
+    };
+    recommendations: string[];
+  } {
+    const dimensions = {
+      completeness: this.assessCompleteness(character),
+      consistency: this.assessConsistency(character),
+      depth: this.assessDepth(character),
+      believability: this.assessBelievability(character),
+      uniqueness: this.assessUniqueness(character)
+    };
+
+    const overall = Math.round(
+      (dimensions.completeness + dimensions.consistency + dimensions.depth +
+       dimensions.believability + dimensions.uniqueness) / 5
+    );
+
+    const recommendations: string[] = [];
+
+    if (dimensions.completeness < 70) {
+      recommendations.push('建议完善基本信息和背景故事');
+    }
+    if (dimensions.consistency < 70) {
+      recommendations.push('检查性格特质和行为的一致性');
+    }
+    if (dimensions.depth < 70) {
+      recommendations.push('深化角色的内心世界和动机');
+    }
+    if (dimensions.believability < 70) {
+      recommendations.push('增加真实感，避免过于完美或极端');
+    }
+    if (dimensions.uniqueness < 70) {
+      recommendations.push('强化角色的独特性和个人特色');
+    }
+
+    return {
+      overall,
+      dimensions,
+      recommendations
+    };
+  }
+
+  private assessCompleteness(character: Character): number {
+    let score = 0;
+    let maxScore = 0;
+
+    // 基本信息 (20分)
+    maxScore += 20;
+    if (character.basicInfo.name) score += 5;
+    if (character.basicInfo.age) score += 3;
+    if (character.basicInfo.occupation) score += 4;
+    if (character.basicInfo.gender) score += 3;
+    if (character.basicInfo.socialStatus) score += 3;
+    if (character.basicInfo.alias && character.basicInfo.alias.length > 0) score += 2;
+
+    // 性格特质 (25分)
+    maxScore += 25;
+    if (character.personality.coreTraits.length >= 3) score += 8;
+    if (character.personality.values.length >= 2) score += 6;
+    if (character.personality.fears.length >= 1) score += 4;
+    if (character.personality.desires.length >= 1) score += 4;
+    if (character.personality.beliefs.length >= 1) score += 3;
+
+    // 背景故事 (20分)
+    maxScore += 20;
+    if (character.background.birthplace) score += 3;
+    if (character.background.family) score += 5;
+    if (character.background.childhood) score += 5;
+    if (character.background.education) score += 3;
+    if (character.background.importantEvents.length >= 1) score += 4;
+
+    // 外貌描述 (15分)
+    maxScore += 15;
+    if (character.appearance.height) score += 3;
+    if (character.appearance.hairColor) score += 3;
+    if (character.appearance.eyeColor) score += 3;
+    if (character.appearance.clothingStyle) score += 3;
+    if (character.appearance.specialMarks.length > 0) score += 3;
+
+    // 故事功能 (20分)
+    maxScore += 20;
+    if (character.storyRole.characterType) score += 5;
+    if (character.storyRole.characterArc) score += 5;
+    if (character.storyRole.conflictRole) score += 5;
+    if (character.storyRole.readerConnection) score += 5;
+
+    return Math.round((score / maxScore) * 100);
+  }
+
+  private assessConsistency(character: Character): number {
+    // 使用现有的一致性检查逻辑
+    const check = this.checkCharacterConsistency(character);
+    return check.score;
+  }
+
+  private assessDepth(character: Character): number {
+    let score = 0;
+
+    // 心理深度
+    if (character.personality.fears.length >= 2) score += 20;
+    if (character.personality.desires.length >= 2) score += 20;
+    if (character.personality.weaknesses.length >= 1) score += 15;
+    if (character.personality.strengths.length >= 1) score += 15;
+
+    // 背景复杂性
+    if (character.background.trauma.length >= 1) score += 10;
+    if (character.background.achievements.length >= 1) score += 10;
+    if (character.background.importantEvents.length >= 2) score += 10;
+
+    return Math.min(score, 100);
+  }
+
+  private assessBelievability(character: Character): number {
+    let score = 100;
+
+    // 检查是否过于完美
+    if (character.personality.weaknesses.length === 0) score -= 20;
+    if (character.personality.fears.length === 0) score -= 15;
+    if (character.background.trauma.length === 0 && character.background.importantEvents.length === 0) score -= 15;
+
+    // 检查极端特质
+    const extremeTraits = ['完美', '无敌', '全能', '无所不知'];
+    const hasExtremeTraits = character.personality.coreTraits.some(trait =>
+      extremeTraits.some(extreme => trait.includes(extreme))
+    );
+    if (hasExtremeTraits) score -= 25;
+
+    return Math.max(score, 0);
+  }
+
+  private assessUniqueness(character: Character): number {
+    let score = 50; // 基础分
+
+    // 独特的背景元素
+    if (character.background.birthplace && !['北京', '上海', '普通小镇'].includes(character.background.birthplace)) {
+      score += 10;
+    }
+
+    // 特殊标记或特征
+    if (character.appearance.specialMarks.length > 0) score += 15;
+
+    // 不寻常的职业
+    const commonOccupations = ['学生', '教师', '医生', '警察', '工程师'];
+    if (character.basicInfo.occupation && !commonOccupations.includes(character.basicInfo.occupation)) {
+      score += 10;
+    }
+
+    // 独特的性格组合
+    const rareTraits = ['神秘', '古怪', '天才', '预言', '直觉超强'];
+    const hasRareTraits = character.personality.coreTraits.some(trait =>
+      rareTraits.some(rare => trait.includes(rare))
+    );
+    if (hasRareTraits) score += 15;
+
+    return Math.min(score, 100);
+  }
+
+  // 角色面试问题生成器
+  generateInterviewQuestions(character: Character, category: 'basic' | 'values' | 'emotions' | 'relationships' | 'behavior' | 'past' | 'future' | 'situational'): string[] {
+    const questionSets: Record<string, string[]> = {
+      basic: [
+        '请介绍一下你自己',
+        '你认为自己最大的优点是什么？',
+        '你最不喜欢自己的哪一点？',
+        '如果用三个词来描述自己，你会选择哪三个？',
+        '你觉得别人是怎么看你的？',
+        '你最自豪的一件事是什么？',
+        '你最后悔的一件事是什么？'
+      ],
+      values: [
+        '什么对你来说最重要？',
+        '你绝对不会做的事情是什么？',
+        '你认为什么是正确的生活方式？',
+        '如果必须在家人和正义之间选择，你会怎么办？',
+        '你相信命运吗？为什么？',
+        '金钱对你意味着什么？',
+        '你如何定义成功？'
+      ],
+      emotions: [
+        '你最害怕什么？',
+        '你最想要的是什么？',
+        '什么会让你晚上睡不着觉？',
+        '如果你有三个愿望，你会许什么愿？',
+        '你最不想失去的是什么？',
+        '什么情况下你会感到绝望？',
+        '你的人生目标是什么？'
+      ],
+      relationships: [
+        '描述一下你最重要的一段关系',
+        '你在恋爱关系中寻求什么？',
+        '你如何处理冲突？',
+        '什么会让你感到被背叛？',
+        '你容易相信别人吗？',
+        '你如何表达爱意？',
+        '什么会让你放弃一段关系？'
+      ],
+      behavior: [
+        '当你生气时，你通常会做什么？',
+        '面对压力时，你如何应对？',
+        '你如何做重要决定？',
+        '在陌生环境中，你的第一反应是什么？',
+        '你如何处理失败？',
+        '当有人需要帮助时，你会怎么做？',
+        '你如何庆祝成功？'
+      ],
+      past: [
+        '说一说改变你人生轨迹的一件事',
+        '你童年最深刻的记忆是什么？',
+        '谁是对你影响最大的人？',
+        '你经历过的最困难的时期是什么？',
+        '你学到的最重要的教训是什么？',
+        '有什么事情你希望能重新来过？',
+        '你最想感谢的人是谁？'
+      ],
+      future: [
+        '你希望五年后的自己是什么样子？',
+        '你最想实现的梦想是什么？',
+        '什么会阻止你实现目标？',
+        '你对未来最大的担忧是什么？',
+        '如果明天就是世界末日，你会做什么？',
+        '你希望别人怎样记住你？',
+        '你认为什么会让你的人生有意义？'
+      ],
+      situational: [
+        '如果你发现你最好的朋友背叛了你，你会怎么做？',
+        '如果你必须在两分钟内做出一个重要决定，你会如何决策？',
+        '如果你意外得到一大笔钱，你会怎么处理？',
+        '如果你被误解并遭到众人指责，你会如何应对？',
+        '如果你必须向你讨厌的人求助，你会怎么做？',
+        '如果你发现了一个可能伤害他人的秘密，你会怎么办？',
+        '如果你面临职业生涯的重大选择，你会考虑哪些因素？'
+      ]
+    };
+
+    return questionSets[category] || [];
   }
 
   private generateId(): string {

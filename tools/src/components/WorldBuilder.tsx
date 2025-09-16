@@ -25,6 +25,8 @@ import {
 } from '@chakra-ui/react';
 import { WorldBuilding, Culture, Location } from '../types/index';
 import { WorldBuildingService } from '@services/worldBuildingService';
+import { PromptGenerator } from './PromptGenerator';
+import { PromptConfig, GeneratedPrompt } from '../types/prompt';
 
 interface WorldBuilderProps {
   projectId: string;
@@ -44,6 +46,7 @@ export const WorldBuilder: React.FC<WorldBuilderProps> = ({
   const [isCreating, setIsCreating] = useState(false);
   const [consistencyCheck, setConsistencyCheck] = useState<{ issues: string[], score: number } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showPromptGenerator, setShowPromptGenerator] = useState(false);
 
   useEffect(() => {
     loadWorlds();
@@ -82,6 +85,19 @@ export const WorldBuilder: React.FC<WorldBuilderProps> = ({
       console.error('创建世界失败:', error);
       alert('创建失败，请重试');
     }
+  };
+
+  const handleCreateWithPrompt = () => {
+    setShowPromptGenerator(true);
+  };
+
+  const handlePromptGenerated = (prompt: GeneratedPrompt) => {
+    console.log('世界构建Prompt已生成:', prompt);
+  };
+
+  const handleBackToTraditional = () => {
+    setShowPromptGenerator(false);
+    setIsCreating(true);
   };
 
   const handleSaveWorld = async () => {
@@ -184,6 +200,52 @@ export const WorldBuilder: React.FC<WorldBuilderProps> = ({
     );
   }
 
+  // 显示Prompt生成器
+  if (showPromptGenerator) {
+    const promptConfig: Partial<PromptConfig> = {
+      category: 'world',
+      difficulty: 'intermediate',
+      writingStyle: 'creative',
+      detailLevel: 'comprehensive',
+      aiModel: 'claude',
+      projectContext: { id: projectId, name: 'Current Project' }
+    };
+
+    return (
+      <Container maxW="6xl" py={6}>
+        <VStack gap={4} mb={6} align="stretch">
+          <HStack justify="space-between">
+            <Heading size="lg">🌍 世界构建 - AI辅助创作</Heading>
+            <HStack gap={2}>
+              <Button
+                variant="outline"
+                onClick={handleBackToTraditional}
+              >
+                🔧 传统创建
+              </Button>
+              <Button
+                variant="outline"
+                onClick={onCancel}
+              >
+                取消
+              </Button>
+            </HStack>
+          </HStack>
+
+          <Text color="gray.600">
+            使用AI生成专业的世界构建Prompt，帮助您创造逻辑一致、引人入胜的虚构世界
+          </Text>
+        </VStack>
+
+        <PromptGenerator
+          initialConfig={promptConfig}
+          onPromptGenerated={handlePromptGenerated}
+          projectContext={{ id: projectId, name: 'Current Project' }}
+        />
+      </Container>
+    );
+  }
+
   if (isCreating) {
     return <WorldTypeSelector onSelect={handleCreateWorld} onCancel={() => setIsCreating(false)} />;
   }
@@ -195,16 +257,28 @@ export const WorldBuilder: React.FC<WorldBuilderProps> = ({
           <Box>
             <Heading size="2xl" mb={4}>🌍 智能世界构建平台</Heading>
             <Text fontSize="lg" color="fg.muted">
-              还没有创建任何世界。选择一个世界类型开始构建你的独特世界！
+              还没有创建任何世界。选择一种方式开始构建你的独特世界！
             </Text>
           </Box>
-          <Button
-            size="lg"
-            colorPalette="blue"
-            onClick={() => setIsCreating(true)}
-          >
-            创建新世界
-          </Button>
+          <HStack gap={4}>
+            <Button
+              size="lg"
+              colorPalette="blue"
+              onClick={handleCreateWithPrompt}
+            >
+              🎯 AI辅助创作
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setIsCreating(true)}
+            >
+              🔧 传统创建
+            </Button>
+          </HStack>
+          <Text fontSize="sm" color="gray.500">
+            推荐使用AI辅助创作，生成专业的世界构建Prompt
+          </Text>
         </VStack>
       </Container>
     );

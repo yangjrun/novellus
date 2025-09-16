@@ -21,6 +21,8 @@ import {
 } from '@chakra-ui/react';
 import { NarrativeStructure, PlotPoint } from '../types/index';
 import { NarrativeService } from '@services/narrativeService';
+import { PromptGenerator } from './PromptGenerator';
+import { PromptConfig, GeneratedPrompt } from '../types/prompt';
 
 interface NarrativeStructureProps {
   projectId: string;
@@ -38,6 +40,7 @@ export const NarrativeStructureComponent: React.FC<NarrativeStructureProps> = ({
   const [currentNarrative, setCurrentNarrative] = useState<NarrativeStructure | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showPromptGenerator, setShowPromptGenerator] = useState(false);
 
   useEffect(() => {
     loadNarratives();
@@ -71,6 +74,23 @@ export const NarrativeStructureComponent: React.FC<NarrativeStructureProps> = ({
       console.error('创建叙事结构失败:', error);
       alert('创建失败，请重试');
     }
+  };
+
+  const handleCreateWithPrompt = () => {
+    setShowPromptGenerator(true);
+  };
+
+  const handlePromptGenerated = (prompt: GeneratedPrompt) => {
+    // Prompt生成完成后可以选择：
+    // 1. 返回传统创建流程
+    // 2. 保存Prompt到历史记录
+    // 3. 直接完成创建流程
+    console.log('叙事结构Prompt已生成:', prompt);
+  };
+
+  const handleBackToTraditional = () => {
+    setShowPromptGenerator(false);
+    setIsCreating(true);
   };
 
   const handlePlotPointToggle = async (plotPointId: string) => {
@@ -141,6 +161,52 @@ export const NarrativeStructureComponent: React.FC<NarrativeStructureProps> = ({
     );
   }
 
+  // 显示Prompt生成器
+  if (showPromptGenerator) {
+    const promptConfig: Partial<PromptConfig> = {
+      category: 'structure',
+      difficulty: 'intermediate',
+      writingStyle: 'narrative',
+      detailLevel: 'detailed',
+      aiModel: 'claude',
+      projectContext: { id: projectId, name: 'Current Project' }
+    };
+
+    return (
+      <Box>
+        <VStack gap={4} mb={6} align="stretch">
+          <HStack justify="space-between">
+            <Heading size="lg">📚 叙事结构 - AI辅助创作</Heading>
+            <HStack gap={2}>
+              <Button
+                variant="outline"
+                onClick={handleBackToTraditional}
+              >
+                🔧 传统创建
+              </Button>
+              <Button
+                variant="outline"
+                onClick={onCancel}
+              >
+                取消
+              </Button>
+            </HStack>
+          </HStack>
+
+          <Text color="gray.600">
+            使用AI生成专业的故事结构设计Prompt，帮助您构建引人入胜的叙事框架
+          </Text>
+        </VStack>
+
+        <PromptGenerator
+          initialConfig={promptConfig}
+          onPromptGenerated={handlePromptGenerated}
+          projectContext={{ id: projectId, name: 'Current Project' }}
+        />
+      </Box>
+    );
+  }
+
   if (isCreating) {
     return <NarrativeCreator onCreate={handleCreateNarrative} onCancel={() => setIsCreating(false)} />;
   }
@@ -151,15 +217,27 @@ export const NarrativeStructureComponent: React.FC<NarrativeStructureProps> = ({
         <VStack gap={6} textAlign="center">
           <Heading size="lg">📚 叙事结构构建工具</Heading>
           <Text color="fg.muted" maxW="md">
-            还没有创建任何叙事结构。选择一个经典的故事结构模板开始吧！
+            还没有创建任何叙事结构。选择一个方式开始创建！
           </Text>
-          <Button
-            colorPalette="blue"
-            size="lg"
-            onClick={() => setIsCreating(true)}
-          >
-            创建叙事结构
-          </Button>
+          <HStack gap={4}>
+            <Button
+              colorPalette="blue"
+              size="lg"
+              onClick={handleCreateWithPrompt}
+            >
+              🎯 AI辅助创作
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setIsCreating(true)}
+            >
+              🔧 传统创建
+            </Button>
+          </HStack>
+          <Text fontSize="sm" color="gray.500">
+            推荐使用AI辅助创作，生成专业的创作Prompt
+          </Text>
         </VStack>
       </Center>
     );

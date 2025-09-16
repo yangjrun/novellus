@@ -44,18 +44,20 @@ export const EnhancedCharacterCreator: React.FC<EnhancedCharacterCreatorProps> =
   const [currentStep, setCurrentStep] = useState(0);
   const [consistencyCheck, setConsistencyCheck] = useState<{ issues: string[], score: number } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showAIAssist, setShowAIAssist] = useState(false);
+  const [relationshipMode, setRelationshipMode] = useState<'list' | 'network'>('list');
 
   const steps = [
-    { id: 'basic', title: '基本信息', icon: '👤' },
-    { id: 'appearance', title: '外貌特征', icon: '✨' },
-    { id: 'personality', title: '性格特质', icon: '🧠' },
-    { id: 'background', title: '背景故事', icon: '📖' },
-    { id: 'abilities', title: '能力技能', icon: '⚡' },
-    { id: 'relationships', title: '人际关系', icon: '👥' },
-    { id: 'lifestyle', title: '生活状况', icon: '🏠' },
-    { id: 'psychology', title: '心理状态', icon: '💭' },
-    { id: 'story-role', title: '故事功能', icon: '🎭' },
-    { id: 'special', title: '特殊设定', icon: '🌟' }
+    { id: 'basic', title: '基本信息', icon: '👤', description: '建立角色身份基础' },
+    { id: 'appearance', title: '外貌特征', icon: '✨', description: '塑造视觉形象' },
+    { id: 'personality', title: '性格特质', icon: '🧠', description: '深入心理层面' },
+    { id: 'background', title: '背景故事', icon: '📖', description: '构建成长历程' },
+    { id: 'abilities', title: '能力技能', icon: '⚡', description: '定义实力体系' },
+    { id: 'relationships', title: '人际关系', icon: '👥', description: '编织社交网络' },
+    { id: 'lifestyle', title: '生活状况', icon: '🏠', description: '描绘日常生活' },
+    { id: 'psychology', title: '心理状态', icon: '💭', description: '探索内心世界' },
+    { id: 'story-role', title: '故事功能', icon: '🎭', description: '明确叙事作用' },
+    { id: 'special', title: '特殊设定', icon: '🌟', description: '添加独特元素' }
   ];
 
   useEffect(() => {

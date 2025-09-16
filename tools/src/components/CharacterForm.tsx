@@ -9,17 +9,12 @@ interface CharacterFormProps {
   onCancel: () => void;
 }
 
-const SECTIONS = [
+// 快速创建模式：仅包含核心4个维度
+const QUICK_SECTIONS = [
   { key: 'basicInfo', label: '基本信息', icon: '👤' },
   { key: 'appearance', label: '外貌特征', icon: '👀' },
   { key: 'personality', label: '性格特质', icon: '💭' },
-  { key: 'background', label: '背景故事', icon: '📚' },
-  { key: 'abilities', label: '能力技能', icon: '⚡' },
-  { key: 'relationships', label: '人际关系', icon: '👥' },
-  { key: 'lifestyle', label: '生活状况', icon: '🏠' },
-  { key: 'psychology', label: '心理状态', icon: '🧠' },
-  { key: 'storyRole', label: '故事功能', icon: '📖' },
-  { key: 'specialSettings', label: '特殊设定', icon: '🌟' }
+  { key: 'background', label: '简要背景', icon: '📚' }
 ];
 
 export const CharacterForm: React.FC<CharacterFormProps> = ({
@@ -507,6 +502,44 @@ export const CharacterForm: React.FC<CharacterFormProps> = ({
           onChange={(e) => handleFieldChange('appearance', 'clothingStyle', e.target.value)}
           placeholder="描述角色的穿衣风格和偏好..."
           rows={3}
+        />
+      </div>
+    </div>
+  );
+
+  // 快速创建模式的简化背景
+  const renderQuickBackground = () => (
+    <div className="form-section">
+      <h3>简要背景</h3>
+      <div className="form-grid">
+        <div className="form-group">
+          <label>出生地</label>
+          <input
+            type="text"
+            value={formData.background.birthplace}
+            onChange={(e) => handleFieldChange('background', 'birthplace', e.target.value)}
+            placeholder="角色的出生地点"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>家庭背景</label>
+          <textarea
+            value={formData.background.family}
+            onChange={(e) => handleFieldChange('background', 'family', e.target.value)}
+            placeholder="简要描述家庭背景..."
+            rows={3}
+          />
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label>关键经历</label>
+        <textarea
+          value={formData.background.childhood}
+          onChange={(e) => handleFieldChange('background', 'childhood', e.target.value)}
+          placeholder="描述塑造角色的关键经历或事件..."
+          rows={4}
         />
       </div>
     </div>
@@ -1115,25 +1148,16 @@ export const CharacterForm: React.FC<CharacterFormProps> = ({
       case 'personality':
         return renderPersonality();
       case 'background':
-        return renderBackground();
-      case 'relationships':
-        return renderRelationships();
-      case 'lifestyle':
-        return renderLifestyle();
-      case 'psychology':
-        return renderPsychology();
-      case 'storyRole':
-        return renderStoryRole();
-      // 其他分类暂时显示占位符
+        return renderQuickBackground(); // 简化版背景
       default:
-        return <div>此部分正在开发中...</div>;
+        return null;
     }
   };
 
   return (
     <div className="character-form">
       <div className="form-header">
-        <h2>{character ? '编辑角色' : '创建新角色'}</h2>
+        <h2>{character ? '编辑角色' : '⚡ 快速创建角色'}</h2>
         {formData.basicInfo.name && (
           <span className="character-name">{formData.basicInfo.name}</span>
         )}
@@ -1151,7 +1175,7 @@ export const CharacterForm: React.FC<CharacterFormProps> = ({
 
       <div className="form-layout">
         <div className="form-nav">
-          {SECTIONS.map(section => (
+          {QUICK_SECTIONS.map(section => (
             <button
               key={section.key}
               className={`nav-item ${currentSection === section.key ? 'active' : ''}`}
