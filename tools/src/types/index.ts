@@ -80,13 +80,19 @@ export interface Character {
     entertainment: string[];
   };
 
-  // 心理状态
+  // 心理状态 (增强版)
   psychology: {
     mentalHealth: string;
-    copingMechanisms: string[];
-    emotionalPatterns: string[];
-    trauma: string[];
+    mentalHealthStatus: 'excellent' | 'good' | 'fair' | 'poor' | 'critical';
+    copingMechanisms: CopingMechanism[];
+    emotionalPatterns: EmotionalPattern[];
+    trauma: TraumaEntry[];
     growthNeeds: string[];
+    cognitivePatterns: CognitivePattern[];
+    stressResponses: StressResponse[];
+    emotionalIntelligence: EmotionalIntelligence;
+    psychologicalDefenses: string[];
+    mentalHealthHistory: MentalHealthRecord[];
   };
 
   // 故事功能
@@ -98,13 +104,42 @@ export interface Character {
     readerConnection: string;
   };
 
-  // 特殊设定
+  // 特殊设定 (增强版)
   specialSettings: {
     worldBuilding: string;
     culturalBackground: string;
     historicalContext: string;
     technologyLevel: string;
     magicAbilities?: string;
+    culturalIdentity: CulturalIdentity;
+    religiousBeliefs: ReligiousBeliefs;
+    languageProfile: LanguageProfile;
+    behaviorPatterns: BehaviorPattern[];
+    rolePlayingNotes: string[];
+  };
+
+  // 角色成长轨迹 (新增)
+  characterArc: {
+    currentStage: string;
+    developmentGoals: DevelopmentGoal[];
+    growthMilestones: GrowthMilestone[];
+    personalityChanges: PersonalityChange[];
+    skillProgression: SkillProgression[];
+    relationshipEvolution: RelationshipEvolution[];
+    internalConflicts: InternalConflict[];
+    externalChallenges: ExternalChallenge[];
+  };
+
+  // 互动行为模式 (新增)
+  behaviorProfile: {
+    communicationStyle: CommunicationStyle;
+    bodyLanguage: BodyLanguage;
+    decisionMaking: DecisionMakingStyle;
+    conflictResponse: ConflictResponse;
+    socialBehavior: SocialBehavior;
+    workStyle: WorkStyle;
+    leadershipStyle?: LeadershipStyle;
+    learningStyle: LearningStyle;
   };
 }
 
@@ -499,4 +534,286 @@ export interface ExportOptions {
   includeNotes?: boolean;
   includeMetadata?: boolean;
   template?: string;
+}
+
+// === 增强版角色创作系统新增类型定义 ===
+
+// 心理状态相关类型
+export interface CopingMechanism {
+  type: 'healthy' | 'unhealthy' | 'adaptive' | 'maladaptive';
+  strategy: string;
+  triggers: string[];
+  effectiveness: number; // 1-10
+  frequency: 'rare' | 'occasional' | 'frequent' | 'constant';
+}
+
+export interface EmotionalPattern {
+  emotion: string;
+  triggers: string[];
+  intensity: number; // 1-10
+  duration: 'brief' | 'moderate' | 'extended' | 'persistent';
+  expression: string;
+  impact: string;
+}
+
+export interface TraumaEntry {
+  type: 'childhood' | 'adolescent' | 'adult' | 'recent';
+  event: string;
+  age: number;
+  severity: 'mild' | 'moderate' | 'severe' | 'critical';
+  status: 'unresolved' | 'healing' | 'resolved' | 'integrated';
+  triggers: string[];
+  effects: string[];
+  copingMethods: string[];
+}
+
+export interface CognitivePattern {
+  type: 'bias' | 'heuristic' | 'belief' | 'assumption';
+  description: string;
+  situations: string[];
+  impact: 'positive' | 'negative' | 'neutral' | 'mixed';
+  awareness: 'unconscious' | 'subconscious' | 'conscious';
+}
+
+export interface StressResponse {
+  stressor: string;
+  physicalResponse: string[];
+  emotionalResponse: string[];
+  behavioralResponse: string[];
+  cognitiveResponse: string[];
+  timeframe: string;
+}
+
+export interface EmotionalIntelligence {
+  selfAwareness: number; // 1-10
+  selfRegulation: number; // 1-10
+  motivation: number; // 1-10
+  empathy: number; // 1-10
+  socialSkills: number; // 1-10
+  strengths: string[];
+  weaknesses: string[];
+}
+
+export interface MentalHealthRecord {
+  date: Date;
+  status: 'excellent' | 'good' | 'fair' | 'poor' | 'critical';
+  notes: string;
+  triggers?: string[];
+  improvements?: string[];
+}
+
+// 文化身份相关类型
+export interface CulturalIdentity {
+  primaryCulture: string;
+  subcultures: string[];
+  culturalValues: string[];
+  culturalConflicts: string[];
+  assimilationLevel: number; // 1-10
+  culturalPride: number; // 1-10
+  traditionalPractices: string[];
+  modernAdaptations: string[];
+}
+
+export interface ReligiousBeliefs {
+  religion?: string;
+  denomination?: string;
+  devotionLevel: number; // 1-10
+  practices: string[];
+  beliefs: string[];
+  doubts: string[];
+  spiritualExperiences: string[];
+  religionInLife: 'central' | 'important' | 'moderate' | 'minimal' | 'absent';
+}
+
+export interface LanguageProfile {
+  nativeLanguage: string;
+  fluentLanguages: string[];
+  learningLanguages: string[];
+  accents: string[];
+  dialectVariations: string[];
+  speechPatterns: SpeechPattern[];
+  languageBarriers: string[];
+  communicationPreferences: string[];
+}
+
+export interface SpeechPattern {
+  characteristic: string;
+  examples: string[];
+  frequency: 'always' | 'often' | 'sometimes' | 'rarely';
+  context: string[];
+  origin: string;
+}
+
+export interface BehaviorPattern {
+  category: 'social' | 'personal' | 'professional' | 'intimate';
+  behavior: string;
+  frequency: 'daily' | 'weekly' | 'monthly' | 'situational';
+  triggers: string[];
+  context: string[];
+  development: string;
+}
+
+// 角色成长相关类型
+export interface DevelopmentGoal {
+  id: string;
+  category: 'personal' | 'professional' | 'social' | 'spiritual' | 'physical';
+  goal: string;
+  motivation: string;
+  timeline: string;
+  obstacles: string[];
+  progress: number; // 0-100
+  priority: 'high' | 'medium' | 'low';
+}
+
+export interface GrowthMilestone {
+  id: string;
+  title: string;
+  description: string;
+  targetDate?: Date;
+  completedDate?: Date;
+  significance: string;
+  prerequisites: string[];
+  relatedGoals: string[];
+  status: 'planned' | 'in_progress' | 'achieved' | 'missed';
+}
+
+export interface PersonalityChange {
+  id: string;
+  trait: string;
+  oldValue: string;
+  newValue: string;
+  trigger: string;
+  timeline: string;
+  significance: 'minor' | 'moderate' | 'major' | 'transformative';
+  stability: 'temporary' | 'developing' | 'stable' | 'permanent';
+}
+
+export interface SkillProgression {
+  skill: string;
+  category: 'professional' | 'personal' | 'artistic' | 'physical' | 'social';
+  currentLevel: number; // 1-10
+  targetLevel: number; // 1-10
+  learningMethod: string;
+  timeframe: string;
+  obstacles: string[];
+  mentors: string[];
+}
+
+export interface RelationshipEvolution {
+  relationshipId: string;
+  personName: string;
+  evolutionType: 'strengthening' | 'weakening' | 'changing' | 'ending' | 'beginning';
+  previousState: string;
+  currentState: string;
+  triggers: string[];
+  timeline: string;
+  significance: string;
+}
+
+export interface InternalConflict {
+  id: string;
+  title: string;
+  description: string;
+  conflictingValues: string[];
+  emotionalImpact: string;
+  manifestations: string[];
+  resolutionAttempts: string[];
+  status: 'unaware' | 'emerging' | 'active' | 'resolving' | 'resolved';
+}
+
+export interface ExternalChallenge {
+  id: string;
+  title: string;
+  description: string;
+  source: 'environmental' | 'social' | 'professional' | 'family' | 'society';
+  difficulty: number; // 1-10
+  timeframe: string;
+  resources: string[];
+  strategies: string[];
+  status: 'upcoming' | 'current' | 'overcoming' | 'overcome' | 'failed';
+}
+
+// 行为模式相关类型
+export interface CommunicationStyle {
+  primaryStyle: 'direct' | 'indirect' | 'assertive' | 'passive' | 'aggressive' | 'passive-aggressive';
+  verbalCharacteristics: string[];
+  nonverbalCharacteristics: string[];
+  listeningStyle: 'active' | 'selective' | 'distracted' | 'judgmental';
+  feedbackStyle: string;
+  conflictCommunication: string;
+  culturalInfluences: string[];
+}
+
+export interface BodyLanguage {
+  posture: string;
+  gestures: string[];
+  facialExpressions: string[];
+  eyeContact: 'frequent' | 'moderate' | 'minimal' | 'avoiding';
+  personalSpace: 'close' | 'normal' | 'distant' | 'variable';
+  nervousHabits: string[];
+  confidenceIndicators: string[];
+  culturalVariations: string[];
+}
+
+export interface DecisionMakingStyle {
+  approach: 'analytical' | 'intuitive' | 'spontaneous' | 'cautious' | 'collaborative';
+  timeframe: 'impulsive' | 'quick' | 'moderate' | 'deliberate' | 'procrastinating';
+  informationGathering: string;
+  riskTolerance: number; // 1-10
+  influences: string[];
+  biases: string[];
+  decisionHistory: string[];
+}
+
+export interface ConflictResponse {
+  primaryStyle: 'competing' | 'accommodating' | 'avoiding' | 'compromising' | 'collaborating';
+  escalationTriggers: string[];
+  deescalationMethods: string[];
+  emotionalReactions: string[];
+  physicalReactions: string[];
+  recoveryMethods: string[];
+  conflictHistory: string[];
+}
+
+export interface SocialBehavior {
+  socialEnergy: 'introverted' | 'extroverted' | 'ambivert';
+  groupDynamics: string;
+  socialRoles: string[];
+  boundaryManagement: string;
+  socialAnxieties: string[];
+  socialStrengths: string[];
+  networkingStyle: string;
+  socialAdaptability: number; // 1-10
+}
+
+export interface WorkStyle {
+  productivity: 'morning' | 'afternoon' | 'evening' | 'night' | 'variable';
+  environment: 'quiet' | 'bustling' | 'collaborative' | 'isolated';
+  organization: 'highly_organized' | 'moderately_organized' | 'flexible' | 'chaotic';
+  taskManagement: string;
+  collaboration: string;
+  innovation: string;
+  stressManagement: string;
+}
+
+export interface LeadershipStyle {
+  type: 'autocratic' | 'democratic' | 'laissez_faire' | 'transformational' | 'servant' | 'situational';
+  strengths: string[];
+  weaknesses: string[];
+  motivationMethods: string[];
+  delegationStyle: string;
+  feedbackApproach: string;
+  decisionInclusivity: string;
+  crisisManagement: string;
+}
+
+export interface LearningStyle {
+  primary: 'visual' | 'auditory' | 'kinesthetic' | 'reading' | 'multimodal';
+  preferences: string[];
+  strengths: string[];
+  challenges: string[];
+  motivationFactors: string[];
+  retentionMethods: string[];
+  environments: string[];
+  adaptability: number; // 1-10
 }

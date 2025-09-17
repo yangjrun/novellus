@@ -218,8 +218,10 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
   const [consistencyCheck, setConsistencyCheck] = useState<{ issues: string[], score: number } | null>(null);
   const [aiSuggestions, setAiSuggestions] = useState<Record<string, string[]>>({});
   const [showAIAssist, setShowAIAssist] = useState(false);
+  const [showPromptDialog, setShowPromptDialog] = useState(false);
+  const [generatedPrompt, setGeneratedPrompt] = useState<string>('');
 
-  // 专业工具套件的标签页
+  // 专业工具套件的标签页 - 增强版
   const tabs = [
     { id: 'basicInfo', label: '基本信息', icon: '👤', description: '角色身份基础' },
     { id: 'appearance', label: '外貌特征', icon: '✨', description: '视觉形象塑造' },
@@ -228,7 +230,10 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
     { id: 'abilities', label: '能力技能', icon: '⚡', description: '实力体系定义' },
     { id: 'relationships', label: '人际关系', icon: '👥', description: '社交网络编织' },
     { id: 'lifestyle', label: '生活状况', icon: '🏠', description: '日常生活描绘' },
-    { id: 'psychology', label: '心理状态', icon: '💭', description: '内心世界探索' },
+    { id: 'psychology', label: '心理档案', icon: '💭', description: '增强版心理状态分析' },
+    { id: 'culturalIdentity', label: '文化身份', icon: '🌍', description: '文化背景和宗教信仰' },
+    { id: 'characterArc', label: '角色成长', icon: '📈', description: '成长轨迹和发展目标' },
+    { id: 'behaviorProfile', label: '行为模式', icon: '🎯', description: '沟通风格和行为特征' },
     { id: 'storyRole', label: '故事功能', icon: '🎭', description: '叙事作用明确' },
     { id: 'dialogue', label: '对话生成', icon: '💬', description: 'AI辅助对话创作' },
     { id: 'conflicts', label: '冲突设计', icon: '⚔️', description: '冲突矛盾编织' },
@@ -265,12 +270,51 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
     handleFieldChange(section, field, arrayValue);
   };
 
+  // 处理嵌套对象的数组字段
+  const handleNestedArrayFieldChange = (section: keyof Character, nestedPath: string[], field: string, value: string) => {
+    const arrayValue = value.split(',').map(item => item.trim()).filter(item => item);
+
+    const updatedCharacter = { ...character };
+    let target = updatedCharacter[section] as any;
+
+    // 导航到嵌套对象
+    for (let i = 0; i < nestedPath.length - 1; i++) {
+      target = target[nestedPath[i]];
+    }
+
+    // 设置最终字段值
+    const finalKey = nestedPath[nestedPath.length - 1];
+    target[finalKey] = {
+      ...target[finalKey],
+      [field]: arrayValue
+    };
+
+    onChange(updatedCharacter);
+  };
+
   // 应用AI建议
   const applySuggestion = (section: keyof Character, field: string, suggestion: string) => {
     const sectionData = character[section] as any;
     const currentArray = sectionData[field] || [];
     if (!currentArray.includes(suggestion)) {
       handleFieldChange(section, field, [...currentArray, suggestion]);
+    }
+  };
+
+  // 生成角色Prompt配置
+  const generateCharacterPrompt = () => {
+    const prompt = enhancedService.generateComprehensivePrompt(character);
+    setGeneratedPrompt(prompt);
+    setShowPromptDialog(true);
+  };
+
+  // 复制Prompt到剪贴板
+  const copyPromptToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(generatedPrompt);
+      // 可以添加一个toast提示
+    } catch (err) {
+      console.error('复制失败:', err);
     }
   };
 
@@ -676,6 +720,437 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
           </VStack>
         );
 
+      case 'psychology':
+        return (
+          <VStack gap={6} align="stretch">
+            <Box>
+              <Heading size="md" mb={2}>增强版心理档案</Heading>
+              <Text color="gray.600" fontSize="sm">深入分析角色的心理状态、应对机制和情感模式</Text>
+            </Box>
+
+            <VStack gap={6} align="stretch">
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>心理健康状态</Field.Label>
+                  <NativeSelect.Root>
+                    <NativeSelect.Field
+                      value={character.psychology.mentalHealthStatus}
+                      onChange={(e) => handleFieldChange('psychology', 'mentalHealthStatus', e.target.value)}
+                    >
+                      <option value="excellent">优秀</option>
+                      <option value="good">良好</option>
+                      <option value="fair">一般</option>
+                      <option value="poor">较差</option>
+                      <option value="critical">严重</option>
+                    </NativeSelect.Field>
+                  </NativeSelect.Root>
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>心理健康描述</Field.Label>
+                  <Input
+                    value={character.psychology.mentalHealth}
+                    onChange={(e) => handleFieldChange('psychology', 'mentalHealth', e.target.value)}
+                    placeholder="整体心理健康状况描述"
+                  />
+                </Field.Root>
+              </SimpleGrid>
+
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>情商评估</Field.Label>
+                  <VStack gap={3} align="stretch">
+                    <HStack justify="space-between">
+                      <Text fontSize="sm">自我认知</Text>
+                      <Input
+                        size="sm"
+                        width="60px"
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={character.psychology.emotionalIntelligence.selfAwareness}
+                        onChange={(e) => handleFieldChange('psychology', 'emotionalIntelligence', {
+                          ...character.psychology.emotionalIntelligence,
+                          selfAwareness: parseInt(e.target.value) || 5
+                        })}
+                      />
+                    </HStack>
+                    <HStack justify="space-between">
+                      <Text fontSize="sm">情绪控制</Text>
+                      <Input
+                        size="sm"
+                        width="60px"
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={character.psychology.emotionalIntelligence.selfRegulation}
+                        onChange={(e) => handleFieldChange('psychology', 'emotionalIntelligence', {
+                          ...character.psychology.emotionalIntelligence,
+                          selfRegulation: parseInt(e.target.value) || 5
+                        })}
+                      />
+                    </HStack>
+                    <HStack justify="space-between">
+                      <Text fontSize="sm">同理心</Text>
+                      <Input
+                        size="sm"
+                        width="60px"
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={character.psychology.emotionalIntelligence.empathy}
+                        onChange={(e) => handleFieldChange('psychology', 'emotionalIntelligence', {
+                          ...character.psychology.emotionalIntelligence,
+                          empathy: parseInt(e.target.value) || 5
+                        })}
+                      />
+                    </HStack>
+                  </VStack>
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>心理防御机制</Field.Label>
+                  <Textarea
+                    value={character.psychology.psychologicalDefenses.join(', ')}
+                    onChange={(e) => handleArrayFieldChange('psychology', 'psychologicalDefenses', e.target.value)}
+                    placeholder="否认, 投射, 合理化, 升华"
+                    rows={4}
+                  />
+                  <Field.HelperText>角色面临压力时的心理防御方式</Field.HelperText>
+                </Field.Root>
+              </SimpleGrid>
+
+              <Field.Root>
+                <Field.Label>成长需求</Field.Label>
+                <Textarea
+                  value={character.psychology.growthNeeds.join(', ')}
+                  onChange={(e) => handleArrayFieldChange('psychology', 'growthNeeds', e.target.value)}
+                  placeholder="自我实现, 安全感, 归属感, 成就感"
+                  rows={3}
+                />
+              </Field.Root>
+            </VStack>
+          </VStack>
+        );
+
+      case 'culturalIdentity':
+        return (
+          <VStack gap={6} align="stretch">
+            <Box>
+              <Heading size="md" mb={2}>文化身份</Heading>
+              <Text color="gray.600" fontSize="sm">探索角色的文化背景、宗教信仰和语言特征</Text>
+            </Box>
+
+            <VStack gap={6} align="stretch">
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>主要文化背景</Field.Label>
+                  <Input
+                    value={character.specialSettings.culturalIdentity.primaryCulture}
+                    onChange={(e) => handleFieldChange('specialSettings', 'culturalIdentity', {
+                      ...character.specialSettings.culturalIdentity,
+                      primaryCulture: e.target.value
+                    })}
+                    placeholder="例：中华文化、欧洲文化、非洲文化"
+                  />
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>文化认同程度 (1-10)</Field.Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="10"
+                    value={character.specialSettings.culturalIdentity.culturalPride}
+                    onChange={(e) => handleFieldChange('specialSettings', 'culturalIdentity', {
+                      ...character.specialSettings.culturalIdentity,
+                      culturalPride: parseInt(e.target.value) || 5
+                    })}
+                  />
+                </Field.Root>
+              </SimpleGrid>
+
+              <Field.Root>
+                <Field.Label>传统习俗</Field.Label>
+                <Textarea
+                  value={character.specialSettings.culturalIdentity.traditionalPractices.join(', ')}
+                  onChange={(e) => handleNestedArrayFieldChange('specialSettings', ['culturalIdentity'], 'traditionalPractices', e.target.value)}
+                  placeholder="节日庆祝, 仪式礼节, 饮食习惯"
+                  rows={3}
+                />
+              </Field.Root>
+
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>宗教信仰</Field.Label>
+                  <Input
+                    value={character.specialSettings.religiousBeliefs.religion}
+                    onChange={(e) => handleFieldChange('specialSettings', 'religiousBeliefs', {
+                      ...character.specialSettings.religiousBeliefs,
+                      religion: e.target.value
+                    })}
+                    placeholder="佛教、基督教、伊斯兰教、无宗教等"
+                  />
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>虔诚程度 (1-10)</Field.Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="10"
+                    value={character.specialSettings.religiousBeliefs.devotionLevel}
+                    onChange={(e) => handleFieldChange('specialSettings', 'religiousBeliefs', {
+                      ...character.specialSettings.religiousBeliefs,
+                      devotionLevel: parseInt(e.target.value) || 5
+                    })}
+                  />
+                </Field.Root>
+              </SimpleGrid>
+
+              <Field.Root>
+                <Field.Label>母语</Field.Label>
+                <Input
+                  value={character.specialSettings.languageProfile.nativeLanguage}
+                  onChange={(e) => handleFieldChange('specialSettings', 'languageProfile', {
+                    ...character.specialSettings.languageProfile,
+                    nativeLanguage: e.target.value
+                  })}
+                  placeholder="中文、英语、法语等"
+                />
+              </Field.Root>
+
+              <Field.Root>
+                <Field.Label>流利语言</Field.Label>
+                <Textarea
+                  value={character.specialSettings.languageProfile.fluentLanguages.join(', ')}
+                  onChange={(e) => handleNestedArrayFieldChange('specialSettings', ['languageProfile'], 'fluentLanguages', e.target.value)}
+                  placeholder="英语, 法语, 德语"
+                  rows={2}
+                />
+              </Field.Root>
+            </VStack>
+          </VStack>
+        );
+
+      case 'characterArc':
+        return (
+          <VStack gap={6} align="stretch">
+            <Box>
+              <Heading size="md" mb={2}>角色成长轨迹</Heading>
+              <Text color="gray.600" fontSize="sm">规划角色的发展目标、成长里程碑和变化轨迹</Text>
+            </Box>
+
+            <VStack gap={6} align="stretch">
+              <Field.Root>
+                <Field.Label>当前发展阶段</Field.Label>
+                <Input
+                  value={character.characterArc.currentStage}
+                  onChange={(e) => handleFieldChange('characterArc', 'currentStage', e.target.value)}
+                  placeholder="例：迷茫期、成长期、成熟期、转折期"
+                />
+              </Field.Root>
+
+              <Alert.Root status="info">
+                <Alert.Indicator />
+                <Alert.Content>
+                  <Alert.Title>角色发展规划</Alert.Title>
+                  <Alert.Description>
+                    通过设定清晰的发展目标和里程碑，为角色创造动态的成长轨迹
+                  </Alert.Description>
+                </Alert.Content>
+              </Alert.Root>
+
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Box>
+                  <Text fontWeight="medium" mb={3}>📋 发展目标管理</Text>
+                  <Card.Root variant="outline">
+                    <Box p={4}>
+                      <Text fontSize="sm" color="gray.600" mb={2}>
+                        设定角色的短期和长期发展目标
+                      </Text>
+                      <Button size="sm" variant="outline" width="full">
+                        + 添加发展目标
+                      </Button>
+                    </Box>
+                  </Card.Root>
+                </Box>
+
+                <Box>
+                  <Text fontWeight="medium" mb={3}>🎯 成长里程碑</Text>
+                  <Card.Root variant="outline">
+                    <Box p={4}>
+                      <Text fontSize="sm" color="gray.600" mb={2}>
+                        标记角色成长过程中的重要节点
+                      </Text>
+                      <Button size="sm" variant="outline" width="full">
+                        + 添加里程碑
+                      </Button>
+                    </Box>
+                  </Card.Root>
+                </Box>
+              </SimpleGrid>
+
+              <Box>
+                <Text fontWeight="medium" mb={3}>🔄 内在冲突</Text>
+                <Card.Root variant="outline">
+                  <Box p={4}>
+                    <Text fontSize="sm" color="gray.600" mb={3}>
+                      角色内心的矛盾和挣扎将推动其成长
+                    </Text>
+                    <Button size="sm" variant="outline" width="full">
+                      + 添加内在冲突
+                    </Button>
+                  </Box>
+                </Card.Root>
+              </Box>
+            </VStack>
+          </VStack>
+        );
+
+      case 'behaviorProfile':
+        return (
+          <VStack gap={6} align="stretch">
+            <Box>
+              <Heading size="md" mb={2}>行为模式档案</Heading>
+              <Text color="gray.600" fontSize="sm">分析角色的沟通风格、决策方式和社交行为</Text>
+            </Box>
+
+            <VStack gap={6} align="stretch">
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>沟通风格</Field.Label>
+                  <NativeSelect.Root>
+                    <NativeSelect.Field
+                      value={character.behaviorProfile.communicationStyle.primaryStyle}
+                      onChange={(e) => handleFieldChange('behaviorProfile', 'communicationStyle', {
+                        ...character.behaviorProfile.communicationStyle,
+                        primaryStyle: e.target.value
+                      })}
+                    >
+                      <option value="direct">直接明了</option>
+                      <option value="indirect">含蓄委婉</option>
+                      <option value="assertive">坚定自信</option>
+                      <option value="passive">被动消极</option>
+                      <option value="aggressive">咄咄逼人</option>
+                      <option value="passive-aggressive">被动攻击</option>
+                    </NativeSelect.Field>
+                  </NativeSelect.Root>
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>决策风格</Field.Label>
+                  <NativeSelect.Root>
+                    <NativeSelect.Field
+                      value={character.behaviorProfile.decisionMaking.approach}
+                      onChange={(e) => handleFieldChange('behaviorProfile', 'decisionMaking', {
+                        ...character.behaviorProfile.decisionMaking,
+                        approach: e.target.value
+                      })}
+                    >
+                      <option value="analytical">理性分析</option>
+                      <option value="intuitive">直觉判断</option>
+                      <option value="spontaneous">冲动决定</option>
+                      <option value="cautious">谨慎考虑</option>
+                      <option value="collaborative">协商决定</option>
+                    </NativeSelect.Field>
+                  </NativeSelect.Root>
+                </Field.Root>
+              </SimpleGrid>
+
+              <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
+                <Field.Root>
+                  <Field.Label>社交倾向</Field.Label>
+                  <NativeSelect.Root>
+                    <NativeSelect.Field
+                      value={character.behaviorProfile.socialBehavior.socialEnergy}
+                      onChange={(e) => handleFieldChange('behaviorProfile', 'socialBehavior', {
+                        ...character.behaviorProfile.socialBehavior,
+                        socialEnergy: e.target.value
+                      })}
+                    >
+                      <option value="introverted">内向型</option>
+                      <option value="extroverted">外向型</option>
+                      <option value="ambivert">混合型</option>
+                    </NativeSelect.Field>
+                  </NativeSelect.Root>
+                </Field.Root>
+
+                <Field.Root>
+                  <Field.Label>冲突处理方式</Field.Label>
+                  <NativeSelect.Root>
+                    <NativeSelect.Field
+                      value={character.behaviorProfile.conflictResponse.primaryStyle}
+                      onChange={(e) => handleFieldChange('behaviorProfile', 'conflictResponse', {
+                        ...character.behaviorProfile.conflictResponse,
+                        primaryStyle: e.target.value
+                      })}
+                    >
+                      <option value="competing">竞争对抗</option>
+                      <option value="accommodating">迁就配合</option>
+                      <option value="avoiding">回避逃避</option>
+                      <option value="compromising">妥协折中</option>
+                      <option value="collaborating">合作共赢</option>
+                    </NativeSelect.Field>
+                  </NativeSelect.Root>
+                </Field.Root>
+              </SimpleGrid>
+
+              <Field.Root>
+                <Field.Label>肢体语言特征</Field.Label>
+                <Textarea
+                  value={character.behaviorProfile.bodyLanguage.gestures.join(', ')}
+                  onChange={(e) => handleNestedArrayFieldChange('behaviorProfile', ['bodyLanguage'], 'gestures', e.target.value)}
+                  placeholder="习惯性手势, 面部表情特点, 坐姿站姿"
+                  rows={3}
+                />
+              </Field.Root>
+
+              <Field.Root>
+                <Field.Label>工作风格偏好</Field.Label>
+                <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+                  <Field.Root>
+                    <Field.Label fontSize="sm">最佳工作时段</Field.Label>
+                    <NativeSelect.Root size="sm">
+                      <NativeSelect.Field
+                        value={character.behaviorProfile.workStyle.productivity}
+                        onChange={(e) => handleFieldChange('behaviorProfile', 'workStyle', {
+                          ...character.behaviorProfile.workStyle,
+                          productivity: e.target.value
+                        })}
+                      >
+                        <option value="morning">早晨</option>
+                        <option value="afternoon">下午</option>
+                        <option value="evening">傍晚</option>
+                        <option value="night">夜晚</option>
+                        <option value="variable">不固定</option>
+                      </NativeSelect.Field>
+                    </NativeSelect.Root>
+                  </Field.Root>
+
+                  <Field.Root>
+                    <Field.Label fontSize="sm">环境偏好</Field.Label>
+                    <NativeSelect.Root size="sm">
+                      <NativeSelect.Field
+                        value={character.behaviorProfile.workStyle.environment}
+                        onChange={(e) => handleFieldChange('behaviorProfile', 'workStyle', {
+                          ...character.behaviorProfile.workStyle,
+                          environment: e.target.value
+                        })}
+                      >
+                        <option value="quiet">安静环境</option>
+                        <option value="bustling">热闹环境</option>
+                        <option value="collaborative">协作环境</option>
+                        <option value="isolated">独立环境</option>
+                      </NativeSelect.Field>
+                    </NativeSelect.Root>
+                  </Field.Root>
+                </SimpleGrid>
+              </Field.Root>
+            </VStack>
+          </VStack>
+        );
+
       default:
         return (
           <VStack gap={4} align="stretch">
@@ -687,6 +1162,88 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
         );
     }
   };
+
+  // 渲染Prompt对话框
+  const renderPromptDialog = () => (
+    showPromptDialog && (
+      <Box
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        bg="rgba(0, 0, 0, 0.5)"
+        zIndex={1000}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        p={4}
+      >
+        <Card.Root
+          maxW="4xl"
+          maxH="80vh"
+          w="full"
+          bg="white"
+          overflow="hidden"
+        >
+          <Box p={6}>
+            <Flex justify="space-between" align="center" mb={4}>
+              <Heading size="lg">🎯 AI角色创作Prompt</Heading>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => setShowPromptDialog(false)}
+              >
+                ✕
+              </Button>
+            </Flex>
+
+            <Box
+              maxH="60vh"
+              overflowY="auto"
+              bg="gray.50"
+              p={4}
+              borderRadius="md"
+              mb={4}
+              border="1px"
+              borderColor="gray.200"
+            >
+              <Text
+                fontFamily="mono"
+                fontSize="sm"
+                whiteSpace="pre-wrap"
+                lineHeight="1.6"
+              >
+                {generatedPrompt}
+              </Text>
+            </Box>
+
+            <Flex justify="space-between" gap={4}>
+              <Text fontSize="sm" color="gray.600">
+                💡 此Prompt包含角色的完整信息，可直接用于AI创作工具
+              </Text>
+              <HStack gap={2}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={copyPromptToClipboard}
+                >
+                  📋 复制
+                </Button>
+                <Button
+                  size="sm"
+                  colorPalette="blue"
+                  onClick={() => setShowPromptDialog(false)}
+                >
+                  确定
+                </Button>
+              </HStack>
+            </Flex>
+          </Box>
+        </Card.Root>
+      </Box>
+    )
+  );
 
   // 计算完成度
   const calculateProgress = () => {
@@ -824,6 +1381,16 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
                 >
                   🗣️ 角色面试
                 </Button>
+                <Button
+                  onClick={() => {
+                    // 生成当前角色的Prompt配置
+                    generateCharacterPrompt();
+                  }}
+                  variant="outline"
+                  colorPalette="purple"
+                >
+                  🎯 生成Prompt
+                </Button>
               </HStack>
 
               <Button
@@ -838,6 +1405,9 @@ const ProfessionalCreationView: React.FC<ProfessionalCreationViewProps> = ({
           </Box>
         </Card.Root>
       </VStack>
+
+      {/* Prompt生成对话框 */}
+      {renderPromptDialog()}
     </Box>
   );
 };

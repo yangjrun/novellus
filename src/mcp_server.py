@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-A basic MCP server using the Python SDK with FastMCP.
+网络小说世界观管理 MCP 服务器
+支持多小说的通用数据管理系统
 """
 
 import signal
@@ -9,589 +10,594 @@ import asyncio
 from pathlib import Path
 from typing import Optional, Dict, Any, List
 import json
+import logging
+from datetime import datetime
 
 from mcp.server.fastmcp import FastMCP
 from config import config
-from database import db, sync_db, mongodb, sync_mongodb, init_database, close_database, get_database_info, DatabaseError
+from database.data_access import (
+    init_database, close_database, get_global_manager, get_novel_manager,
+    DatabaseError
+)
+from database.models import *
+
+# 配置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Create the MCP server instance
 mcp = FastMCP(config.server_name)
 
 
-# Example resource: Read local files
-@mcp.resource("file://{path}")
-def read_file(path: str) -> str:
-    """Read and return the contents of a local file."""
+# =============================================================================
+# 基础测试工具
+# =============================================================================
+
+@mcp.tool()
+def test_mcp_connection() -> str:
+    """测试MCP服务器通信和基本功能"""
     try:
-        file_path = Path(path)
-        if file_path.exists() and file_path.is_file():
-            return file_path.read_text(encoding="utf-8")
-        else:
-            return f"File not found: {path}"
+        server_info = {
+            "server_name": config.server_name,
+            "status": "running",
+            "timestamp": datetime.now().isoformat(),
+            "message": "网络小说世界观管理系统运行正常",
+            "features": [
+                "多小说数据管理",
+                "实体关系管理",
+                "故事内容管理",
+                "世界观配置管理"
+            ]
+        }
+        return json.dumps(server_info, indent=2, ensure_ascii=False)
     except Exception as e:
-        return f"Error reading file {path}: {str(e)}"
+        return f"MCP测试错误: {str(e)}"
 
 
-# Example tool: Calculator
+# =============================================================================
+# 小说项目管理工具
+# =============================================================================
+
 @mcp.tool()
-def calculate(expression: str) -> str:
-    """Safely evaluate basic mathematical expressions."""
+async def create_novel(title: str, code: str, author: str = "", genre: str = "",
+                      world_type: str = "", template_code: str = "") -> str:
+    """创建新的小说项目"""
     try:
-        # Simple whitelist of allowed characters for safety
-        allowed_chars = set("0123456789+-*/.()")
-        if not all(c in allowed_chars or c.isspace() for c in expression):
-            return "Error: Invalid characters in expression"
+        global_manager = get_global_manager()
 
-        result = eval(expression)
-        return f"Result: {result}"
-    except Exception as e:
-        return f"Error: {str(e)}"
-
-
-# Example tool: List directory contents
-@mcp.tool()
-def list_directory(path: str = ".") -> str:
-    """List the contents of a directory."""
-    try:
-        dir_path = Path(path)
-        if not dir_path.exists():
-            return f"Directory not found: {path}"
-
-        if not dir_path.is_dir():
-            return f"Path is not a directory: {path}"
-
-        items = []
-        for item in dir_path.iterdir():
-            item_type = "DIR" if item.is_dir() else "FILE"
-            items.append(f"{item_type}: {item.name}")
-
-        return "\n".join(sorted(items))
-    except Exception as e:
-        return f"Error listing directory {path}: {str(e)}"
-
-
-# Example tool: Create file
-@mcp.tool()
-def create_file(path: str, content: str) -> str:
-    """Create a new file with the specified content."""
-    try:
-        file_path = Path(path)
-        file_path.parent.mkdir(parents=True, exist_ok=True)
-        file_path.write_text(content, encoding="utf-8")
-        return f"File created successfully: {path}"
-    except Exception as e:
-        return f"Error creating file {path}: {str(e)}"
-
-
-# Example prompt: Generate greeting
-@mcp.prompt()
-def generate_greeting(name: str, style: str = "friendly") -> str:
-    """Generate a greeting message for a person."""
-    styles = {
-        "friendly": f"Please write a warm, friendly greeting for {name}.",
-        "formal": f"Please write a formal, professional greeting for {name}.",
-        "casual": f"Please write a casual, relaxed greeting for {name}.",
-    }
-
-    return styles.get(style, styles["friendly"])
-
-
-# Example prompt: Code review
-@mcp.prompt()
-def code_review_prompt(language: str, code: str) -> str:
-    """Generate a prompt for code review."""
-    return f"""Please review the following {language} code and provide feedback:
-
-Code:
-```{language}
-{code}
-```
-
-Please analyze:
-1. Code quality and readability
-2. Potential bugs or issues
-3. Performance considerations
-4. Best practices adherence
-5. Suggestions for improvement
-"""
-
-
-# Database Connection Tools
-@mcp.tool()
-def database_info() -> str:
-    """Get comprehensive database connection information for both PostgreSQL and MongoDB."""
-    try:
-        info = get_database_info()
-        return json.dumps(info, indent=2)
-    except Exception as e:
-        return f"Error getting database info: {str(e)}"
-
-
-# PostgreSQL Tools
-@mcp.tool()
-def postgres_connection_info() -> str:
-    """Get PostgreSQL database connection information and test connectivity."""
-    try:
-        info = get_database_info()
-        postgres_info = info.get("databases", {}).get("postgresql", {})
-        return json.dumps(postgres_info, indent=2)
-    except Exception as e:
-        return f"Error getting PostgreSQL info: {str(e)}"
-
-
-@mcp.tool()
-def postgres_query(sql: str) -> str:
-    """Execute a SELECT query against the PostgreSQL database."""
-    try:
-        if not sql.strip().upper().startswith('SELECT'):
-            return "Error: Only SELECT queries are allowed for security reasons"
-
-        results = sync_db.execute_query(sql)
-        return json.dumps(results, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error executing query: {str(e)}"
-
-
-@mcp.tool()
-def postgres_table_info(table_name: str = "") -> str:
-    """Get information about PostgreSQL tables. If table_name is provided, get detailed info for that table."""
-    try:
-        if table_name:
-            # Get detailed table information
-            query = """
-            SELECT
-                column_name,
-                data_type,
-                is_nullable,
-                column_default,
-                character_maximum_length,
-                ordinal_position
-            FROM information_schema.columns
-            WHERE table_name = %s
-            ORDER BY ordinal_position
-            """
-            results = sync_db.execute_query(query, (table_name,))
-            if not results:
-                return f"Table '{table_name}' not found or no access"
-        else:
-            # Get list of all tables
-            query = """
-            SELECT
-                table_name,
-                table_type,
-                table_schema
-            FROM information_schema.tables
-            WHERE table_schema = 'public'
-            ORDER BY table_name
-            """
-            results = sync_db.execute_query(query)
-
-        return json.dumps(results, indent=2)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error getting table info: {str(e)}"
-
-
-@mcp.tool()
-def postgres_demo_queries() -> str:
-    """Get a list of demo PostgreSQL queries that can be used for testing."""
-    demo_queries = {
-        "basic_queries": [
-            "SELECT version()",
-            "SELECT current_database()",
-            "SELECT current_user",
-            "SELECT now()",
-            "SELECT 1 + 1 as result"
-        ],
-        "system_info": [
-            "SELECT * FROM information_schema.tables WHERE table_schema = 'public' LIMIT 10",
-            "SELECT schemaname, tablename FROM pg_tables WHERE schemaname = 'public'",
-            "SELECT datname FROM pg_database",
-            "SELECT count(*) as table_count FROM information_schema.tables WHERE table_schema = 'public'"
-        ],
-        "sample_data_queries": [
-            "SELECT 'Hello PostgreSQL' as message, 42 as number, now() as timestamp",
-            "SELECT generate_series(1, 5) as numbers",
-            "SELECT chr(65 + generate_series(0, 25)) as alphabet",
-            "SELECT * FROM demo_users ORDER BY created_at DESC LIMIT 5"
-        ]
-    }
-
-    return json.dumps(demo_queries, indent=2)
-
-
-@mcp.tool()
-def postgres_create_demo_table() -> str:
-    """Create a PostgreSQL demo table with sample data for testing purposes."""
-    try:
-        # Create demo table
-        create_table_sql = """
-        CREATE TABLE IF NOT EXISTS demo_users (
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(100) UNIQUE NOT NULL,
-            age INTEGER CHECK (age > 0 AND age < 150),
-            department VARCHAR(50),
-            salary DECIMAL(10, 2),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        novel = Novel(
+            title=title,
+            code=code,
+            author=author,
+            genre=genre,
+            world_type=world_type,
+            settings={}
         )
-        """
 
-        # Create index
-        create_index_sql = """
-        CREATE INDEX IF NOT EXISTS idx_demo_users_email ON demo_users(email);
-        CREATE INDEX IF NOT EXISTS idx_demo_users_department ON demo_users(department);
-        """
+        novel_id = await global_manager.create_novel(novel, template_code if template_code else None)
 
-        # Insert sample data
-        insert_data_sql = """
-        INSERT INTO demo_users (name, email, age, department, salary) VALUES
-        ('Alice Johnson', 'alice@example.com', 28, 'Engineering', 85000.00),
-        ('Bob Smith', 'bob@example.com', 35, 'Marketing', 72000.00),
-        ('Charlie Brown', 'charlie@example.com', 42, 'Sales', 68000.00),
-        ('Diana Prince', 'diana@example.com', 31, 'Engineering', 92000.00),
-        ('Eve Wilson', 'eve@example.com', 29, 'HR', 65000.00)
-        ON CONFLICT (email) DO NOTHING
-        """
-
-        # Execute using sync connection
-        with sync_db.get_connection() as conn:
-            with conn.cursor() as cursor:
-                cursor.execute(create_table_sql)
-                cursor.execute(create_index_sql)
-                cursor.execute(insert_data_sql)
-                conn.commit()
-
-        return "PostgreSQL demo table 'demo_users' created successfully with enhanced structure and sample data"
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error creating demo table: {str(e)}"
-
-
-# MongoDB Tools
-@mcp.tool()
-def mongo_connection_info() -> str:
-    """Get MongoDB connection information and test connectivity."""
-    try:
-        info = get_database_info()
-        mongodb_info = info.get("databases", {}).get("mongodb", {})
-        return json.dumps(mongodb_info, indent=2)
-    except Exception as e:
-        return f"Error getting MongoDB info: {str(e)}"
-
-
-@mcp.tool()
-def mongo_find(collection: str, filter_query: str = "{}", limit: int = 10) -> str:
-    """Find documents in a MongoDB collection with optional filter and limit."""
-    try:
-        import json as json_lib
-        filter_dict = json_lib.loads(filter_query)
-        results = sync_mongodb.find_many(collection, filter_dict, limit=limit)
-        return json.dumps({
-            "collection": collection,
-            "filter": filter_dict,
-            "count": len(results),
-            "limit": limit,
-            "documents": results
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error executing find: {str(e)}"
-
-
-@mcp.tool()
-def mongo_insert(collection: str, document: str) -> str:
-    """Insert a document into a MongoDB collection."""
-    try:
-        import json as json_lib
-        doc_dict = json_lib.loads(document)
-
-        # Add timestamp if not present
-        from datetime import datetime
-        if 'created_at' not in doc_dict:
-            doc_dict['created_at'] = datetime.utcnow().isoformat()
-
-        # Use sync connection for simple operation
-        collection_obj = sync_mongodb.get_collection(collection)
-        result = collection_obj.insert_one(doc_dict)
-
-        return json.dumps({
+        result = {
             "success": True,
-            "collection": collection,
-            "inserted_id": str(result.inserted_id),
-            "document": doc_dict
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
+            "novel_id": novel_id,
+            "message": f"小说项目 '{title}' 创建成功",
+            "code": code
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
     except Exception as e:
-        return f"Error inserting document: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": "创建小说项目失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
 
 
 @mcp.tool()
-def mongo_collections() -> str:
-    """List all collections in the MongoDB database with document counts."""
+async def list_novels(status: str = "") -> str:
+    """获取小说列表"""
     try:
-        collections = sync_mongodb.database.list_collection_names()
-        collection_info = []
+        global_manager = get_global_manager()
+        novels = await global_manager.get_novel_list(status if status else None)
 
-        for collection_name in collections:
-            try:
-                collection = sync_mongodb.get_collection(collection_name)
-                count = collection.count_documents({})
-                collection_info.append({
-                    "name": collection_name,
-                    "document_count": count
-                })
-            except Exception as e:
-                collection_info.append({
-                    "name": collection_name,
-                    "document_count": "error",
-                    "error": str(e)
-                })
+        result = {
+            "success": True,
+            "count": len(novels),
+            "novels": [
+                {
+                    "id": novel.id,
+                    "title": novel.title,
+                    "code": novel.code,
+                    "author": novel.author,
+                    "genre": novel.genre,
+                    "world_type": novel.world_type,
+                    "status": novel.status,
+                    "entity_count": novel.entity_count,
+                    "created_at": novel.created_at.isoformat() if novel.created_at else None
+                }
+                for novel in novels
+            ]
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
 
-        return json.dumps({
-            "total_collections": len(collections),
-            "collections": collection_info
-        }, indent=2)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
     except Exception as e:
-        return f"Error listing collections: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": "获取小说列表失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
 
 
 @mcp.tool()
-def mongo_create_demo_collection() -> str:
-    """Create a demo collection with sample data for testing purposes."""
+async def get_novel_summary(novel_id: int) -> str:
+    """获取小说摘要信息"""
     try:
-        collection_name = "demo_users"
+        novel_manager = get_novel_manager(novel_id)
+        summary = await novel_manager.get_novel_summary()
 
-        # Sample documents
-        demo_docs = [
-            {
-                "name": "Alice Johnson",
-                "email": "alice@example.com",
-                "age": 28,
-                "department": "Engineering",
-                "skills": ["Python", "JavaScript", "MongoDB"],
-                "created_at": "2024-01-15T10:30:00Z"
+        result = {
+            "success": True,
+            "novel": {
+                "id": summary.novel.id,
+                "title": summary.novel.title,
+                "code": summary.novel.code,
+                "author": summary.novel.author,
+                "genre": summary.novel.genre,
+                "world_type": summary.novel.world_type,
+                "status": summary.novel.status,
+                "settings": summary.novel.settings
             },
-            {
-                "name": "Bob Smith",
-                "email": "bob@example.com",
-                "age": 35,
-                "department": "Marketing",
-                "skills": ["Analytics", "Content", "Social Media"],
-                "created_at": "2024-01-16T09:15:00Z"
-            },
-            {
-                "name": "Charlie Brown",
-                "email": "charlie@example.com",
-                "age": 42,
-                "department": "Sales",
-                "skills": ["Negotiation", "CRM", "Networking"],
-                "created_at": "2024-01-17T14:45:00Z"
+            "entity_types": [
+                {
+                    "id": et.id,
+                    "name": et.name,
+                    "display_name": et.display_name,
+                    "count": summary.entity_counts.get(et.name, 0)
+                }
+                for et in summary.entity_types
+            ],
+            "recent_events": [
+                {
+                    "id": event.id,
+                    "name": event.name,
+                    "event_type": event.event_type,
+                    "impact_level": event.impact_level,
+                    "created_at": event.created_at.isoformat() if event.created_at else None
+                }
+                for event in summary.recent_events
+            ]
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"获取小说 {novel_id} 摘要失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
+# =============================================================================
+# 实体管理工具
+# =============================================================================
+
+@mcp.tool()
+async def create_entity(novel_id: int, entity_type_name: str, name: str,
+                       code: str = "", attributes: str = "{}",
+                       tags: str = "[]", priority: int = 0, profile: str = "{}") -> str:
+    """创建实体（角色、地点、势力等）"""
+    try:
+        novel_manager = get_novel_manager(novel_id)
+
+        # 解析JSON参数
+        try:
+            attributes_dict = json.loads(attributes) if attributes else {}
+            tags_list = json.loads(tags) if tags else []
+            profile_dict = json.loads(profile) if profile else {}
+        except json.JSONDecodeError as e:
+            return json.dumps({
+                "success": False,
+                "error": f"JSON参数解析错误: {str(e)}",
+                "message": "请确保attributes、tags和profile参数是有效的JSON格式"
+            }, indent=2, ensure_ascii=False)
+
+        request = CreateEntityRequest(
+            novel_id=novel_id,
+            entity_type_name=entity_type_name,
+            name=name,
+            code=code if code else None,
+            attributes=attributes_dict,
+            tags=tags_list,
+            priority=priority,
+            profile=profile_dict if profile_dict else None
+        )
+
+        entity_id = await novel_manager.create_entity(request)
+
+        result = {
+            "success": True,
+            "entity_id": entity_id,
+            "message": f"实体 '{name}' 创建成功",
+            "entity_type": entity_type_name
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"创建实体失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
+@mcp.tool()
+async def get_entity(novel_id: int, entity_id: int, include_profile: bool = True) -> str:
+    """获取实体详细信息"""
+    try:
+        novel_manager = get_novel_manager(novel_id)
+        entity = await novel_manager.get_entity(entity_id, include_profile)
+
+        if not entity:
+            return json.dumps({
+                "success": False,
+                "error": "实体不存在",
+                "message": f"实体 {entity_id} 在小说 {novel_id} 中不存在"
+            }, indent=2, ensure_ascii=False)
+
+        result = {
+            "success": True,
+            "entity": {
+                "id": entity.id,
+                "name": entity.name,
+                "code": entity.code,
+                "entity_type": entity.entity_type_name,
+                "status": entity.status,
+                "attributes": entity.attributes,
+                "tags": entity.tags,
+                "priority": entity.priority,
+                "version": entity.version,
+                "created_at": entity.created_at.isoformat() if entity.created_at else None,
+                "updated_at": entity.updated_at.isoformat() if entity.updated_at else None
             }
-        ]
+        }
 
-        # Insert documents
-        collection = sync_mongodb.get_collection(collection_name)
+        if include_profile and entity.profile:
+            result["entity"]["profile"] = entity.profile
 
-        # Clear existing data first
-        collection.delete_many({})
+        if entity.categories:
+            result["entity"]["categories"] = [
+                {
+                    "id": cat.id,
+                    "name": cat.name,
+                    "type": cat.type,
+                    "level": cat.level
+                }
+                for cat in entity.categories
+            ]
 
-        # Insert new data
-        result = collection.insert_many(demo_docs)
+        if entity.relationships:
+            result["entity"]["relationships"] = [
+                {
+                    "id": rel.id,
+                    "type": rel.relationship_type,
+                    "source_id": rel.source_entity_id,
+                    "target_id": rel.target_entity_id,
+                    "strength": rel.strength,
+                    "status": rel.status
+                }
+                for rel in entity.relationships
+            ]
 
-        return f"Demo collection '{collection_name}' created successfully with {len(result.inserted_ids)} documents"
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
     except Exception as e:
-        return f"Error creating demo collection: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"获取实体 {entity_id} 失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
 
 
 @mcp.tool()
-def mongo_demo_queries() -> str:
-    """Get a list of demo MongoDB queries that can be used for testing."""
-    demo_queries = {
-        "basic_queries": [
-            {"description": "Find all documents", "collection": "demo_users", "filter": "{}"},
-            {"description": "Find by name", "collection": "demo_users", "filter": '{"name": "Alice Johnson"}'},
-            {"description": "Find by age range", "collection": "demo_users", "filter": '{"age": {"$gte": 30}}'},
-            {"description": "Find by department", "collection": "demo_users", "filter": '{"department": "Engineering"}'}
-        ],
-        "advanced_queries": [
-            {"description": "Find by skills array", "collection": "demo_users", "filter": '{"skills": "Python"}'},
-            {"description": "Multiple conditions", "collection": "demo_users", "filter": '{"age": {"$lt": 40}, "department": "Marketing"}'},
-            {"description": "Regex search", "collection": "demo_users", "filter": '{"email": {"$regex": "@example.com$"}}'}
-        ],
-        "sample_documents": [
-            {"name": "Test User", "email": "test@example.com", "age": 25, "department": "QA"},
-            {"title": "Sample Post", "content": "This is a test post", "tags": ["test", "demo"]}
-        ]
-    }
-
-    return json.dumps(demo_queries, indent=2)
-
-
-@mcp.tool()
-def mongo_update(collection: str, filter_query: str, update_query: str) -> str:
-    """Update documents in a MongoDB collection."""
+async def search_entities(novel_id: int, filters: str = "{}", sort: str = "",
+                         limit: int = 20, offset: int = 0) -> str:
+    """搜索实体"""
     try:
-        import json as json_lib
-        from datetime import datetime
+        novel_manager = get_novel_manager(novel_id)
 
-        filter_dict = json_lib.loads(filter_query)
-        update_dict = json_lib.loads(update_query)
+        # 解析过滤条件
+        try:
+            filters_dict = json.loads(filters) if filters else {}
+        except json.JSONDecodeError as e:
+            return json.dumps({
+                "success": False,
+                "error": f"过滤条件JSON解析错误: {str(e)}",
+                "message": "请确保filters参数是有效的JSON格式"
+            }, indent=2, ensure_ascii=False)
 
-        # Add updated_at timestamp
-        if '$set' in update_dict:
-            update_dict['$set']['updated_at'] = datetime.utcnow().isoformat()
-        else:
-            update_dict['$set'] = {'updated_at': datetime.utcnow().isoformat()}
+        query = QueryRequest(
+            novel_id=novel_id,
+            filters=filters_dict,
+            sort=sort if sort else None,
+            limit=min(limit, 100),  # 限制最大返回数量
+            offset=offset
+        )
 
-        collection_obj = sync_mongodb.get_collection(collection)
-        result = collection_obj.update_many(filter_dict, update_dict)
+        response = await novel_manager.search_entities(query)
 
-        return json.dumps({
+        result = {
             "success": True,
-            "collection": collection,
-            "filter": filter_dict,
-            "update": update_dict,
-            "matched_count": result.matched_count,
-            "modified_count": result.modified_count
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error updating documents: {str(e)}"
-
-
-@mcp.tool()
-def mongo_delete(collection: str, filter_query: str) -> str:
-    """Delete documents from a MongoDB collection."""
-    try:
-        import json as json_lib
-        filter_dict = json_lib.loads(filter_query)
-
-        collection_obj = sync_mongodb.get_collection(collection)
-        result = collection_obj.delete_many(filter_dict)
-
-        return json.dumps({
-            "success": True,
-            "collection": collection,
-            "filter": filter_dict,
-            "deleted_count": result.deleted_count
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error deleting documents: {str(e)}"
-
-
-@mcp.tool()
-def mongo_aggregate(collection: str, pipeline: str) -> str:
-    """Execute an aggregation pipeline on a MongoDB collection."""
-    try:
-        import json as json_lib
-        pipeline_list = json_lib.loads(pipeline)
-
-        collection_obj = sync_mongodb.get_collection(collection)
-        results = list(collection_obj.aggregate(pipeline_list))
-
-        return json.dumps({
-            "collection": collection,
-            "pipeline": pipeline_list,
-            "result_count": len(results),
-            "results": results
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
-    except Exception as e:
-        return f"Error executing aggregation: {str(e)}"
-
-
-@mcp.tool()
-def mongo_collection_stats(collection: str) -> str:
-    """Get detailed statistics for a MongoDB collection."""
-    try:
-        collection_obj = sync_mongodb.get_collection(collection)
-
-        # Get basic stats
-        stats = sync_mongodb.database.command("collStats", collection)
-
-        # Get sample documents
-        sample_docs = list(collection_obj.find().limit(3))
-
-        # Get indexes
-        indexes = list(collection_obj.list_indexes())
-
-        return json.dumps({
-            "collection": collection,
-            "statistics": {
-                "count": stats.get("count", 0),
-                "size": stats.get("size", 0),
-                "avgObjSize": stats.get("avgObjSize", 0),
-                "storageSize": stats.get("storageSize", 0),
-                "indexes": stats.get("nindexes", 0)
+            "pagination": {
+                "total": response.total,
+                "page": response.page,
+                "page_size": response.page_size,
+                "has_next": response.has_next,
+                "has_prev": response.has_prev
             },
-            "indexes": indexes,
-            "sample_documents": sample_docs
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
+            "entities": [
+                {
+                    "id": entity.id,
+                    "name": entity.name,
+                    "code": entity.code,
+                    "entity_type": entity.entity_type_name,
+                    "status": entity.status,
+                    "tags": entity.tags,
+                    "priority": entity.priority,
+                    "created_at": entity.created_at.isoformat() if entity.created_at else None
+                }
+                for entity in response.items
+            ]
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
     except Exception as e:
-        return f"Error getting collection stats: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"搜索实体失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
 
 
 @mcp.tool()
-def mongo_create_index(collection: str, index_spec: str, options: str = "{}") -> str:
-    """Create an index on a MongoDB collection."""
+async def update_entity(novel_id: int, entity_id: int, name: str = "",
+                       code: str = "", status: str = "", attributes: str = "",
+                       tags: str = "", priority: int = -1, profile: str = "") -> str:
+    """更新实体信息"""
     try:
-        import json as json_lib
-        index_dict = json_lib.loads(index_spec)
-        options_dict = json_lib.loads(options)
+        novel_manager = get_novel_manager(novel_id)
 
-        collection_obj = sync_mongodb.get_collection(collection)
+        # 构建更新请求
+        update_data = {}
 
-        # Convert index specification to pymongo format
-        index_keys = [(key, direction) for key, direction in index_dict.items()]
+        if name:
+            update_data["name"] = name
+        if code:
+            update_data["code"] = code
+        if status:
+            try:
+                update_data["status"] = EntityStatus(status)
+            except ValueError:
+                return json.dumps({
+                    "success": False,
+                    "error": f"无效的状态值: {status}",
+                    "message": "状态必须是: active, inactive, deleted"
+                }, indent=2, ensure_ascii=False)
 
-        result = collection_obj.create_index(index_keys, **options_dict)
+        if attributes:
+            try:
+                update_data["attributes"] = json.loads(attributes)
+            except json.JSONDecodeError as e:
+                return json.dumps({
+                    "success": False,
+                    "error": f"属性JSON解析错误: {str(e)}"
+                }, indent=2, ensure_ascii=False)
 
-        return json.dumps({
-            "success": True,
-            "collection": collection,
-            "index_name": result,
-            "index_spec": index_dict,
-            "options": options_dict
-        }, indent=2, default=str)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
+        if tags:
+            try:
+                update_data["tags"] = json.loads(tags)
+            except json.JSONDecodeError as e:
+                return json.dumps({
+                    "success": False,
+                    "error": f"标签JSON解析错误: {str(e)}"
+                }, indent=2, ensure_ascii=False)
+
+        if priority >= 0:
+            update_data["priority"] = priority
+
+        if profile:
+            try:
+                update_data["profile"] = json.loads(profile)
+            except json.JSONDecodeError as e:
+                return json.dumps({
+                    "success": False,
+                    "error": f"档案JSON解析错误: {str(e)}"
+                }, indent=2, ensure_ascii=False)
+
+        request = UpdateEntityRequest(**update_data)
+        success = await novel_manager.update_entity(entity_id, request)
+
+        result = {
+            "success": success,
+            "message": f"实体 {entity_id} 更新成功"
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
     except Exception as e:
-        return f"Error creating index: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"更新实体 {entity_id} 失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
+# =============================================================================
+# 关系管理工具
+# =============================================================================
+
+@mcp.tool()
+async def create_relationship(novel_id: int, source_entity_id: int, target_entity_id: int,
+                             relationship_type: str, strength: int = 1, attributes: str = "{}") -> str:
+    """创建实体间关系"""
+    try:
+        novel_manager = get_novel_manager(novel_id)
+
+        # 解析属性
+        try:
+            attributes_dict = json.loads(attributes) if attributes else {}
+        except json.JSONDecodeError as e:
+            return json.dumps({
+                "success": False,
+                "error": f"属性JSON解析错误: {str(e)}"
+            }, indent=2, ensure_ascii=False)
+
+        relationship_id = await novel_manager.create_relationship(
+            source_entity_id, target_entity_id, relationship_type,
+            strength=strength, attributes=attributes_dict
+        )
+
+        result = {
+            "success": True,
+            "relationship_id": relationship_id,
+            "message": f"关系创建成功: {source_entity_id} -> {target_entity_id} ({relationship_type})"
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": "创建关系失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
 
 
 @mcp.tool()
-def mongo_drop_collection(collection: str) -> str:
-    """Drop a MongoDB collection (use with caution)."""
+async def get_entity_relationships(novel_id: int, entity_id: int) -> str:
+    """获取实体的所有关系"""
     try:
-        collection_obj = sync_mongodb.get_collection(collection)
-        collection_obj.drop()
+        novel_manager = get_novel_manager(novel_id)
+        relationships = await novel_manager.get_entity_relationships(entity_id)
 
-        return json.dumps({
+        result = {
             "success": True,
-            "message": f"Collection '{collection}' dropped successfully"
-        }, indent=2)
-    except DatabaseError as e:
-        return f"Database error: {str(e)}"
+            "entity_id": entity_id,
+            "relationships": [
+                {
+                    "id": rel.id,
+                    "type": rel.relationship_type,
+                    "source_id": rel.source_entity_id,
+                    "target_id": rel.target_entity_id,
+                    "strength": rel.strength,
+                    "status": rel.status,
+                    "attributes": rel.attributes,
+                    "created_at": rel.created_at.isoformat() if rel.created_at else None
+                }
+                for rel in relationships
+            ]
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
     except Exception as e:
-        return f"Error dropping collection: {str(e)}"
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"获取实体 {entity_id} 关系失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
+# =============================================================================
+# 事件管理工具
+# =============================================================================
+
+@mcp.tool()
+async def create_event(novel_id: int, name: str, event_type: str = "",
+                      description: str = "", impact_level: int = 1,
+                      scope: str = "local", participants: str = "[]") -> str:
+    """创建剧情事件"""
+    try:
+        novel_manager = get_novel_manager(novel_id)
+
+        # 解析参与者列表
+        try:
+            participants_list = json.loads(participants) if participants else []
+        except json.JSONDecodeError as e:
+            return json.dumps({
+                "success": False,
+                "error": f"参与者列表JSON解析错误: {str(e)}"
+            }, indent=2, ensure_ascii=False)
+
+        event = Event(
+            novel_id=novel_id,
+            name=name,
+            event_type=event_type if event_type else None,
+            description=description if description else None,
+            impact_level=impact_level,
+            scope=scope,
+            attributes={}
+        )
+
+        event_id = await novel_manager.create_event(event, participants_list)
+
+        result = {
+            "success": True,
+            "event_id": event_id,
+            "message": f"事件 '{name}' 创建成功"
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": "创建事件失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
+@mcp.tool()
+async def get_story_timeline(novel_id: int, limit: int = 20) -> str:
+    """获取故事时间线"""
+    try:
+        novel_manager = get_novel_manager(novel_id)
+        events = await novel_manager.get_story_timeline(min(limit, 100))
+
+        result = {
+            "success": True,
+            "novel_id": novel_id,
+            "events": [
+                {
+                    "id": event.id,
+                    "name": event.name,
+                    "event_type": event.event_type,
+                    "sequence_order": event.sequence_order,
+                    "impact_level": event.impact_level,
+                    "scope": event.scope,
+                    "description": event.description,
+                    "status": event.status,
+                    "occurred_at": event.occurred_at.isoformat() if event.occurred_at else None,
+                    "created_at": event.created_at.isoformat() if event.created_at else None
+                }
+                for event in events
+            ]
+        }
+        return json.dumps(result, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        error_result = {
+            "success": False,
+            "error": str(e),
+            "message": f"获取故事时间线失败"
+        }
+        return json.dumps(error_result, indent=2, ensure_ascii=False)
+
+
 
 
 def signal_handler(signum, frame):
@@ -612,7 +618,7 @@ def main():
         print("Database connection initialized")
     except Exception as e:
         print(f"Warning: Could not initialize database: {e}")
-        print("PostgreSQL tools may not work properly")
+        print("Database functionality may not work properly")
 
     mcp.run(transport="stdio")
 

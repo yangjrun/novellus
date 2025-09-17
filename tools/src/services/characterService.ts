@@ -79,10 +79,24 @@ export class CharacterService {
       },
       psychology: {
         mentalHealth: '',
+        mentalHealthStatus: 'good',
         copingMechanisms: [],
         emotionalPatterns: [],
         trauma: [],
-        growthNeeds: []
+        growthNeeds: [],
+        cognitivePatterns: [],
+        stressResponses: [],
+        emotionalIntelligence: {
+          selfAwareness: 5,
+          selfRegulation: 5,
+          motivation: 5,
+          empathy: 5,
+          socialSkills: 5,
+          strengths: [],
+          weaknesses: []
+        },
+        psychologicalDefenses: [],
+        mentalHealthHistory: []
       },
       storyRole: {
         characterType: 'supporting',
@@ -96,7 +110,117 @@ export class CharacterService {
         culturalBackground: '',
         historicalContext: '',
         technologyLevel: '',
-        magicAbilities: ''
+        magicAbilities: '',
+        culturalIdentity: {
+          primaryCulture: '',
+          subcultures: [],
+          culturalValues: [],
+          culturalConflicts: [],
+          assimilationLevel: 5,
+          culturalPride: 5,
+          traditionalPractices: [],
+          modernAdaptations: []
+        },
+        religiousBeliefs: {
+          religion: '',
+          denomination: '',
+          devotionLevel: 5,
+          practices: [],
+          beliefs: [],
+          doubts: [],
+          spiritualExperiences: [],
+          religionInLife: 'moderate'
+        },
+        languageProfile: {
+          nativeLanguage: '',
+          fluentLanguages: [],
+          learningLanguages: [],
+          accents: [],
+          dialectVariations: [],
+          speechPatterns: [],
+          languageBarriers: [],
+          communicationPreferences: []
+        },
+        behaviorPatterns: [],
+        rolePlayingNotes: []
+      },
+      characterArc: {
+        currentStage: '',
+        developmentGoals: [],
+        growthMilestones: [],
+        personalityChanges: [],
+        skillProgression: [],
+        relationshipEvolution: [],
+        internalConflicts: [],
+        externalChallenges: []
+      },
+      behaviorProfile: {
+        communicationStyle: {
+          primaryStyle: 'direct',
+          verbalCharacteristics: [],
+          nonverbalCharacteristics: [],
+          listeningStyle: 'active',
+          feedbackStyle: '',
+          conflictCommunication: '',
+          culturalInfluences: []
+        },
+        bodyLanguage: {
+          posture: '',
+          gestures: [],
+          facialExpressions: [],
+          eyeContact: 'moderate',
+          personalSpace: 'normal',
+          nervousHabits: [],
+          confidenceIndicators: [],
+          culturalVariations: []
+        },
+        decisionMaking: {
+          approach: 'analytical',
+          timeframe: 'moderate',
+          informationGathering: '',
+          riskTolerance: 5,
+          influences: [],
+          biases: [],
+          decisionHistory: []
+        },
+        conflictResponse: {
+          primaryStyle: 'collaborating',
+          escalationTriggers: [],
+          deescalationMethods: [],
+          emotionalReactions: [],
+          physicalReactions: [],
+          recoveryMethods: [],
+          conflictHistory: []
+        },
+        socialBehavior: {
+          socialEnergy: 'ambivert',
+          groupDynamics: '',
+          socialRoles: [],
+          boundaryManagement: '',
+          socialAnxieties: [],
+          socialStrengths: [],
+          networkingStyle: '',
+          socialAdaptability: 5
+        },
+        workStyle: {
+          productivity: 'morning',
+          environment: 'quiet',
+          organization: 'moderately_organized',
+          taskManagement: '',
+          collaboration: '',
+          innovation: '',
+          stressManagement: ''
+        },
+        learningStyle: {
+          primary: 'visual',
+          preferences: [],
+          strengths: [],
+          challenges: [],
+          motivationFactors: [],
+          retentionMethods: [],
+          environments: [],
+          adaptability: 5
+        }
       }
     };
   }

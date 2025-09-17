@@ -1,28 +1,52 @@
+# -*- coding: utf-8 -*-
 """
-Unified database package providing access to PostgreSQL and MongoDB connections.
+网络小说世界观数据库包
+提供多小说兼容的数据管理功能
 """
 
 from typing import Dict, Any
 import logging
 
-# Import PostgreSQL components
-from .postgresql import (
+# Import legacy components for backward compatibility
+from .connections.postgresql import (
     PostgreSQLConnection,
     SyncPostgreSQLConnection,
     postgres_db,
     sync_postgres_db
 )
 
-# Import MongoDB components
-from .mongodb import (
+from .connections.mongodb import (
     MongoDBConnection,
     SyncMongoDBConnection,
     mongodb,
     sync_mongodb
 )
 
-# Import shared exceptions
-from .postgresql import DatabaseError
+# Import new data access layer
+from .data_access import (
+    init_database,
+    close_database,
+    get_global_manager,
+    get_novel_manager,
+    DatabaseError,
+    DatabaseManager,
+    db_manager
+)
+
+# Import models
+from .models import *
+
+# Import cultural framework system
+from .cultural_framework import (
+    CrossDomainConflictManager,
+    PlotHookManager,
+    CulturalElementManager,
+    ConflictAnalyzer,
+    ConflictMatrixInitializer,
+    ConflictMatrixManager,
+    create_conflict_matrix_system,
+    get_conflict_overview
+)
 
 from config import config
 
@@ -34,7 +58,7 @@ sync_db = sync_postgres_db
 
 # Export all components
 __all__ = [
-    # PostgreSQL
+    # Legacy PostgreSQL
     'PostgreSQLConnection',
     'SyncPostgreSQLConnection',
     'postgres_db',
@@ -42,62 +66,48 @@ __all__ = [
     'db',  # backward compatibility alias
     'sync_db',  # backward compatibility alias
 
-    # MongoDB
+    # Legacy MongoDB
     'MongoDBConnection',
     'SyncMongoDBConnection',
     'mongodb',
     'sync_mongodb',
 
+    # New data access layer
+    'init_database',
+    'close_database',
+    'get_global_manager',
+    'get_novel_manager',
+    'DatabaseManager',
+    'db_manager',
+
+    # Models
+    'Novel',
+    'Entity',
+    'EntityRelationship',
+    'Event',
+    'Category',
+    'CreateEntityRequest',
+    'UpdateEntityRequest',
+    'QueryRequest',
+    'StandardResponse',
+    'PaginatedResponse',
+
+    # Cultural Framework System
+    'CrossDomainConflictManager',
+    'PlotHookManager',
+    'CulturalElementManager',
+    'ConflictAnalyzer',
+    'ConflictMatrixInitializer',
+    'ConflictMatrixManager',
+    'create_conflict_matrix_system',
+    'get_conflict_overview',
+
     # Exceptions
     'DatabaseError',
 
-    # Functions
-    'init_database',
-    'close_database',
+    # Legacy functions
     'get_database_info'
 ]
-
-
-async def init_database():
-    """Initialize all database connections."""
-    logger.info("Initializing database connections...")
-
-    try:
-        # Initialize PostgreSQL
-        await postgres_db.initialize_pool()
-        logger.info("PostgreSQL connection initialized")
-    except Exception as e:
-        logger.error(f"Failed to initialize PostgreSQL: {e}")
-        raise
-
-    try:
-        # Initialize MongoDB
-        await mongodb.initialize_client()
-        logger.info("MongoDB connection initialized")
-    except Exception as e:
-        logger.error(f"Failed to initialize MongoDB: {e}")
-        raise
-
-    logger.info("All database connections initialized successfully")
-
-
-async def close_database():
-    """Close all database connections."""
-    logger.info("Closing database connections...")
-
-    try:
-        await postgres_db.close_pool()
-        logger.info("PostgreSQL connection closed")
-    except Exception as e:
-        logger.error(f"Error closing PostgreSQL: {e}")
-
-    try:
-        await mongodb.close_client()
-        logger.info("MongoDB connection closed")
-    except Exception as e:
-        logger.error(f"Error closing MongoDB: {e}")
-
-    logger.info("All database connections closed")
 
 
 def get_database_info() -> Dict[str, Any]:

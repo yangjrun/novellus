@@ -12,13 +12,11 @@ docker/
 │   ├── Dockerfile.postgres     # Custom PostgreSQL image
 │   ├── .env.docker             # Environment variables template
 │   └── init-scripts/           # Database initialization scripts
-│       └── 01-init-database.sql # Creates demo tables and sample data
 └── mongodb/                     # MongoDB database setup
     ├── docker-compose.yml      # MongoDB + Mongo Express services
     ├── Dockerfile.mongodb      # Custom MongoDB image
     ├── mongod.conf             # MongoDB configuration
     └── init-scripts/           # Database initialization scripts
-        └── 01-init-database.js # Creates demo collections and sample data
 ```
 
 ## Services

@@ -37,7 +37,9 @@
       "Bash(taskkill:*)",
       "Bash(npm run type-check:*)",
       "Bash(sed:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(python test:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []
