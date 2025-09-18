@@ -19,28 +19,7 @@ CREATE TABLE plot_function_types (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 插入功能类型数据
-INSERT INTO plot_function_types (code, name, description, category, usage_examples) VALUES
-('F1', '仪式触发器', '处决/赦免/就职/誓言等重要仪式场所', 'emotional', '处决仪式、就职典礼、誓言广场'),
-('F2', '法条杠杆点', '法理/条款/审批/通告等法律相关场所', 'conflict', '法院、政务大厅、公告板'),
-('F3', '门槛/关卡', '跨域/越境/卡点/检票等阻碍通行场所', 'conflict', '关卡、城门、检查站'),
-('F4', '资源据点', '粮、矿、钱、器、情报等重要资源集中地', 'world', '粮仓、矿山、银库、档案馆'),
-('F5', '舆论扩音场', '广场/学府/博览/朝会等信息传播场所', 'info', '广场、学院、议事厅'),
-('F6', '成长试炼场', '比试/考试/小副本等角色成长场所', 'growth', '竞技场、考场、训练场'),
-('F7', '盟友集散地', '招募/结义/公会/书院等联盟建立场所', 'growth', '酒馆、公会、书院'),
-('F8', '背叛/伏笔场', '黑箱/内鬼/双面等阴谋策划场所', 'conflict', '密室、后巷、私人会所'),
-('F9', '追逐/奇袭场', '巷战/码头/城门/驿路等动作场景场所', 'conflict', '街巷、码头、山道'),
-('F10', '谜底/档案库', '档册/账本/证据/机密等信息揭示场所', 'info', '图书馆、档案室、密库'),
-('F11', '决战舞台', '终局/层层推进的大战层等最终对决场所', 'conflict', '王座大厅、城墙、决斗场'),
-('F12', '避难/整备地', '补给/修整/庇护等安全休整场所', 'world', '避难所、客栈、医馆'),
-('F13', '环境杀/灾变触发', '洪/风/链崩/疫等环境危险场所', 'conflict', '河堤、悬崖、毒沼'),
-('F14', '赦免/翻案场', '翻盘/平反/特赦等转机逆转场所', 'emotional', '法庭、祭台、宫殿'),
-('F15', '黑市/灰地', '走私/地下交易/灰产等非法交易场所', 'world', '地下市场、废弃仓库'),
-('F16', '训练/精修场', '隐修/闭关/试验等技能提升场所', 'growth', '道场、实验室、静修室'),
-('F17', '劫案/渗透目标', '库/塔/殿/试场等潜入目标场所', 'conflict', '宝库、高塔、宫殿'),
-('F18', '情感落点/归乡', '家门/祖地/祭台等情感共鸣场所', 'emotional', '故乡、墓地、纪念碑'),
-('F19', '交易/金融枢', '票据/招标/承兑等经济活动场所', 'world', '银行、交易所、商会'),
-('F20', '跨域节点', '关隘/帝路/港/传讯网等跨区域连接点', 'world', '大桥、驿站、港口');
+-- 注意：剧情功能类型的默认数据已移动到 default_data.sql 文件
 
 -- =============================================================================
 -- 2. 剧情节点类型表 (Plot Node Types)
@@ -59,15 +38,7 @@ CREATE TABLE plot_node_types (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 插入节点类型数据
-INSERT INTO plot_node_types (code, name, description, sequence_order, narrative_purpose, typical_events) VALUES
-('①', '起源', '故事开始，角色背景建立，世界观展现', 1, '建立角色动机，展现初始状态', '出生地访问，童年回忆，家族传承'),
-('②', '门槛', '离开舒适圈，进入冒险世界，面临第一次挑战', 2, '推动角色踏出第一步', '离开家乡，通过关卡，接受任务'),
-('③', '试炼', '各种挑战与考验，技能成长，世界探索', 3, '角色成长与世界建构', '技能学习，战斗训练，解谜探索'),
-('④', '深渊', '最大危机，失败边缘，考验角色意志', 4, '制造最大冲突与绝望', '重大失败，盟友背叛，敌人得逞'),
-('⑤', '重生', '获得新力量，转机出现，内心蜕变', 5, '角色突破与转折', '顿悟觉醒，获得神器，盟友支援'),
-('⑥', '最终试炼', '运用所学面对最终敌人，证明成长', 6, '展现成长成果', '最终决战，拯救世界，证明自己'),
-('⑦', '缔造', '新秩序建立，角色完成蜕变，故事圆满', 7, '完成角色弧光，建立新秩序', '加冕称王，建立组织，改变世界');
+-- 注意：剧情节点类型的默认数据已移动到 default_data.sql 文件
 
 -- =============================================================================
 -- 3. 地理实体剧情映射表 (Geographic Plot Mapping)
@@ -396,3 +367,52 @@ CREATE TRIGGER audit_plot_function_usage
 3. 在创作时查询合适的场景
 4. 记录使用情况和效果反馈
 */
+
+-- =============================================================================
+-- 表和字段注释
+-- =============================================================================
+
+-- 剧情功能类型表注释
+COMMENT ON TABLE plot_function_types IS '剧情功能类型表：定义地理位置的剧情功能分类';
+COMMENT ON COLUMN plot_function_types.id IS '功能类型唯一标识符';
+COMMENT ON COLUMN plot_function_types.code IS '功能代码：F1, F2等';
+COMMENT ON COLUMN plot_function_types.name IS '功能名称';
+COMMENT ON COLUMN plot_function_types.description IS '功能详细描述';
+COMMENT ON COLUMN plot_function_types.category IS '功能分类：emotional/conflict/world/info/growth';
+COMMENT ON COLUMN plot_function_types.usage_examples IS '使用示例';
+COMMENT ON COLUMN plot_function_types.is_active IS '是否启用';
+COMMENT ON COLUMN plot_function_types.created_at IS '创建时间';
+
+-- 剧情节点类型表注释
+COMMENT ON TABLE plot_node_types IS '剧情节点类型表：定义故事发展的关键节点';
+COMMENT ON COLUMN plot_node_types.id IS '节点类型唯一标识符';
+COMMENT ON COLUMN plot_node_types.code IS '节点代码：①, ②等';
+COMMENT ON COLUMN plot_node_types.name IS '节点名称';
+COMMENT ON COLUMN plot_node_types.description IS '节点详细描述';
+COMMENT ON COLUMN plot_node_types.sequence_order IS '序列顺序（1-7）';
+COMMENT ON COLUMN plot_node_types.narrative_purpose IS '叙事目的';
+COMMENT ON COLUMN plot_node_types.typical_events IS '典型事件';
+COMMENT ON COLUMN plot_node_types.is_active IS '是否启用';
+COMMENT ON COLUMN plot_node_types.created_at IS '创建时间';
+
+-- 地理剧情映射表注释
+COMMENT ON TABLE geographic_plot_mappings IS '地理剧情映射表：将地理实体与剧情功能关联';
+COMMENT ON COLUMN geographic_plot_mappings.id IS '映射唯一标识符';
+COMMENT ON COLUMN geographic_plot_mappings.novel_id IS '所属小说项目';
+COMMENT ON COLUMN geographic_plot_mappings.entity_id IS '关联的地理实体';
+COMMENT ON COLUMN geographic_plot_mappings.function_codes IS '功能代码数组';
+COMMENT ON COLUMN geographic_plot_mappings.node_codes IS '节点代码数组';
+COMMENT ON COLUMN geographic_plot_mappings.hook_title IS '剧情钩子标题';
+COMMENT ON COLUMN geographic_plot_mappings.hook_description IS '剧情钩子描述';
+COMMENT ON COLUMN geographic_plot_mappings.hook_urgency IS '紧急程度（1-5）';
+COMMENT ON COLUMN geographic_plot_mappings.hook_drama_level IS '戏剧性水平（1-10）';
+COMMENT ON COLUMN geographic_plot_mappings.required_conditions IS '触发条件';
+COMMENT ON COLUMN geographic_plot_mappings.narrative_triggers IS '叙事触发器';
+COMMENT ON COLUMN geographic_plot_mappings.conflict_types IS '冲突类型';
+COMMENT ON COLUMN geographic_plot_mappings.emotional_tags IS '情感标签';
+COMMENT ON COLUMN geographic_plot_mappings.difficulty_level IS '难度等级（1-5）';
+COMMENT ON COLUMN geographic_plot_mappings.usage_count IS '使用次数';
+COMMENT ON COLUMN geographic_plot_mappings.last_used_at IS '最后使用时间';
+COMMENT ON COLUMN geographic_plot_mappings.is_active IS '是否启用';
+COMMENT ON COLUMN geographic_plot_mappings.created_at IS '创建时间';
+COMMENT ON COLUMN geographic_plot_mappings.updated_at IS '更新时间';

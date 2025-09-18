@@ -394,3 +394,151 @@ LEFT JOIN plot_hooks ph ON d.id = ph.domain_id AND ph.status = 'available'
 WHERE d.is_active = true
 GROUP BY d.id
 ORDER BY d.sort_order;
+
+-- =============================================================================
+-- 表和字段注释
+-- =============================================================================
+
+-- 域定义表注释
+COMMENT ON TABLE domains IS '域定义表：存储小说世界观中各个域的基本信息和特征';
+COMMENT ON COLUMN domains.id IS '域唯一标识符';
+COMMENT ON COLUMN domains.novel_id IS '所属小说项目';
+COMMENT ON COLUMN domains.name IS '域名称：人域、天域、灵域等';
+COMMENT ON COLUMN domains.code IS '域代码：ren_yu, tian_yu, ling_yu等';
+COMMENT ON COLUMN domains.display_name IS '完整显示名称';
+COMMENT ON COLUMN domains.dominant_law IS '主导法则链';
+COMMENT ON COLUMN domains.ruling_power IS '统治力量';
+COMMENT ON COLUMN domains.power_level IS '力量等级（1-10）';
+COMMENT ON COLUMN domains.civilization_level IS '文明等级（1-10）';
+COMMENT ON COLUMN domains.stability_level IS '稳定等级（1-10）';
+COMMENT ON COLUMN domains.geographic_features IS '地理特征描述';
+COMMENT ON COLUMN domains.climate_info IS '气候环境信息';
+COMMENT ON COLUMN domains.resources IS '资源分布情况';
+COMMENT ON COLUMN domains.allied_domains IS '盟友域列表';
+COMMENT ON COLUMN domains.hostile_domains IS '敌对域列表';
+COMMENT ON COLUMN domains.trade_partners IS '贸易伙伴列表';
+COMMENT ON COLUMN domains.sort_order IS '显示排序';
+COMMENT ON COLUMN domains.is_active IS '是否启用';
+COMMENT ON COLUMN domains.created_at IS '创建时间';
+COMMENT ON COLUMN domains.updated_at IS '更新时间';
+
+-- 文化维度表注释
+COMMENT ON TABLE cultural_dimensions IS '文化维度定义表：定义文化分析的各个维度（全局共享）';
+COMMENT ON COLUMN cultural_dimensions.id IS '维度唯一标识符';
+COMMENT ON COLUMN cultural_dimensions.code IS '维度代码';
+COMMENT ON COLUMN cultural_dimensions.name IS '维度名称';
+COMMENT ON COLUMN cultural_dimensions.display_name IS '维度显示名称';
+COMMENT ON COLUMN cultural_dimensions.description IS '维度描述';
+COMMENT ON COLUMN cultural_dimensions.dimension_type IS '维度类型：cultural/social/economic/political';
+COMMENT ON COLUMN cultural_dimensions.importance_weight IS '重要性权重（1-10）';
+COMMENT ON COLUMN cultural_dimensions.standard_elements IS '标准要素模板';
+COMMENT ON COLUMN cultural_dimensions.sort_order IS '显示排序';
+COMMENT ON COLUMN cultural_dimensions.is_active IS '是否启用';
+COMMENT ON COLUMN cultural_dimensions.created_at IS '创建时间';
+
+-- 文化框架表注释
+-- COMMENT ON TABLE cultural_frameworks IS '文化框架表：连接域和文化维度的映射关系';
+-- COMMENT ON COLUMN cultural_frameworks.id IS '框架唯一标识符';
+-- COMMENT ON COLUMN cultural_frameworks.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN cultural_frameworks.domain_id IS '关联的域';
+-- COMMENT ON COLUMN cultural_frameworks.dimension_id IS '关联的文化维度';
+-- COMMENT ON COLUMN cultural_frameworks.framework_name IS '框架名称';
+-- COMMENT ON COLUMN cultural_frameworks.value_orientation IS '价值取向';
+-- COMMENT ON COLUMN cultural_frameworks.implementation_method IS '实现方式';
+-- COMMENT ON COLUMN cultural_frameworks.social_structure IS '社会结构';
+-- COMMENT ON COLUMN cultural_frameworks.belief_system IS '信仰体系';
+-- COMMENT ON COLUMN cultural_frameworks.behavioral_norms IS '行为规范';
+-- COMMENT ON COLUMN cultural_frameworks.created_at IS '创建时间';
+-- COMMENT ON COLUMN cultural_frameworks.updated_at IS '更新时间';
+
+-- 文化元素表注释
+-- COMMENT ON TABLE cultural_elements IS '文化元素表：存储具体的文化实践和表现';
+-- COMMENT ON COLUMN cultural_elements.id IS '元素唯一标识符';
+-- COMMENT ON COLUMN cultural_elements.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN cultural_elements.framework_id IS '所属文化框架';
+-- COMMENT ON COLUMN cultural_elements.element_type IS '元素类型：ritual/custom/law/institution等';
+-- COMMENT ON COLUMN cultural_elements.name IS '元素名称';
+-- COMMENT ON COLUMN cultural_elements.description IS '详细描述';
+-- COMMENT ON COLUMN cultural_elements.manifestation IS '具体表现形式';
+-- COMMENT ON COLUMN cultural_elements.participants IS '参与者';
+-- COMMENT ON COLUMN cultural_elements.significance_level IS '重要性等级（1-10）';
+-- COMMENT ON COLUMN cultural_elements.frequency IS '出现频率';
+-- COMMENT ON COLUMN cultural_elements.seasonal_timing IS '季节性时机';
+-- COMMENT ON COLUMN cultural_elements.status IS '状态：active/deprecated/forbidden/evolving';
+-- COMMENT ON COLUMN cultural_elements.created_at IS '创建时间';
+-- COMMENT ON COLUMN cultural_elements.updated_at IS '更新时间';
+
+-- 剧情钩子表注释
+-- COMMENT ON TABLE plot_hooks IS '剧情钩子表：存储基于文化背景的剧情触发点';
+-- COMMENT ON COLUMN plot_hooks.id IS '钩子唯一标识符';
+-- COMMENT ON COLUMN plot_hooks.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN plot_hooks.domain_id IS '关联的域';
+-- COMMENT ON COLUMN plot_hooks.element_id IS '关联的文化元素';
+-- COMMENT ON COLUMN plot_hooks.title IS '钩子标题';
+-- COMMENT ON COLUMN plot_hooks.description IS '详细描述';
+-- COMMENT ON COLUMN plot_hooks.hook_type IS '钩子类型：conflict/opportunity/mystery/challenge';
+-- COMMENT ON COLUMN plot_hooks.drama_level IS '戏剧性水平（1-10）';
+-- COMMENT ON COLUMN plot_hooks.scope IS '影响范围：personal/local/regional/domain/inter_domain';
+-- COMMENT ON COLUMN plot_hooks.urgency_level IS '紧急程度（1-5）';
+-- COMMENT ON COLUMN plot_hooks.potential_outcomes IS '可能结果列表';
+-- COMMENT ON COLUMN plot_hooks.required_resources IS '所需资源';
+-- COMMENT ON COLUMN plot_hooks.involved_entities IS '涉及实体';
+-- COMMENT ON COLUMN plot_hooks.status IS '状态：available/active/used/expired';
+-- COMMENT ON COLUMN plot_hooks.activation_reason IS '激活原因';
+-- COMMENT ON COLUMN plot_hooks.activated_at IS '激活时间';
+-- COMMENT ON COLUMN plot_hooks.completed_at IS '完成时间';
+-- COMMENT ON COLUMN plot_hooks.resolution IS '解决方案';
+-- COMMENT ON COLUMN plot_hooks.actual_outcome IS '实际结果';
+-- COMMENT ON COLUMN plot_hooks.created_at IS '创建时间';
+-- COMMENT ON COLUMN plot_hooks.updated_at IS '更新时间';
+
+-- 文化冲突表注释
+-- COMMENT ON TABLE cultural_conflicts IS '文化冲突表：记录不同文化元素间的冲突关系';
+-- COMMENT ON COLUMN cultural_conflicts.id IS '冲突唯一标识符';
+-- COMMENT ON COLUMN cultural_conflicts.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN cultural_conflicts.primary_domain_id IS '主要涉及的域';
+-- COMMENT ON COLUMN cultural_conflicts.secondary_domain_id IS '次要涉及的域';
+-- COMMENT ON COLUMN cultural_conflicts.primary_element_id IS '主要文化元素';
+-- COMMENT ON COLUMN cultural_conflicts.secondary_element_id IS '次要文化元素';
+-- COMMENT ON COLUMN cultural_conflicts.conflict_type IS '冲突类型：value/practice/territory/resource等';
+-- COMMENT ON COLUMN cultural_conflicts.conflict_name IS '冲突名称';
+-- COMMENT ON COLUMN cultural_conflicts.description IS '冲突描述';
+-- COMMENT ON COLUMN cultural_conflicts.intensity_level IS '冲突强度（1-10）';
+-- COMMENT ON COLUMN cultural_conflicts.historical_depth IS '历史深度（代数）';
+-- COMMENT ON COLUMN cultural_conflicts.resolution_difficulty IS '解决难度（1-10）';
+-- COMMENT ON COLUMN cultural_conflicts.status IS '冲突状态：dormant/simmering/ongoing/escalating/resolved';
+-- COMMENT ON COLUMN cultural_conflicts.current_manifestation IS '当前表现形式';
+-- COMMENT ON COLUMN cultural_conflicts.affected_areas IS '受影响的领域';
+-- COMMENT ON COLUMN cultural_conflicts.stakeholders IS '利益相关者';
+-- COMMENT ON COLUMN cultural_conflicts.created_at IS '创建时间';
+-- COMMENT ON COLUMN cultural_conflicts.updated_at IS '更新时间';
+
+-- 文化变迁表注释
+-- COMMENT ON TABLE cultural_evolutions IS '文化变迁记录表：追踪文化的演变过程';
+-- COMMENT ON COLUMN cultural_evolutions.id IS '变迁记录唯一标识符';
+-- COMMENT ON COLUMN cultural_evolutions.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN cultural_evolutions.domain_id IS '相关的域';
+-- COMMENT ON COLUMN cultural_evolutions.element_id IS '相关的文化元素';
+-- COMMENT ON COLUMN cultural_evolutions.evolution_type IS '变迁类型：gradual/revolutionary/imposed/natural';
+-- COMMENT ON COLUMN cultural_evolutions.change_name IS '变迁名称';
+-- COMMENT ON COLUMN cultural_evolutions.description IS '变迁描述';
+-- COMMENT ON COLUMN cultural_evolutions.before_state IS '变迁前状态';
+-- COMMENT ON COLUMN cultural_evolutions.after_state IS '变迁后状态';
+-- COMMENT ON COLUMN cultural_evolutions.change_factors IS '变迁因素';
+-- COMMENT ON COLUMN cultural_evolutions.started_at IS '开始时间（小说内时间）';
+-- COMMENT ON COLUMN cultural_evolutions.completed_at IS '完成时间（小说内时间）';
+-- COMMENT ON COLUMN cultural_evolutions.created_at IS '记录创建时间';
+
+-- 冲突状态历史表注释
+-- COMMENT ON TABLE conflict_status_history IS '冲突状态历史表：记录冲突状态的变化历史';
+-- COMMENT ON COLUMN conflict_status_history.id IS '历史记录唯一标识符';
+-- COMMENT ON COLUMN conflict_status_history.novel_id IS '所属小说项目';
+-- COMMENT ON COLUMN conflict_status_history.conflict_id IS '相关冲突';
+-- COMMENT ON COLUMN conflict_status_history.old_status IS '原状态';
+-- COMMENT ON COLUMN conflict_status_history.new_status IS '新状态';
+-- COMMENT ON COLUMN conflict_status_history.change_reason IS '状态变化原因';
+-- COMMENT ON COLUMN conflict_status_history.changed_at IS '变化时间';
+
+-- 视图注释
+-- COMMENT ON VIEW cultural_framework_summary IS '文化框架汇总视图：提供文化框架的统计信息';
+-- COMMENT ON VIEW domain_summary IS '域概览视图：提供域的综合统计信息';

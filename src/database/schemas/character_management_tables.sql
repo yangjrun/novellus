@@ -18,8 +18,16 @@ ALTER TABLE entities ADD COLUMN IF NOT EXISTS is_current_version BOOLEAN DEFAULT
 ALTER TABLE entities ADD COLUMN IF NOT EXISTS character_unique_id VARCHAR(100);
 
 -- 为角色版本管理添加约束
-ALTER TABLE entities ADD CONSTRAINT IF NOT EXISTS chk_character_version
-    CHECK (character_version ~ '^[0-9]+\.[0-9]+$');
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint
+        WHERE conname = 'chk_character_version'
+    ) THEN
+        ALTER TABLE entities ADD CONSTRAINT chk_character_version
+            CHECK (character_version ~ '^[0-9]+\.[0-9]+$');
+    END IF;
+END $$;
 
 -- 确保同一小说中同一角色在同一域只有一个当前版本
 CREATE UNIQUE INDEX IF NOT EXISTS idx_entities_current_character_version
@@ -27,39 +35,11 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_entities_current_character_version
     WHERE is_current_version = true AND character_unique_id IS NOT NULL;
 
 -- =============================================================================
--- 2. 角色实体类型初始化
+-- 2. 角色相关表结构定义
 -- =============================================================================
 
--- 为角色创建标准实体类型（如果不存在）
-INSERT INTO entity_types (novel_id, name, display_name, schema_definition, validation_rules, display_config)
-SELECT
-    n.id as novel_id,
-    'character' as name,
-    '角色' as display_name,
-    '{
-        "required": ["name", "age", "gender"],
-        "properties": {
-            "name": {"type": "string", "description": "角色姓名"},
-            "age": {"type": "integer", "description": "年龄"},
-            "gender": {"type": "string", "enum": ["male", "female", "other"], "description": "性别"},
-            "occupation": {"type": "string", "description": "职业"},
-            "socialStatus": {"type": "string", "description": "社会地位"}
-        }
-    }' as schema_definition,
-    '{
-        "name": {"minLength": 1, "maxLength": 200},
-        "age": {"minimum": 0, "maximum": 10000}
-    }' as validation_rules,
-    '{
-        "listFields": ["name", "age", "occupation"],
-        "detailFields": ["name", "age", "gender", "occupation", "socialStatus"],
-        "searchFields": ["name", "occupation"]
-    }' as display_config
-FROM novels n
-WHERE NOT EXISTS (
-    SELECT 1 FROM entity_types et
-    WHERE et.novel_id = n.id AND et.name = 'character'
-);
+-- 注意：角色实体类型的默认配置已移动到 default_data.sql 文件
+-- 此处仅定义表结构和约束
 
 -- =============================================================================
 -- 3. 角色版本历史表
@@ -329,25 +309,47 @@ $$ LANGUAGE plpgsql;
 -- =============================================================================
 
 -- 为"裂世九域"小说创建角色实体类型（如果需要的话）
-DO $$
-DECLARE
-    novel_id_val INTEGER;
-    character_type_id INTEGER;
-BEGIN
-    -- 获取小说ID
-    SELECT id INTO novel_id_val FROM novels WHERE code = 'lieshi_jiuyu' LIMIT 1;
+-- DO $$
+-- DECLARE
+--     novel_id_val INTEGER;
+--     character_type_id INTEGER;
+-- BEGIN
+--     -- 获取小说ID
+--     SELECT id INTO novel_id_val FROM novels WHERE code = 'lieshi_jiuyu' LIMIT 1;
 
-    IF novel_id_val IS NOT NULL THEN
-        -- 获取或创建角色实体类型
-        SELECT id INTO character_type_id
-        FROM entity_types
-        WHERE novel_id = novel_id_val AND name = 'character';
+--     IF novel_id_val IS NOT NULL THEN
+--         -- 获取或创建角色实体类型
+--         SELECT id INTO character_type_id
+--         FROM entity_types
+--         WHERE novel_id = novel_id_val AND name = 'character';
 
-        IF character_type_id IS NOT NULL THEN
-            -- 这里可以插入示例角色数据
-            -- 实际使用时应该通过应用代码插入
-            NULL;
-        END IF;
-    END IF;
-END;
-$$;
+--         IF character_type_id IS NOT NULL THEN
+--             -- 这里可以插入示例角色数据
+--             -- 实际使用时应该通过应用代码插入
+--             NULL;
+--         END IF;
+--     END IF;
+-- END;
+-- $$;
+
+-- =============================================================================
+-- 表和字段注释
+-- =============================================================================
+
+-- 角色版本历史表注释
+COMMENT ON TABLE character_version_history IS '角色版本历史表：追踪角色在不同域间的版本变迁';
+COMMENT ON COLUMN character_version_history.id IS '历史记录唯一标识符';
+COMMENT ON COLUMN character_version_history.character_entity_id IS '角色实体ID';
+COMMENT ON COLUMN character_version_history.novel_id IS '所属小说项目';
+COMMENT ON COLUMN character_version_history.character_unique_id IS '角色唯一标识符';
+COMMENT ON COLUMN character_version_history.from_domain_code IS '原域代码';
+COMMENT ON COLUMN character_version_history.from_version IS '原版本';
+COMMENT ON COLUMN character_version_history.to_version IS '新版本';
+COMMENT ON COLUMN character_version_history.to_domain_code IS '目标域代码';
+COMMENT ON COLUMN character_version_history.transition_type IS '变迁类型：domain_transfer/growth/event_triggered';
+COMMENT ON COLUMN character_version_history.transition_reason IS '版本变迁原因';
+COMMENT ON COLUMN character_version_history.transition_date IS '变迁发生时间';
+COMMENT ON COLUMN character_version_history.major_changes IS '主要变化的摘要';
+COMMENT ON COLUMN character_version_history.preserved_aspects IS '保持不变的方面';
+COMMENT ON COLUMN character_version_history.created_at IS '记录创建时间';
+COMMENT ON COLUMN character_version_history.created_by IS '记录创建者';
