@@ -41,6 +41,14 @@
         "-y",
         "@chakra-ui/react-mcp"
       ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest",
+        "--api-key=ctx7sk-5b774839-2ec0-42d1-bb85-297c5810ff0a"
+      ]
     }
   }
 }

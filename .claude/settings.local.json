@@ -39,7 +39,10 @@
       "Bash(sed:*)",
       "Bash(git add:*)",
       "Bash(python test:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "mcp__context7__get-library-docs",
+      "Bash(uv run:*)",
+      "Bash(del check_tables.py complete_database_init.py)"
     ],
     "deny": [],
     "ask": []
