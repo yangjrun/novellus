@@ -1,0 +1,213 @@
+{
+  "数据模型定义": {
+    "ConflictEntity": {
+      "description": "冲突实体数据模型，表示参与冲突的核心要素",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "唯一标识符"
+        },
+        "name": {
+          "type": "string",
+          "description": "实体名称"
+        },
+        "entity_type": {
+          "type": "string",
+          "enum": [
+            "核心资源",
+            "法条制度",
+            "关键角色",
+            "推断实体",
+            "隐含实体"
+          ],
+          "description": "实体类型"
+        },
+        "domains": {
+          "type": "array",
+          "items": "string",
+          "description": "所属域列表"
+        },
+        "category": {
+          "type": "string",
+          "description": "细分类别"
+        },
+        "description": {
+          "type": "string",
+          "description": "详细描述"
+        },
+        "importance_level": {
+          "type": "string",
+          "enum": [
+            "极高",
+            "高",
+            "中高",
+            "中",
+            "低"
+          ],
+          "description": "重要性等级"
+        },
+        "characteristics": {
+          "type": "object",
+          "description": "实体特征属性"
+        },
+        "aliases": {
+          "type": "array",
+          "items": "string",
+          "description": "别名列表"
+        },
+        "source_conflict_pair": {
+          "type": "string",
+          "description": "来源冲突对"
+        },
+        "confidence_score": {
+          "type": "float",
+          "range": "0.0-1.0",
+          "description": "置信度分数"
+        },
+        "extraction_method": {
+          "type": "string",
+          "description": "提取方法"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "创建时间"
+        }
+      }
+    },
+    "ConflictRelation": {
+      "description": "冲突关系数据模型，表示实体间的各种关系",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "唯一标识符"
+        },
+        "source_entity_id": {
+          "type": "string",
+          "description": "源实体ID"
+        },
+        "target_entity_id": {
+          "type": "string",
+          "description": "目标实体ID"
+        },
+        "relation_type": {
+          "type": "string",
+          "enum": [
+            "对立",
+            "依赖",
+            "竞争",
+            "制约",
+            "影响",
+            "合作",
+            "替代",
+            "包含",
+            "衍生"
+          ],
+          "description": "关系类型"
+        },
+        "description": {
+          "type": "string",
+          "description": "关系描述"
+        },
+        "strength": {
+          "type": "float",
+          "range": "0.0-1.0",
+          "description": "关系强度"
+        },
+        "context": {
+          "type": "string",
+          "description": "关系上下文"
+        },
+        "is_cross_domain": {
+          "type": "boolean",
+          "description": "是否为跨域关系"
+        },
+        "source_domain": {
+          "type": "string",
+          "description": "源域"
+        },
+        "target_domain": {
+          "type": "string",
+          "description": "目标域"
+        },
+        "bidirectional": {
+          "type": "boolean",
+          "description": "是否为双向关系"
+        },
+        "temporal_context": {
+          "type": "string",
+          "description": "时间上下文"
+        },
+        "confidence_score": {
+          "type": "float",
+          "range": "0.0-1.0",
+          "description": "置信度分数"
+        },
+        "detection_method": {
+          "type": "string",
+          "description": "检测方法"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "创建时间"
+        }
+      }
+    }
+  },
+  "编码规范": {
+    "实体类型编码": {
+      "核心资源": "具体的物质或抽象资源，如税收、矿产、贸易权等",
+      "法条制度": "法律条文、制度规范、仪式规则等",
+      "关键角色": "在冲突中起重要作用的个人或组织",
+      "推断实体": "通过文本分析推断出的实体",
+      "隐含实体": "从描述中暗示的实体"
+    },
+    "关系类型编码": {
+      "对立": "直接冲突或敌对关系",
+      "依赖": "功能或存在上的依赖关系",
+      "竞争": "争夺相同资源的竞争关系",
+      "制约": "限制或约束关系",
+      "影响": "间接影响关系",
+      "合作": "协作或联盟关系",
+      "替代": "功能可替代关系",
+      "包含": "层级包含关系",
+      "衍生": "演化或派生关系"
+    },
+    "重要性等级编码": {
+      "极高": "对故事核心情节有决定性影响",
+      "高": "对主要冲突有重要影响",
+      "中高": "对局部冲突有重要影响",
+      "中": "有一定影响但非关键",
+      "低": "影响有限或背景性"
+    }
+  },
+  "质量标准": {
+    "置信度标准": {
+      "0.9-1.0": "经过人工验证的高质量数据",
+      "0.7-0.9": "自动分析高置信度结果",
+      "0.5-0.7": "自动分析中等置信度结果",
+      "0.3-0.5": "推断性数据，需要验证",
+      "0.0-0.3": "低置信度数据，可能存在错误"
+    },
+    "完整性要求": {
+      "必填字段": [
+        "id",
+        "name",
+        "entity_type",
+        "description",
+        "created_at"
+      ],
+      "推荐字段": [
+        "domains",
+        "importance_level",
+        "confidence_score"
+      ],
+      "可选字段": [
+        "aliases",
+        "characteristics",
+        "source_conflict_pair"
+      ]
+    }
+  }
+}

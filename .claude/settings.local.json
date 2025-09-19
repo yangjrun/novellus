@@ -42,7 +42,20 @@
       "Bash(python:*)",
       "mcp__context7__get-library-docs",
       "Bash(uv run:*)",
-      "Bash(del check_tables.py complete_database_init.py)"
+      "Bash(del check_tables.py complete_database_init.py)",
+      "Bash(cat:*)",
+      "Bash(pip3 install:*)",
+      "Bash(pip install:*)",
+      "Bash(.venvScriptsactivate)",
+      "Bash(\".venv\\Scripts\\activate.bat\")",
+      "Bash(\".venv\\Scripts\\python.exe\" -m pip install jieba opencc-python-reimplemented)",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -c \"import jieba; print(''jieba OK'')\")",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" test_nine_domains_processor.py)",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -m pip install asyncpg psycopg2-binary python-dotenv motor pymongo)",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -m pip install pydantic)",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -m pip install opencc-python-reimplemented)",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -c \"from opencc import OpenCC; print(''OpenCC OK'')\")",
+      "Bash(\"C:\\Users\\jirun_yang\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\" -m pip install spacy)"
     ],
     "deny": [],
     "ask": []

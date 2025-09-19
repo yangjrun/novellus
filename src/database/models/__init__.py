@@ -1,57 +1,72 @@
 """
-数据模型定义模块
-包含所有数据模型的定义和导出
+裂世九域·法则链纪元 数据模型
+定义所有数据结构和验证规则
 """
 
-from .models import *
-from .cultural_models import *
+from .core_models import *
+from .worldbuilding_models import *
+from .content_models import *
+from .character_models import *
 
-# 导出所有模型类
 __all__ = [
-    # 基础模型
-    "BaseDBModel",
+    # 核心模型
+    'Project',
+    'Novel',
+    'ContentBatch',
+    'ContentSegment',
 
-    # 小说项目模型
-    "Novel", "NovelTemplate", "NovelStatus",
+    # Create/Update模型
+    'ProjectCreate',
+    'ProjectUpdate',
+    'NovelCreate',
+    'NovelUpdate',
+    'ContentBatchCreate',
+    'ContentBatchUpdate',
+    'ContentSegmentCreate',
+    'ContentSegmentUpdate',
+    'DomainCreate',
+    'DomainUpdate',
+    'CultivationSystemCreate',
+    'CultivationStageCreate',
+    'PowerOrganizationCreate',
+    'LawChainCreate',
+    'ChainMarkCreate',
+    'CharacterCreate',
+    'LocationCreate',
+    'ItemCreate',
+    'EventCreate',
+    'KnowledgeBaseCreate',
 
-    # 实体系统模型
-    "Entity", "EntityType", "EntityStatus", "EntityRelationship", "RelationshipStatus",
+    # 世界观模型
+    'Domain',
+    'CultivationSystem',
+    'CultivationStage',
+    'PowerOrganization',
+    'LawChain',
+    'ChainMark',
 
-    # 分类系统模型
-    "Category", "EntityCategory",
+    # 内容模型
+    'Character',
+    'Location',
+    'Item',
+    'Event',
+    'KnowledgeBase',
 
-    # 事件系统模型
-    "Event", "EventParticipant", "EventStatus",
-
-    # 版本和审计模型
-    "SchemaVersion", "AuditLog",
-
-    # MongoDB文档模型
-    "NovelWorldbuilding", "EntityProfile", "StoryContent", "CrossNovelAnalysis",
-
-    # 查询响应模型
-    "EntityWithProfile", "NovelSummary", "QueryRequest", "StandardResponse",
-    "CreateEntityRequest", "UpdateEntityRequest",
-
-    # 文化框架模型
-    "Domain", "CulturalDimension", "CulturalFramework", "CulturalElement",
-    "PlotHook", "CulturalConflict", "CulturalEvolution",
-
-    # 文化框架枚举
-    "DimensionType", "ElementType", "ConflictType", "EvolutionType", "HookType",
-
-    # MongoDB文化模型
-    "DomainCulture", "CulturalContent", "CulturalPractice", "PlotHookDetail",
-
-    # 查询和响应模型
-    "DomainWithCulture", "FrameworkWithElements",
-    "CulturalAnalysisRequest", "CulturalAnalysisResponse",
-    "CulturalQueryRequest",
-
-    # 创建请求模型
-    "CreateDomainRequest", "CreateFrameworkRequest", "CreateElementRequest", "CreatePlotHookRequest",
-
-    # 分页响应模型
-    "PaginatedResponse", "PaginatedDomainsResponse", "PaginatedFrameworksResponse",
-    "PaginatedElementsResponse", "PaginatedHooksResponse"
+    # 枚举类型
+    'ProjectStatus',
+    'NovelStatus',
+    'BatchType',
+    'BatchStatus',
+    'SegmentType',
+    'SegmentStatus',
+    'DomainType',
+    'CultivationStageType',
+    'OrganizationType',
+    'CharacterType',
+    'LocationType',
+    'ItemType',
+    'ItemRarity',
+    'EventType',
+    'EventStatus',
+    'KnowledgeCategory',
 ]

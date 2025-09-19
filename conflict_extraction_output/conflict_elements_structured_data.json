@@ -1,0 +1,6953 @@
+{
+  "entities": [
+    {
+      "id": "implicit_0",
+      "name": "失踪的税收官引发的政治危机",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "天域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔天域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.912852"
+    },
+    {
+      "id": "implicit_1",
+      "name": "伪造链籍证明的黑市网络",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "天域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔天域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_2",
+      "name": "伪造评印的器械流入市场",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "灵域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔灵域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_3",
+      "name": "器械师与评印官的权力斗争",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "灵域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔灵域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_4",
+      "name": "神秘货物引发的跨域追杀",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_5",
+      "name": "边防军官的道德困境",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_6",
+      "name": "走私路线上的生死逃亡",
+      "entity_type": "推断实体",
+      "domains": [
+        "人域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "人域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_7",
+      "name": "监管官的腐败丑闻",
+      "entity_type": "推断实体",
+      "domains": [
+        "天域",
+        "灵域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "天域↔灵域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_8",
+      "name": "链法解释引发的宗教危机",
+      "entity_type": "推断实体",
+      "domains": [
+        "天域",
+        "灵域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "天域↔灵域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_9",
+      "name": "断链罪犯的荒域复仇",
+      "entity_type": "推断实体",
+      "domains": [
+        "天域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "天域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_10",
+      "name": "矿脉深处的古老秘密",
+      "entity_type": "推断实体",
+      "domains": [
+        "天域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "天域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_11",
+      "name": "军镇围困战的绝望与希望",
+      "entity_type": "推断实体",
+      "domains": [
+        "天域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "天域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_12",
+      "name": "传说中的究极器械现世",
+      "entity_type": "推断实体",
+      "domains": [
+        "灵域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "灵域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "implicit_13",
+      "name": "矿料走私背后的阴谋",
+      "entity_type": "推断实体",
+      "domains": [
+        "灵域",
+        "荒域"
+      ],
+      "category": "隐含实体",
+      "description": "从plot_hook中提取的隐含实体",
+      "importance_level": "待评估",
+      "characteristics": {
+        "extraction_source": "plot_hook"
+      },
+      "aliases": [],
+      "source_conflict_pair": "灵域↔荒域",
+      "confidence_score": 0.6,
+      "extraction_method": "conflict_matrix_analysis",
+      "created_at": "2025-09-19T13:15:40.914853"
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation_0",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_1",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_1",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_2",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_2",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_3",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_3",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_4",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_4",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_5",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_5",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_6",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_2",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_7",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_3",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_8",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_4",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_9",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_5",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_10",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_11",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_3",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_12",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_4",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_13",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_5",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_14",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_15",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_4",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_16",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_5",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_17",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_18",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_5",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_19",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_20",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_6",
+      "relation_type": "合作",
+      "description": "同域(人域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "人域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "人域",
+      "target_domain": "人域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_22",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_7",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_23",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_8",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_24",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_25",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_26",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_27",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_7",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_28",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_8",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_29",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_30",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_31",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_32",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_8",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_33",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_34",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_35",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_36",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_37",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_38",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_39",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_40",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_41",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(天域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "天域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "天域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_43",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_7",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_44",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_8",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_45",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_46",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_47",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_7",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_48",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_8",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_49",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_50",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_52",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_53",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_54",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_55",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_56",
+      "source_entity_id": "implicit_12",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(灵域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "灵域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "灵域",
+      "target_domain": "灵域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_59",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_60",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_61",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_62",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_63",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_65",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_66",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_67",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_68",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_69",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_70",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_9",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_71",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_10",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_72",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_11",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_73",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_74",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_77",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_78",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_80",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_81",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_82",
+      "source_entity_id": "implicit_11",
+      "target_entity_id": "implicit_12",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "relation_83",
+      "source_entity_id": "implicit_11",
+      "target_entity_id": "implicit_13",
+      "relation_type": "合作",
+      "description": "同域(荒域)实体间的潜在合作关系",
+      "strength": 0.3,
+      "context": "荒域域内协作",
+      "is_cross_domain": false,
+      "source_domain": "荒域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续",
+      "confidence_score": 0.4,
+      "detection_method": "domain_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_85",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_86",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_87",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_88",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_89",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_90",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_91",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_93",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_94",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_95",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_96",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_97",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_98",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_99",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_100",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_101",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_102",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_103",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_104",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_105",
+      "source_entity_id": "implicit_2",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_106",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_107",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_108",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_109",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_110",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_111",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_112",
+      "source_entity_id": "implicit_3",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_113",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_114",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_115",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_116",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_117",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_118",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_119",
+      "source_entity_id": "implicit_4",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_120",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_121",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_122",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_123",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_124",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_125",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_126",
+      "source_entity_id": "implicit_5",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_127",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_0",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_128",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_1",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_129",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_7",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_130",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_8",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_131",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_132",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_133",
+      "source_entity_id": "implicit_6",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "人域与天域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 人域↔天域",
+      "is_cross_domain": true,
+      "source_domain": "人域",
+      "target_domain": "天域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_140",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_141",
+      "source_entity_id": "implicit_0",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_148",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_149",
+      "source_entity_id": "implicit_1",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_153",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_154",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_155",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_156",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_157",
+      "source_entity_id": "implicit_7",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_161",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_162",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_163",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_164",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_165",
+      "source_entity_id": "implicit_8",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_169",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_9",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_170",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_171",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_172",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_173",
+      "source_entity_id": "implicit_9",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_178",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_10",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_179",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_180",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_181",
+      "source_entity_id": "implicit_10",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_187",
+      "source_entity_id": "implicit_11",
+      "target_entity_id": "implicit_11",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_188",
+      "source_entity_id": "implicit_11",
+      "target_entity_id": "implicit_12",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    },
+    {
+      "id": "conflict_relation_189",
+      "source_entity_id": "implicit_11",
+      "target_entity_id": "implicit_13",
+      "relation_type": "对立",
+      "description": "天域与荒域间的推断实体冲突",
+      "strength": 0.8,
+      "context": "跨域冲突: 天域↔荒域",
+      "is_cross_domain": true,
+      "source_domain": "天域",
+      "target_domain": "荒域",
+      "bidirectional": true,
+      "temporal_context": "持续紧张",
+      "confidence_score": 0.7,
+      "detection_method": "conflict_matrix_inference",
+      "created_at": "2025-09-19T13:15:40.914853"
+    }
+  ],
+  "escalation_paths": [
+    {
+      "id": "path_人域↔天域_1",
+      "conflict_pair": "人域↔天域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.44999999999999996,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔天域_2",
+      "conflict_pair": "人域↔天域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.6,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔天域_3",
+      "conflict_pair": "人域↔天域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.75,
+      "risk_level": "高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔天域_4",
+      "conflict_pair": "人域↔天域",
+      "stage_name": "全面对抗",
+      "stage_level": 4,
+      "description": "冲突扩大到多个领域",
+      "trigger_conditions": [
+        "全面经济封锁",
+        "军事威胁",
+        "联盟分化"
+      ],
+      "escalation_factors": [
+        "国际制裁",
+        "内政危机",
+        "极端主义抬头"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "全面和谈",
+        "武装冲突",
+        "联盟重组"
+      ],
+      "probability": 0.9,
+      "risk_level": "极高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔灵域_1",
+      "conflict_pair": "人域↔灵域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.6,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔灵域_2",
+      "conflict_pair": "人域↔灵域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.9,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔荒域_1",
+      "conflict_pair": "人域↔荒域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔荒域_2",
+      "conflict_pair": "人域↔荒域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_人域↔荒域_3",
+      "conflict_pair": "人域↔荒域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔人域_1",
+      "conflict_pair": "天域↔人域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.44999999999999996,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔人域_2",
+      "conflict_pair": "天域↔人域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.6,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔人域_3",
+      "conflict_pair": "天域↔人域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.75,
+      "risk_level": "高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔人域_4",
+      "conflict_pair": "天域↔人域",
+      "stage_name": "全面对抗",
+      "stage_level": 4,
+      "description": "冲突扩大到多个领域",
+      "trigger_conditions": [
+        "全面经济封锁",
+        "军事威胁",
+        "联盟分化"
+      ],
+      "escalation_factors": [
+        "国际制裁",
+        "内政危机",
+        "极端主义抬头"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "全面和谈",
+        "武装冲突",
+        "联盟重组"
+      ],
+      "probability": 0.9,
+      "risk_level": "极高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔灵域_1",
+      "conflict_pair": "天域↔灵域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔灵域_2",
+      "conflict_pair": "天域↔灵域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔灵域_3",
+      "conflict_pair": "天域↔灵域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔荒域_1",
+      "conflict_pair": "天域↔荒域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.44999999999999996,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔荒域_2",
+      "conflict_pair": "天域↔荒域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.6,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔荒域_3",
+      "conflict_pair": "天域↔荒域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.75,
+      "risk_level": "高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_天域↔荒域_4",
+      "conflict_pair": "天域↔荒域",
+      "stage_name": "全面对抗",
+      "stage_level": 4,
+      "description": "冲突扩大到多个领域",
+      "trigger_conditions": [
+        "全面经济封锁",
+        "军事威胁",
+        "联盟分化"
+      ],
+      "escalation_factors": [
+        "国际制裁",
+        "内政危机",
+        "极端主义抬头"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "全面和谈",
+        "武装冲突",
+        "联盟重组"
+      ],
+      "probability": 0.9,
+      "risk_level": "极高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔人域_1",
+      "conflict_pair": "灵域↔人域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.6,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔人域_2",
+      "conflict_pair": "灵域↔人域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.9,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔天域_1",
+      "conflict_pair": "灵域↔天域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔天域_2",
+      "conflict_pair": "灵域↔天域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔天域_3",
+      "conflict_pair": "灵域↔天域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔荒域_1",
+      "conflict_pair": "灵域↔荒域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔荒域_2",
+      "conflict_pair": "灵域↔荒域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_灵域↔荒域_3",
+      "conflict_pair": "灵域↔荒域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔人域_1",
+      "conflict_pair": "荒域↔人域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔人域_2",
+      "conflict_pair": "荒域↔人域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔人域_3",
+      "conflict_pair": "荒域↔人域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔天域_1",
+      "conflict_pair": "荒域↔天域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.44999999999999996,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔天域_2",
+      "conflict_pair": "荒域↔天域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.6,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔天域_3",
+      "conflict_pair": "荒域↔天域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.75,
+      "risk_level": "高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔天域_4",
+      "conflict_pair": "荒域↔天域",
+      "stage_name": "全面对抗",
+      "stage_level": 4,
+      "description": "冲突扩大到多个领域",
+      "trigger_conditions": [
+        "全面经济封锁",
+        "军事威胁",
+        "联盟分化"
+      ],
+      "escalation_factors": [
+        "国际制裁",
+        "内政危机",
+        "极端主义抬头"
+      ],
+      "involved_entities": [
+        "implicit_0",
+        "implicit_1",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "全面和谈",
+        "武装冲突",
+        "联盟重组"
+      ],
+      "probability": 0.9,
+      "risk_level": "极高风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔灵域_1",
+      "conflict_pair": "荒域↔灵域",
+      "stage_name": "潜在摩擦",
+      "stage_level": 1,
+      "description": "存在利益分歧但未公开化",
+      "trigger_conditions": [
+        "资源竞争加剧",
+        "政策分歧显现",
+        "利益分配不均"
+      ],
+      "escalation_factors": [
+        "误解加深",
+        "沟通不畅",
+        "第三方挑拨"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "协商解决",
+        "暂时妥协",
+        "问题搁置"
+      ],
+      "probability": 0.5,
+      "risk_level": "低风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔灵域_2",
+      "conflict_pair": "荒域↔灵域",
+      "stage_name": "公开分歧",
+      "stage_level": 2,
+      "description": "双方立场明确对立",
+      "trigger_conditions": [
+        "公开声明立场",
+        "媒体曝光争议",
+        "官方表态对立"
+      ],
+      "escalation_factors": [
+        "舆论压力",
+        "内部鹰派势力",
+        "历史恩怨"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "正式谈判",
+        "第三方调解",
+        "舆论战"
+      ],
+      "probability": 0.7,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "path_荒域↔灵域_3",
+      "conflict_pair": "荒域↔灵域",
+      "stage_name": "局部冲突",
+      "stage_level": 3,
+      "description": "在特定领域发生直接冲突",
+      "trigger_conditions": [
+        "小规模冲突事件",
+        "经济制裁措施",
+        "外交抗议"
+      ],
+      "escalation_factors": [
+        "军备竞赛",
+        "盟友介入",
+        "经济压力"
+      ],
+      "involved_entities": [
+        "implicit_2",
+        "implicit_3",
+        "implicit_4",
+        "implicit_5",
+        "implicit_6",
+        "implicit_7",
+        "implicit_8",
+        "implicit_9",
+        "implicit_10",
+        "implicit_11",
+        "implicit_12",
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "局部和解",
+        "冲突扩大",
+        "国际干预"
+      ],
+      "probability": 0.9,
+      "risk_level": "中风险",
+      "created_at": "2025-09-19T13:15:40.916362"
+    }
+  ],
+  "plot_hooks": [
+    {
+      "id": "hook_人域↔天域_0",
+      "title": "失踪的税收官引发的政治危机...",
+      "description": "失踪的税收官引发的政治危机",
+      "conflict_pair": "人域↔天域",
+      "complexity_level": 5,
+      "dramatic_value": 7,
+      "character_potential": 5,
+      "conflict_type": "权力斗争",
+      "trigger_conditions": [
+        "关键人物失踪",
+        "突发危机事件"
+      ],
+      "involved_entities": [
+        "implicit_0"
+      ],
+      "potential_outcomes": [
+        "权力重新分配",
+        "政治联盟重组",
+        "体制改革"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔天域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔天域_1",
+      "title": "伪造链籍证明的黑市网络...",
+      "description": "伪造链籍证明的黑市网络",
+      "conflict_pair": "人域↔天域",
+      "complexity_level": 6,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "身份认同",
+      "trigger_conditions": [
+        "伪造证件或身份"
+      ],
+      "involved_entities": [
+        "implicit_1"
+      ],
+      "potential_outcomes": [
+        "身份危机解决",
+        "社会地位变化",
+        "认同体系重构"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔天域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔天域_2",
+      "title": "征召令下的家庭悲剧...",
+      "description": "征召令下的家庭悲剧",
+      "conflict_pair": "人域↔天域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔天域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔灵域_0",
+      "title": "天才学徒的神秘失踪...",
+      "description": "天才学徒的神秘失踪",
+      "conflict_pair": "人域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 6,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "关键人物失踪",
+        "神秘事件发生"
+      ],
+      "involved_entities": [],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔灵域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔灵域_1",
+      "title": "伪造评印的器械流入市场...",
+      "description": "伪造评印的器械流入市场",
+      "conflict_pair": "人域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "身份认同",
+      "trigger_conditions": [
+        "伪造证件或身份"
+      ],
+      "involved_entities": [
+        "implicit_2"
+      ],
+      "potential_outcomes": [
+        "身份危机解决",
+        "社会地位变化",
+        "认同体系重构"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "贸易市场",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔灵域_2",
+      "title": "器械师与评印官的权力斗争...",
+      "description": "器械师与评印官的权力斗争",
+      "conflict_pair": "人域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "权力斗争",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [
+        "implicit_3"
+      ],
+      "potential_outcomes": [
+        "权力重新分配",
+        "政治联盟重组",
+        "体制改革"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔灵域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔荒域_0",
+      "title": "神秘货物引发的跨域追杀...",
+      "description": "神秘货物引发的跨域追杀",
+      "conflict_pair": "人域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "经济冲突",
+      "trigger_conditions": [
+        "神秘事件发生"
+      ],
+      "involved_entities": [
+        "implicit_4"
+      ],
+      "potential_outcomes": [
+        "经济秩序重建",
+        "贸易关系调整",
+        "资源重新分配"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔荒域_1",
+      "title": "边防军官的道德困境...",
+      "description": "边防军官的道德困境",
+      "conflict_pair": "人域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 6,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [
+        "implicit_5"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_人域↔荒域_2",
+      "title": "走私路线上的生死逃亡...",
+      "description": "走私路线上的生死逃亡",
+      "conflict_pair": "人域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 6,
+      "character_potential": 5,
+      "conflict_type": "经济冲突",
+      "trigger_conditions": [
+        "走私活动暴露"
+      ],
+      "involved_entities": [
+        "implicit_6"
+      ],
+      "potential_outcomes": [
+        "经济秩序重建",
+        "贸易关系调整",
+        "资源重新分配"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "人域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔灵域_0",
+      "title": "禁忌技术的评印争议...",
+      "description": "禁忌技术的评印争议",
+      "conflict_pair": "天域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "身份认同",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [],
+      "potential_outcomes": [
+        "身份危机解决",
+        "社会地位变化",
+        "认同体系重构"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "天域↔灵域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔灵域_1",
+      "title": "监管官的腐败丑闻...",
+      "description": "监管官的腐败丑闻",
+      "conflict_pair": "天域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "腐败丑闻曝光"
+      ],
+      "involved_entities": [
+        "implicit_7"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "天域↔灵域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔灵域_2",
+      "title": "链法解释引发的宗教危机...",
+      "description": "链法解释引发的宗教危机",
+      "conflict_pair": "天域↔灵域",
+      "complexity_level": 5,
+      "dramatic_value": 6,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "突发危机事件"
+      ],
+      "involved_entities": [
+        "implicit_8"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "天域↔灵域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔荒域_0",
+      "title": "断链罪犯的荒域复仇...",
+      "description": "断链罪犯的荒域复仇",
+      "conflict_pair": "天域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 6,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [
+        "implicit_9"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "天域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔荒域_1",
+      "title": "矿脉深处的古老秘密...",
+      "description": "矿脉深处的古老秘密",
+      "conflict_pair": "天域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [
+        "implicit_10"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "历史背景",
+      "geographic_context": "荒域深处",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_天域↔荒域_2",
+      "title": "军镇围困战的绝望与希望...",
+      "description": "军镇围困战的绝望与希望",
+      "conflict_pair": "天域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 7,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "军事围困"
+      ],
+      "involved_entities": [
+        "implicit_11"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "军事重镇",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_灵域↔荒域_0",
+      "title": "传说中的究极器械现世...",
+      "description": "传说中的究极器械现世",
+      "conflict_pair": "灵域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "综合冲突",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [
+        "implicit_12"
+      ],
+      "potential_outcomes": [
+        "多领域变革",
+        "社会结构调整",
+        "新平衡建立"
+      ],
+      "temporal_context": "历史背景",
+      "geographic_context": "灵域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_灵域↔荒域_1",
+      "title": "矿料走私背后的阴谋...",
+      "description": "矿料走私背后的阴谋",
+      "conflict_pair": "灵域↔荒域",
+      "complexity_level": 6,
+      "dramatic_value": 5,
+      "character_potential": 5,
+      "conflict_type": "经济冲突",
+      "trigger_conditions": [
+        "走私活动暴露"
+      ],
+      "involved_entities": [
+        "implicit_13"
+      ],
+      "potential_outcomes": [
+        "经济秩序重建",
+        "贸易关系调整",
+        "资源重新分配"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "矿脉区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "hook_灵域↔荒域_2",
+      "title": "遗械猎人的生死冒险...",
+      "description": "遗械猎人的生死冒险",
+      "conflict_pair": "灵域↔荒域",
+      "complexity_level": 5,
+      "dramatic_value": 6,
+      "character_potential": 5,
+      "conflict_type": "生存危机",
+      "trigger_conditions": [
+        "情节触发点"
+      ],
+      "involved_entities": [],
+      "potential_outcomes": [
+        "生存威胁解除",
+        "安全体系重建",
+        "救援成功"
+      ],
+      "temporal_context": "时间不明",
+      "geographic_context": "灵域↔荒域交界区域",
+      "created_at": "2025-09-19T13:15:40.916362"
+    }
+  ],
+  "scenario_contexts": [
+    {
+      "id": "scenario_人域↔天域_0",
+      "name": "失踪的税收官引发的政治危机...场景",
+      "conflict_pair": "人域↔天域",
+      "geographic_location": "人域↔天域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔天域_1",
+      "name": "伪造链籍证明的黑市网络...场景",
+      "conflict_pair": "人域↔天域",
+      "geographic_location": "人域↔天域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "链文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔天域_2",
+      "name": "征召令下的家庭悲剧...场景",
+      "conflict_pair": "人域↔天域",
+      "geographic_location": "人域↔天域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔灵域_3",
+      "name": "天才学徒的神秘失踪...场景",
+      "conflict_pair": "人域↔灵域",
+      "geographic_location": "人域↔灵域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "人域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔灵域_4",
+      "name": "伪造评印的器械流入市场...场景",
+      "conflict_pair": "人域↔灵域",
+      "geographic_location": "贸易市场",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "商业环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "人域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔灵域_5",
+      "name": "器械师与评印官的权力斗争...场景",
+      "conflict_pair": "人域↔灵域",
+      "geographic_location": "人域↔灵域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "人域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔荒域_6",
+      "name": "神秘货物引发的跨域追杀...场景",
+      "conflict_pair": "人域↔荒域",
+      "geographic_location": "人域↔荒域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔荒域_7",
+      "name": "边防军官的道德困境...场景",
+      "conflict_pair": "人域↔荒域",
+      "geographic_location": "人域↔荒域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "军事环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_人域↔荒域_8",
+      "name": "走私路线上的生死逃亡...场景",
+      "conflict_pair": "人域↔荒域",
+      "geographic_location": "人域↔荒域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "人域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔灵域_9",
+      "name": "禁忌技术的评印争议...场景",
+      "conflict_pair": "天域↔灵域",
+      "geographic_location": "天域↔灵域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "禁忌文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔灵域_10",
+      "name": "监管官的腐败丑闻...场景",
+      "conflict_pair": "天域↔灵域",
+      "geographic_location": "天域↔灵域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔灵域_11",
+      "name": "链法解释引发的宗教危机...场景",
+      "conflict_pair": "天域↔灵域",
+      "geographic_location": "天域↔灵域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "法律文化",
+        "链文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔荒域_12",
+      "name": "断链罪犯的荒域复仇...场景",
+      "conflict_pair": "天域↔荒域",
+      "geographic_location": "天域↔荒域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "荒域域文化",
+        "链文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔荒域_13",
+      "name": "矿脉深处的古老秘密...场景",
+      "conflict_pair": "天域↔荒域",
+      "geographic_location": "荒域深处",
+      "temporal_setting": "历史背景",
+      "environmental_factors": [
+        "矿业环境",
+        "隐秘环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "保密需求"
+      ],
+      "cultural_context": [
+        "荒域域文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_天域↔荒域_14",
+      "name": "军镇围困战的绝望与希望...场景",
+      "conflict_pair": "天域↔荒域",
+      "geographic_location": "军事重镇",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "军事环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "荒域域文化",
+        "天域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_灵域↔荒域_15",
+      "name": "传说中的究极器械现世...场景",
+      "conflict_pair": "灵域↔荒域",
+      "geographic_location": "灵域↔荒域交界区域",
+      "temporal_setting": "历史背景",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_灵域↔荒域_16",
+      "name": "矿料走私背后的阴谋...场景",
+      "conflict_pair": "灵域↔荒域",
+      "geographic_location": "矿脉区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "矿业环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    },
+    {
+      "id": "scenario_灵域↔荒域_17",
+      "name": "遗械猎人的生死冒险...场景",
+      "conflict_pair": "灵域↔荒域",
+      "geographic_location": "灵域↔荒域交界区域",
+      "temporal_setting": "时间不明",
+      "environmental_factors": [
+        "一般环境"
+      ],
+      "participant_roles": [],
+      "resource_constraints": [
+        "无明显约束"
+      ],
+      "cultural_context": [
+        "灵域域文化",
+        "荒域域文化"
+      ],
+      "created_at": "2025-09-19T13:15:40.916362"
+    }
+  ],
+  "network_graph": {
+    "nodes": [
+      {
+        "id": "implicit_0",
+        "label": "失踪的税收官引发的政治危机",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "天域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_1",
+        "label": "伪造链籍证明的黑市网络",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "天域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_2",
+        "label": "伪造评印的器械流入市场",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "灵域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_3",
+        "label": "器械师与评印官的权力斗争",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "灵域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_4",
+        "label": "神秘货物引发的跨域追杀",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_5",
+        "label": "边防军官的道德困境",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_6",
+        "label": "走私路线上的生死逃亡",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "人域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_7",
+        "label": "监管官的腐败丑闻",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "天域",
+          "灵域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_8",
+        "label": "链法解释引发的宗教危机",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "天域",
+          "灵域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_9",
+        "label": "断链罪犯的荒域复仇",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "天域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_10",
+        "label": "矿脉深处的古老秘密",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "天域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_11",
+        "label": "军镇围困战的绝望与希望",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "天域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_12",
+        "label": "传说中的究极器械现世",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "灵域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      },
+      {
+        "id": "implicit_13",
+        "label": "矿料走私背后的阴谋",
+        "type": "推断实体",
+        "category": "隐含实体",
+        "domains": [
+          "灵域",
+          "荒域"
+        ],
+        "importance": "待评估",
+        "confidence": 0.6,
+        "size": 15,
+        "color": "#96CEB4"
+      }
+    ],
+    "edges": [
+      {
+        "id": "relation_0",
+        "source": "implicit_0",
+        "target": "implicit_1",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_1",
+        "source": "implicit_0",
+        "target": "implicit_2",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_2",
+        "source": "implicit_0",
+        "target": "implicit_3",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_3",
+        "source": "implicit_0",
+        "target": "implicit_4",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_4",
+        "source": "implicit_0",
+        "target": "implicit_5",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_5",
+        "source": "implicit_0",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_6",
+        "source": "implicit_1",
+        "target": "implicit_2",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_7",
+        "source": "implicit_1",
+        "target": "implicit_3",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_8",
+        "source": "implicit_1",
+        "target": "implicit_4",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_9",
+        "source": "implicit_1",
+        "target": "implicit_5",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_10",
+        "source": "implicit_1",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_11",
+        "source": "implicit_2",
+        "target": "implicit_3",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_12",
+        "source": "implicit_2",
+        "target": "implicit_4",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_13",
+        "source": "implicit_2",
+        "target": "implicit_5",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_14",
+        "source": "implicit_2",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_15",
+        "source": "implicit_3",
+        "target": "implicit_4",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_16",
+        "source": "implicit_3",
+        "target": "implicit_5",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_17",
+        "source": "implicit_3",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_18",
+        "source": "implicit_4",
+        "target": "implicit_5",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_19",
+        "source": "implicit_4",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_20",
+        "source": "implicit_5",
+        "target": "implicit_6",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_22",
+        "source": "implicit_0",
+        "target": "implicit_7",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_23",
+        "source": "implicit_0",
+        "target": "implicit_8",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_24",
+        "source": "implicit_0",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_25",
+        "source": "implicit_0",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_26",
+        "source": "implicit_0",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_27",
+        "source": "implicit_1",
+        "target": "implicit_7",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_28",
+        "source": "implicit_1",
+        "target": "implicit_8",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_29",
+        "source": "implicit_1",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_30",
+        "source": "implicit_1",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_31",
+        "source": "implicit_1",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_32",
+        "source": "implicit_7",
+        "target": "implicit_8",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_33",
+        "source": "implicit_7",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_34",
+        "source": "implicit_7",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_35",
+        "source": "implicit_7",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_36",
+        "source": "implicit_8",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_37",
+        "source": "implicit_8",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_38",
+        "source": "implicit_8",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_39",
+        "source": "implicit_9",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_40",
+        "source": "implicit_9",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_41",
+        "source": "implicit_10",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_43",
+        "source": "implicit_2",
+        "target": "implicit_7",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_44",
+        "source": "implicit_2",
+        "target": "implicit_8",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_45",
+        "source": "implicit_2",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_46",
+        "source": "implicit_2",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_47",
+        "source": "implicit_3",
+        "target": "implicit_7",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_48",
+        "source": "implicit_3",
+        "target": "implicit_8",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_49",
+        "source": "implicit_3",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_50",
+        "source": "implicit_3",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_52",
+        "source": "implicit_7",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_53",
+        "source": "implicit_7",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_54",
+        "source": "implicit_8",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_55",
+        "source": "implicit_8",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_56",
+        "source": "implicit_12",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_59",
+        "source": "implicit_4",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_60",
+        "source": "implicit_4",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_61",
+        "source": "implicit_4",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_62",
+        "source": "implicit_4",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_63",
+        "source": "implicit_4",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_65",
+        "source": "implicit_5",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_66",
+        "source": "implicit_5",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_67",
+        "source": "implicit_5",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_68",
+        "source": "implicit_5",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_69",
+        "source": "implicit_5",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_70",
+        "source": "implicit_6",
+        "target": "implicit_9",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_71",
+        "source": "implicit_6",
+        "target": "implicit_10",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_72",
+        "source": "implicit_6",
+        "target": "implicit_11",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_73",
+        "source": "implicit_6",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_74",
+        "source": "implicit_6",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_77",
+        "source": "implicit_9",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_78",
+        "source": "implicit_9",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_80",
+        "source": "implicit_10",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_81",
+        "source": "implicit_10",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_82",
+        "source": "implicit_11",
+        "target": "implicit_12",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "relation_83",
+        "source": "implicit_11",
+        "target": "implicit_13",
+        "type": "合作",
+        "strength": 0.3,
+        "is_cross_domain": false,
+        "bidirectional": true,
+        "width": 1.5,
+        "color": "#00CECA"
+      },
+      {
+        "id": "conflict_relation_85",
+        "source": "implicit_0",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_86",
+        "source": "implicit_0",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_87",
+        "source": "implicit_0",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_88",
+        "source": "implicit_0",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_89",
+        "source": "implicit_0",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_90",
+        "source": "implicit_0",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_91",
+        "source": "implicit_0",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_93",
+        "source": "implicit_1",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_94",
+        "source": "implicit_1",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_95",
+        "source": "implicit_1",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_96",
+        "source": "implicit_1",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_97",
+        "source": "implicit_1",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_98",
+        "source": "implicit_1",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_99",
+        "source": "implicit_2",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_100",
+        "source": "implicit_2",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_101",
+        "source": "implicit_2",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_102",
+        "source": "implicit_2",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_103",
+        "source": "implicit_2",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_104",
+        "source": "implicit_2",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_105",
+        "source": "implicit_2",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_106",
+        "source": "implicit_3",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_107",
+        "source": "implicit_3",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_108",
+        "source": "implicit_3",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_109",
+        "source": "implicit_3",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_110",
+        "source": "implicit_3",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_111",
+        "source": "implicit_3",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_112",
+        "source": "implicit_3",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_113",
+        "source": "implicit_4",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_114",
+        "source": "implicit_4",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_115",
+        "source": "implicit_4",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_116",
+        "source": "implicit_4",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_117",
+        "source": "implicit_4",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_118",
+        "source": "implicit_4",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_119",
+        "source": "implicit_4",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_120",
+        "source": "implicit_5",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_121",
+        "source": "implicit_5",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_122",
+        "source": "implicit_5",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_123",
+        "source": "implicit_5",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_124",
+        "source": "implicit_5",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_125",
+        "source": "implicit_5",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_126",
+        "source": "implicit_5",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_127",
+        "source": "implicit_6",
+        "target": "implicit_0",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_128",
+        "source": "implicit_6",
+        "target": "implicit_1",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_129",
+        "source": "implicit_6",
+        "target": "implicit_7",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_130",
+        "source": "implicit_6",
+        "target": "implicit_8",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_131",
+        "source": "implicit_6",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_132",
+        "source": "implicit_6",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_133",
+        "source": "implicit_6",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_140",
+        "source": "implicit_0",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_141",
+        "source": "implicit_0",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_148",
+        "source": "implicit_1",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_149",
+        "source": "implicit_1",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_153",
+        "source": "implicit_7",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_154",
+        "source": "implicit_7",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_155",
+        "source": "implicit_7",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_156",
+        "source": "implicit_7",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_157",
+        "source": "implicit_7",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_161",
+        "source": "implicit_8",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_162",
+        "source": "implicit_8",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_163",
+        "source": "implicit_8",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_164",
+        "source": "implicit_8",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_165",
+        "source": "implicit_8",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_169",
+        "source": "implicit_9",
+        "target": "implicit_9",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_170",
+        "source": "implicit_9",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_171",
+        "source": "implicit_9",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_172",
+        "source": "implicit_9",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_173",
+        "source": "implicit_9",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_178",
+        "source": "implicit_10",
+        "target": "implicit_10",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_179",
+        "source": "implicit_10",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_180",
+        "source": "implicit_10",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_181",
+        "source": "implicit_10",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_187",
+        "source": "implicit_11",
+        "target": "implicit_11",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_188",
+        "source": "implicit_11",
+        "target": "implicit_12",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      },
+      {
+        "id": "conflict_relation_189",
+        "source": "implicit_11",
+        "target": "implicit_13",
+        "type": "对立",
+        "strength": 0.8,
+        "is_cross_domain": true,
+        "bidirectional": true,
+        "width": 4.0,
+        "color": "#FF4757"
+      }
+    ],
+    "metadata": {
+      "total_nodes": 14,
+      "total_edges": 149,
+      "cross_domain_edges": 74,
+      "node_types": [
+        "推断实体"
+      ],
+      "edge_types": [
+        "对立",
+        "合作"
+      ]
+    }
+  },
+  "statistics": {
+    "summary": {
+      "total_entities": 14,
+      "total_relations": 149,
+      "total_escalation_paths": 38,
+      "total_plot_hooks": 18,
+      "total_scenarios": 18
+    },
+    "entity_distribution": {
+      "推断实体": 14
+    },
+    "relation_distribution": {
+      "对立": 74,
+      "合作": 75
+    },
+    "domain_coverage": {
+      "人域": 7,
+      "天域": 7,
+      "灵域": 6,
+      "荒域": 8
+    },
+    "confidence_analysis": {
+      "high_confidence_entities": 0,
+      "medium_confidence_entities": 14,
+      "low_confidence_entities": 0,
+      "avg_entity_confidence": 0.5999999999999999,
+      "avg_relation_confidence": 0.548993288590605
+    }
+  }
+}

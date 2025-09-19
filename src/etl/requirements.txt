@@ -1,0 +1,39 @@
+# ETL Pipeline Dependencies for Novel Content Processing
+
+# Core async and database libraries
+asyncio
+asyncpg>=0.28.0
+motor>=3.3.0
+pymongo>=4.5.0
+psycopg2-binary>=2.9.7
+
+# Chinese text processing
+jieba>=0.42.1
+opencc-python-plus>=1.0.0
+spacy>=3.6.0
+zh-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.6.0/zh_core_web_sm-3.6.0-py3-none-any.whl
+
+# Data processing and validation
+pandas>=2.0.0
+numpy>=1.24.0
+networkx>=3.1
+
+# Web and streaming support
+aiohttp>=3.8.0
+watchdog>=3.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+dataclasses-json>=0.6.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Optional: For advanced features
+# redis>=4.6.0  # For message queue support
+# celery>=5.3.0  # For distributed task processing
+# prometheus-client>=0.17.0  # For metrics collection

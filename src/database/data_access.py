@@ -1,707 +1,500 @@
 """
-数据访问层 API
-提供多小说兼容的数据操作接口
+数据访问层 - 统一的数据库操作接口
+支持PostgreSQL和MongoDB的混合架构操作
 """
 
 import asyncio
-from typing import Optional, List, Dict, Any, Tuple
-from datetime import datetime
-import json
 import logging
-from contextlib import asynccontextmanager
+from typing import Optional, List, Dict, Any, Union
+from uuid import UUID
+from datetime import datetime
 
-import asyncpg
-from motor.motor_asyncio import AsyncIOMotorDatabase, AsyncIOMotorCollection
-from pymongo import MongoClient
-from pymongo.database import Database as SyncDatabase
-
+from .connection_manager import (
+    DatabaseManager,
+    get_database_manager,
+    close_database_manager,
+    DatabaseError
+)
 from .models import *
-from config import config
-
+from .repositories.postgresql_repository import PostgreSQLRepository
+from .repositories.mongodb_repository import MongoDBRepository
 
 logger = logging.getLogger(__name__)
 
 
-class DatabaseError(Exception):
-    """数据库操作异常"""
-    pass
-
-
 class NovelDataManager:
-    """小说数据管理器 - 提供数据隔离和安全访问"""
+    """小说数据管理器 - 针对特定小说的数据操作"""
 
-    def __init__(self, novel_id: int, pg_pool: asyncpg.Pool, mongo_db: AsyncIOMotorDatabase):
-        self.novel_id = novel_id
-        self.pg_pool = pg_pool
-        self.mongo_db = mongo_db
-        self._novel_cache = None
+    def __init__(self, novel_id: Union[str, UUID], db_manager: DatabaseManager):
+        self.novel_id = str(novel_id)
+        self.db_manager = db_manager
+        self.pg_repo = PostgreSQLRepository(db_manager.postgres)
+        self.mongo_repo = MongoDBRepository(db_manager.mongodb)
 
-    async def _get_novel_info(self) -> Novel:
-        """获取小说基础信息"""
-        if self._novel_cache is None:
-            async with self.pg_pool.acquire() as conn:
-                row = await conn.fetchrow(
-                    "SELECT * FROM novels WHERE id = $1 AND status != 'archived'",
-                    self.novel_id
-                )
-                if not row:
-                    raise DatabaseError(f"小说 {self.novel_id} 不存在或已归档")
-                self._novel_cache = Novel(**dict(row))
-        return self._novel_cache
+    # =============================================================================
+    # 批次管理操作
+    # =============================================================================
 
-    async def _validate_access(self, operation: str = "read"):
-        """验证访问权限"""
-        novel = await self._get_novel_info()
-        if novel.status == 'archived':
-            raise DatabaseError("无法访问已归档的小说")
+    async def create_content_batch(self, batch_data: ContentBatchCreate) -> ContentBatch:
+        """创建内容批次"""
+        try:
+            # 验证小说ID
+            novel = await self.pg_repo.get_novel_by_id(UUID(batch_data.novel_id))
+            if not novel:
+                raise DatabaseError(f"小说不存在: {batch_data.novel_id}")
 
-    # =========================================================================
-    # 小说管理 API
-    # =========================================================================
-
-    async def get_novel_summary(self) -> NovelSummary:
-        """获取小说摘要信息"""
-        await self._validate_access()
-
-        async with self.pg_pool.acquire() as conn:
-            # 获取小说基础信息
-            novel_row = await conn.fetchrow(
-                "SELECT * FROM novels WHERE id = $1", self.novel_id
+            # 检查批次编号是否已存在
+            existing_batch = await self.pg_repo.get_content_batch_by_number(
+                UUID(batch_data.novel_id), batch_data.batch_number
             )
-            novel = Novel(**dict(novel_row))
+            if existing_batch:
+                raise DatabaseError(f"批次编号 {batch_data.batch_number} 已存在")
 
-            # 获取实体类型
-            entity_types_rows = await conn.fetch(
-                "SELECT * FROM entity_types WHERE novel_id = $1 AND is_active = true",
-                self.novel_id
+            # 创建批次
+            batch = await self.pg_repo.create_content_batch(batch_data)
+            logger.info(f"创建内容批次: {batch.batch_name} (ID: {batch.id})")
+            return batch
+
+        except Exception as e:
+            logger.error(f"创建内容批次失败: {e}")
+            raise DatabaseError(f"创建内容批次失败: {e}")
+
+    async def get_content_batches(
+        self,
+        batch_type: Optional[BatchType] = None,
+        status: Optional[BatchStatus] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[ContentBatch]:
+        """获取内容批次列表"""
+        try:
+            return await self.pg_repo.get_content_batches_by_novel(
+                UUID(self.novel_id), batch_type, status, skip, limit
             )
-            entity_types = [EntityType(**dict(row)) for row in entity_types_rows]
+        except Exception as e:
+            logger.error(f"获取内容批次失败: {e}")
+            raise DatabaseError(f"获取内容批次失败: {e}")
 
-            # 获取实体统计
-            entity_counts = {}
-            for et in entity_types:
-                count = await conn.fetchval(
-                    "SELECT COUNT(*) FROM entities WHERE novel_id = $1 AND entity_type_id = $2 AND status = 'active'",
-                    self.novel_id, et.id
-                )
-                entity_counts[et.name] = count
+    async def update_content_batch(
+        self,
+        batch_id: Union[str, UUID],
+        update_data: ContentBatchUpdate
+    ) -> Optional[ContentBatch]:
+        """更新内容批次"""
+        try:
+            batch = await self.pg_repo.update_content_batch(UUID(batch_id), update_data)
+            if batch:
+                logger.info(f"更新内容批次: {batch.batch_name} (ID: {batch.id})")
+            return batch
+        except Exception as e:
+            logger.error(f"更新内容批次失败: {e}")
+            raise DatabaseError(f"更新内容批次失败: {e}")
 
-            # 获取最近事件
-            recent_events_rows = await conn.fetch(
-                "SELECT * FROM events WHERE novel_id = $1 ORDER BY created_at DESC LIMIT 5",
-                self.novel_id
+    async def delete_content_batch(self, batch_id: Union[str, UUID]) -> bool:
+        """删除内容批次"""
+        try:
+            # 检查批次是否有关联的内容段落
+            segments = await self.pg_repo.get_content_segments_by_batch(UUID(batch_id))
+            if segments:
+                raise DatabaseError("无法删除包含内容段落的批次，请先删除相关段落")
+
+            success = await self.pg_repo.delete_content_batch(UUID(batch_id))
+            if success:
+                logger.info(f"删除内容批次: {batch_id}")
+            return success
+        except Exception as e:
+            logger.error(f"删除内容批次失败: {e}")
+            raise DatabaseError(f"删除内容批次失败: {e}")
+
+    # =============================================================================
+    # 内容段落操作
+    # =============================================================================
+
+    async def create_content_segment(self, segment_data: ContentSegmentCreate) -> ContentSegment:
+        """创建内容段落"""
+        try:
+            # 验证批次ID
+            batch = await self.pg_repo.get_content_batch_by_id(segment_data.batch_id)
+            if not batch:
+                raise DatabaseError(f"批次不存在: {segment_data.batch_id}")
+
+            # 检查序列顺序是否已存在
+            existing_segment = await self.pg_repo.get_content_segment_by_sequence(
+                segment_data.batch_id, segment_data.sequence_order
             )
-            recent_events = [Event(**dict(row)) for row in recent_events_rows]
+            if existing_segment:
+                raise DatabaseError(f"序列顺序 {segment_data.sequence_order} 已存在")
 
-        return NovelSummary(
-            novel=novel,
-            entity_types=entity_types,
-            entity_counts=entity_counts,
-            recent_events=recent_events
-        )
+            # 创建段落
+            segment = await self.pg_repo.create_content_segment(segment_data)
+            logger.info(f"创建内容段落: {segment.title or '无标题'} (ID: {segment.id})")
+            return segment
 
-    async def update_novel_settings(self, settings: Dict[str, Any]) -> bool:
-        """更新小说配置"""
-        await self._validate_access("write")
+        except Exception as e:
+            logger.error(f"创建内容段落失败: {e}")
+            raise DatabaseError(f"创建内容段落失败: {e}")
 
-        async with self.pg_pool.acquire() as conn:
-            await conn.execute(
-                "UPDATE novels SET settings = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2",
-                json.dumps(settings), self.novel_id
+    async def get_content_segments(
+        self,
+        batch_id: Union[str, UUID],
+        segment_type: Optional[SegmentType] = None,
+        status: Optional[SegmentStatus] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[ContentSegment]:
+        """获取内容段落列表"""
+        try:
+            return await self.pg_repo.get_content_segments_by_batch(
+                UUID(batch_id), segment_type, status, skip, limit
             )
+        except Exception as e:
+            logger.error(f"获取内容段落失败: {e}")
+            raise DatabaseError(f"获取内容段落失败: {e}")
 
-        # 清除缓存
-        self._novel_cache = None
-        return True
+    async def update_content_segment(
+        self,
+        segment_id: Union[str, UUID],
+        update_data: ContentSegmentUpdate
+    ) -> Optional[ContentSegment]:
+        """更新内容段落"""
+        try:
+            segment = await self.pg_repo.update_content_segment(UUID(segment_id), update_data)
+            if segment:
+                logger.info(f"更新内容段落: {segment.title or '无标题'} (ID: {segment.id})")
+            return segment
+        except Exception as e:
+            logger.error(f"更新内容段落失败: {e}")
+            raise DatabaseError(f"更新内容段落失败: {e}")
 
-    # =========================================================================
-    # 实体管理 API
-    # =========================================================================
+    async def delete_content_segment(self, segment_id: Union[str, UUID]) -> bool:
+        """删除内容段落"""
+        try:
+            success = await self.pg_repo.delete_content_segment(UUID(segment_id))
+            if success:
+                logger.info(f"删除内容段落: {segment_id}")
+            return success
+        except Exception as e:
+            logger.error(f"删除内容段落失败: {e}")
+            raise DatabaseError(f"删除内容段落失败: {e}")
 
-    async def create_entity(self, request: CreateEntityRequest) -> int:
-        """创建实体"""
-        await self._validate_access("write")
+    # =============================================================================
+    # 世界观数据操作
+    # =============================================================================
 
-        if request.novel_id != self.novel_id:
-            raise DatabaseError("请求的小说ID与当前管理器不匹配")
+    async def create_domain(self, domain_data: DomainCreate) -> Domain:
+        """创建域"""
+        try:
+            domain = await self.pg_repo.create_domain(domain_data)
+            logger.info(f"创建域: {domain.name} (ID: {domain.id})")
+            return domain
+        except Exception as e:
+            logger.error(f"创建域失败: {e}")
+            raise DatabaseError(f"创建域失败: {e}")
 
-        async with self.pg_pool.acquire() as conn:
-            async with conn.transaction():
-                # 获取实体类型
-                entity_type_row = await conn.fetchrow(
-                    "SELECT * FROM entity_types WHERE novel_id = $1 AND name = $2 AND is_active = true",
-                    self.novel_id, request.entity_type_name
-                )
-                if not entity_type_row:
-                    raise DatabaseError(f"实体类型 '{request.entity_type_name}' 不存在")
+    async def get_domains(self) -> List[Domain]:
+        """获取域列表"""
+        try:
+            return await self.pg_repo.get_domains_by_novel(UUID(self.novel_id))
+        except Exception as e:
+            logger.error(f"获取域列表失败: {e}")
+            raise DatabaseError(f"获取域列表失败: {e}")
 
-                entity_type = EntityType(**dict(entity_type_row))
+    async def create_law_chain(self, law_chain_data: LawChainCreate) -> LawChain:
+        """创建法则链"""
+        try:
+            law_chain = await self.pg_repo.create_law_chain(law_chain_data)
+            logger.info(f"创建法则链: {law_chain.name} (ID: {law_chain.id})")
+            return law_chain
+        except Exception as e:
+            logger.error(f"创建法则链失败: {e}")
+            raise DatabaseError(f"创建法则链失败: {e}")
 
-                # 验证属性
-                validated_attributes = await self._validate_entity_attributes(
-                    request.attributes, entity_type
-                )
+    async def get_law_chains(self) -> List[LawChain]:
+        """获取法则链列表"""
+        try:
+            return await self.pg_repo.get_law_chains_by_novel(UUID(self.novel_id))
+        except Exception as e:
+            logger.error(f"获取法则链列表失败: {e}")
+            raise DatabaseError(f"获取法则链列表失败: {e}")
 
-                # 创建实体
-                entity_id = await conn.fetchval(
-                    """INSERT INTO entities
-                       (novel_id, entity_type_id, name, code, attributes, tags, priority)
-                       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id""",
-                    self.novel_id, entity_type.id, request.name, request.code,
-                    json.dumps(validated_attributes), request.tags, request.priority
-                )
+    # =============================================================================
+    # MongoDB数据操作
+    # =============================================================================
 
-                # 创建 MongoDB 档案
-                if request.profile:
-                    await self._create_entity_profile(entity_id, request.entity_type_name, request.profile)
+    async def create_character(self, character_data: CharacterCreate) -> Character:
+        """创建角色"""
+        try:
+            character = await self.mongo_repo.create_character(character_data)
+            logger.info(f"创建角色: {character.name} (ID: {character.id})")
+            return character
+        except Exception as e:
+            logger.error(f"创建角色失败: {e}")
+            raise DatabaseError(f"创建角色失败: {e}")
 
-        logger.info(f"创建实体成功: novel_id={self.novel_id}, entity_id={entity_id}, name={request.name}")
-        return entity_id
-
-    async def get_entity(self, entity_id: int, include_profile: bool = True) -> Optional[EntityWithProfile]:
-        """获取实体详情"""
-        await self._validate_access()
-
-        async with self.pg_pool.acquire() as conn:
-            # 获取实体基础信息
-            entity_row = await conn.fetchrow(
-                """SELECT e.*, et.name as entity_type_name
-                   FROM entities e
-                   JOIN entity_types et ON e.entity_type_id = et.id
-                   WHERE e.novel_id = $1 AND e.id = $2 AND e.status != 'deleted'""",
-                self.novel_id, entity_id
+    async def get_characters(
+        self,
+        character_type: Optional[str] = None,
+        status: Optional[str] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[Character]:
+        """获取角色列表"""
+        try:
+            return await self.mongo_repo.get_characters_by_novel(
+                self.novel_id, character_type, status, skip, limit
             )
+        except Exception as e:
+            logger.error(f"获取角色列表失败: {e}")
+            raise DatabaseError(f"获取角色列表失败: {e}")
 
-            if not entity_row:
-                return None
+    async def create_location(self, location_data: LocationCreate) -> Location:
+        """创建地点"""
+        try:
+            location = await self.mongo_repo.create_location(location_data)
+            logger.info(f"创建地点: {location.name} (ID: {location.id})")
+            return location
+        except Exception as e:
+            logger.error(f"创建地点失败: {e}")
+            raise DatabaseError(f"创建地点失败: {e}")
 
-            entity_dict = dict(entity_row)
-            entity_type_name = entity_dict.pop('entity_type_name')
-            entity = EntityWithProfile(**entity_dict)
-            entity.entity_type_name = entity_type_name
-
-            # 获取分类信息
-            categories_rows = await conn.fetch(
-                """SELECT c.* FROM categories c
-                   JOIN entity_categories ec ON c.id = ec.category_id
-                   WHERE ec.novel_id = $1 AND ec.entity_id = $2
-                   AND (ec.valid_to IS NULL OR ec.valid_to > CURRENT_TIMESTAMP)""",
-                self.novel_id, entity_id
+    async def get_locations(
+        self,
+        location_type: Optional[str] = None,
+        domain_affiliation: Optional[str] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[Location]:
+        """获取地点列表"""
+        try:
+            return await self.mongo_repo.get_locations_by_novel(
+                self.novel_id, location_type, domain_affiliation, skip, limit
             )
-            entity.categories = [Category(**dict(row)) for row in categories_rows]
+        except Exception as e:
+            logger.error(f"获取地点列表失败: {e}")
+            raise DatabaseError(f"获取地点列表失败: {e}")
 
-            # 获取关系信息
-            relationships_rows = await conn.fetch(
-                """SELECT * FROM entity_relationships
-                   WHERE novel_id = $1 AND (source_entity_id = $2 OR target_entity_id = $2)
-                   AND status = 'active'
-                   AND (valid_to IS NULL OR valid_to > CURRENT_TIMESTAMP)""",
-                self.novel_id, entity_id
-            )
-            entity.relationships = [EntityRelationship(**dict(row)) for row in relationships_rows]
+    # =============================================================================
+    # 搜索和统计操作
+    # =============================================================================
 
-        # 获取 MongoDB 档案
-        if include_profile:
-            profile_doc = await self.mongo_db.entity_profiles.find_one({
-                "novel_id": self.novel_id,
-                "entity_id": entity_id
-            })
-            if profile_doc:
-                entity.profile = profile_doc.get('profile', {})
-
-        return entity
-
-    async def update_entity(self, entity_id: int, request: UpdateEntityRequest) -> bool:
-        """更新实体"""
-        await self._validate_access("write")
-
-        async with self.pg_pool.acquire() as conn:
-            async with conn.transaction():
-                # 检查实体是否存在
-                existing = await conn.fetchrow(
-                    "SELECT * FROM entities WHERE novel_id = $1 AND id = $2",
-                    self.novel_id, entity_id
-                )
-                if not existing:
-                    raise DatabaseError(f"实体 {entity_id} 不存在")
-
-                # 构建更新字段
-                update_fields = []
-                update_values = []
-                value_index = 1
-
-                if request.name is not None:
-                    update_fields.append(f"name = ${value_index}")
-                    update_values.append(request.name)
-                    value_index += 1
-
-                if request.code is not None:
-                    update_fields.append(f"code = ${value_index}")
-                    update_values.append(request.code)
-                    value_index += 1
-
-                if request.status is not None:
-                    update_fields.append(f"status = ${value_index}")
-                    update_values.append(request.status.value)
-                    value_index += 1
-
-                if request.attributes is not None:
-                    update_fields.append(f"attributes = ${value_index}")
-                    update_values.append(json.dumps(request.attributes))
-                    value_index += 1
-
-                if request.tags is not None:
-                    update_fields.append(f"tags = ${value_index}")
-                    update_values.append(request.tags)
-                    value_index += 1
-
-                if request.priority is not None:
-                    update_fields.append(f"priority = ${value_index}")
-                    update_values.append(request.priority)
-                    value_index += 1
-
-                if update_fields:
-                    update_fields.append("updated_at = CURRENT_TIMESTAMP")
-                    update_fields.append(f"version = version + 1")
-
-                    update_values.extend([self.novel_id, entity_id])
-
-                    query = f"""UPDATE entities SET {', '.join(update_fields)}
-                               WHERE novel_id = ${value_index} AND id = ${value_index + 1}"""
-                    await conn.execute(query, *update_values)
-
-                # 更新 MongoDB 档案
-                if request.profile is not None:
-                    await self.mongo_db.entity_profiles.update_one(
-                        {"novel_id": self.novel_id, "entity_id": entity_id},
-                        {"$set": {"profile": request.profile, "metadata.last_updated": datetime.utcnow()}},
-                        upsert=True
-                    )
-
-        logger.info(f"更新实体成功: novel_id={self.novel_id}, entity_id={entity_id}")
-        return True
-
-    async def delete_entity(self, entity_id: int, soft_delete: bool = True) -> bool:
-        """删除实体"""
-        await self._validate_access("write")
-
-        async with self.pg_pool.acquire() as conn:
-            async with conn.transaction():
-                if soft_delete:
-                    # 软删除：标记为已删除
-                    await conn.execute(
-                        """UPDATE entities SET status = 'deleted', updated_at = CURRENT_TIMESTAMP
-                           WHERE novel_id = $1 AND id = $2""",
-                        self.novel_id, entity_id
-                    )
-                else:
-                    # 硬删除：完全删除记录
-                    await conn.execute(
-                        "DELETE FROM entities WHERE novel_id = $1 AND id = $2",
-                        self.novel_id, entity_id
-                    )
-
-                # 删除相关关系
-                await conn.execute(
-                    """UPDATE entity_relationships SET status = 'ended', valid_to = CURRENT_TIMESTAMP
-                       WHERE novel_id = $1 AND (source_entity_id = $2 OR target_entity_id = $2)""",
-                    self.novel_id, entity_id
-                )
-
-        # 标记 MongoDB 档案为已删除
-        await self.mongo_db.entity_profiles.update_one(
-            {"novel_id": self.novel_id, "entity_id": entity_id},
-            {"$set": {"metadata.deleted": True, "metadata.deleted_at": datetime.utcnow()}}
-        )
-
-        logger.info(f"删除实体成功: novel_id={self.novel_id}, entity_id={entity_id}, soft_delete={soft_delete}")
-        return True
-
-    async def search_entities(self, query: QueryRequest) -> PaginatedResponse:
-        """搜索实体"""
-        await self._validate_access()
-
-        if query.novel_id != self.novel_id:
-            raise DatabaseError("查询的小说ID与当前管理器不匹配")
-
-        async with self.pg_pool.acquire() as conn:
-            # 构建查询条件
-            where_conditions = ["e.novel_id = $1", "e.status != 'deleted'"]
-            query_params = [self.novel_id]
-            param_index = 2
-
-            # 添加过滤条件
-            if query.filters:
-                if 'entity_type' in query.filters:
-                    where_conditions.append(f"et.name = ${param_index}")
-                    query_params.append(query.filters['entity_type'])
-                    param_index += 1
-
-                if 'name_like' in query.filters:
-                    where_conditions.append(f"e.name ILIKE ${param_index}")
-                    query_params.append(f"%{query.filters['name_like']}%")
-                    param_index += 1
-
-                if 'tags' in query.filters:
-                    where_conditions.append(f"e.tags && ${param_index}")
-                    query_params.append(query.filters['tags'])
-                    param_index += 1
-
-                if 'priority_min' in query.filters:
-                    where_conditions.append(f"e.priority >= ${param_index}")
-                    query_params.append(query.filters['priority_min'])
-                    param_index += 1
-
-            where_clause = " AND ".join(where_conditions)
-
-            # 构建排序
-            order_clause = "e.created_at DESC"
-            if query.sort:
-                if query.sort in ['name', 'created_at', 'updated_at', 'priority']:
-                    order_clause = f"e.{query.sort} DESC"
-
-            # 查询总数
-            count_query = f"""
-                SELECT COUNT(*)
-                FROM entities e
-                JOIN entity_types et ON e.entity_type_id = et.id
-                WHERE {where_clause}
-            """
-            total = await conn.fetchval(count_query, *query_params)
-
-            # 查询数据
-            data_query = f"""
-                SELECT e.*, et.name as entity_type_name
-                FROM entities e
-                JOIN entity_types et ON e.entity_type_id = et.id
-                WHERE {where_clause}
-                ORDER BY {order_clause}
-                LIMIT ${param_index} OFFSET ${param_index + 1}
-            """
-            query_params.extend([query.limit, query.offset])
-
-            rows = await conn.fetch(data_query, *query_params)
-
-            # 转换为模型
-            entities = []
-            for row in rows:
-                entity_dict = dict(row)
-                entity_type_name = entity_dict.pop('entity_type_name')
-                entity = EntityWithProfile(**entity_dict)
-                entity.entity_type_name = entity_type_name
-                entities.append(entity)
-
-        # 计算分页信息
-        page = (query.offset // query.limit) + 1
-        total_pages = (total + query.limit - 1) // query.limit
-
-        return PaginatedResponse(
-            items=entities,
-            total=total,
-            page=page,
-            page_size=query.limit,
-            has_next=page < total_pages,
-            has_prev=page > 1
-        )
-
-    # =========================================================================
-    # 关系管理 API
-    # =========================================================================
-
-    async def create_relationship(self, source_id: int, target_id: int,
-                                relationship_type: str, **kwargs) -> int:
-        """创建实体关系"""
-        await self._validate_access("write")
-
-        async with self.pg_pool.acquire() as conn:
-            # 验证实体存在
-            source_exists = await conn.fetchval(
-                "SELECT 1 FROM entities WHERE novel_id = $1 AND id = $2 AND status != 'deleted'",
-                self.novel_id, source_id
-            )
-            target_exists = await conn.fetchval(
-                "SELECT 1 FROM entities WHERE novel_id = $1 AND id = $2 AND status != 'deleted'",
-                self.novel_id, target_id
-            )
-
-            if not source_exists or not target_exists:
-                raise DatabaseError("源实体或目标实体不存在")
-
-            # 创建关系
-            relationship_id = await conn.fetchval(
-                """INSERT INTO entity_relationships
-                   (novel_id, source_entity_id, target_entity_id, relationship_type, attributes, strength)
-                   VALUES ($1, $2, $3, $4, $5, $6) RETURNING id""",
-                self.novel_id, source_id, target_id, relationship_type,
-                json.dumps(kwargs.get('attributes', {})), kwargs.get('strength', 1)
-            )
-
-        logger.info(f"创建关系成功: {source_id} -> {target_id} ({relationship_type})")
-        return relationship_id
-
-    async def get_entity_relationships(self, entity_id: int) -> List[EntityRelationship]:
-        """获取实体的所有关系"""
-        await self._validate_access()
-
-        async with self.pg_pool.acquire() as conn:
-            rows = await conn.fetch(
-                """SELECT * FROM entity_relationships
-                   WHERE novel_id = $1 AND (source_entity_id = $2 OR target_entity_id = $2)
-                   AND status = 'active'
-                   AND (valid_to IS NULL OR valid_to > CURRENT_TIMESTAMP)
-                   ORDER BY created_at DESC""",
-                self.novel_id, entity_id
-            )
-
-        return [EntityRelationship(**dict(row)) for row in rows]
-
-    # =========================================================================
-    # 事件管理 API
-    # =========================================================================
-
-    async def create_event(self, event: Event, participants: List[int] = None) -> int:
-        """创建事件"""
-        await self._validate_access("write")
-
-        async with self.pg_pool.acquire() as conn:
-            async with conn.transaction():
-                # 创建事件
-                event_id = await conn.fetchval(
-                    """INSERT INTO events
-                       (novel_id, name, event_type, occurred_at, in_world_time, sequence_order,
-                        location_entity_id, impact_level, scope, attributes, description, status)
-                       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id""",
-                    self.novel_id, event.name, event.event_type, event.occurred_at,
-                    event.in_world_time, event.sequence_order, event.location_entity_id,
-                    event.impact_level, event.scope, json.dumps(event.attributes),
-                    event.description, event.status.value
-                )
-
-                # 添加参与者
-                if participants:
-                    for entity_id in participants:
-                        await conn.execute(
-                            """INSERT INTO event_participants (novel_id, event_id, entity_id)
-                               VALUES ($1, $2, $3)""",
-                            self.novel_id, event_id, entity_id
-                        )
-
-        logger.info(f"创建事件成功: novel_id={self.novel_id}, event_id={event_id}, name={event.name}")
-        return event_id
-
-    async def get_story_timeline(self, limit: int = 100) -> List[Event]:
-        """获取故事时间线"""
-        await self._validate_access()
-
-        async with self.pg_pool.acquire() as conn:
-            rows = await conn.fetch(
-                """SELECT * FROM events
-                   WHERE novel_id = $1 AND status != 'cancelled'
-                   ORDER BY sequence_order ASC, occurred_at ASC
-                   LIMIT $2""",
-                self.novel_id, limit
-            )
-
-        return [Event(**dict(row)) for row in rows]
-
-    # =========================================================================
-    # 辅助方法
-    # =========================================================================
-
-    async def _validate_entity_attributes(self, attributes: Dict[str, Any],
-                                         entity_type: EntityType) -> Dict[str, Any]:
-        """验证实体属性"""
-        schema = entity_type.schema_definition
-        validation_rules = entity_type.validation_rules
-
-        # 这里可以添加复杂的验证逻辑
-        # 简单验证示例
-        validated = attributes.copy()
-
-        # 检查必需字段
-        required_fields = schema.get('required_fields', [])
-        for field in required_fields:
-            if field not in attributes:
-                raise DatabaseError(f"缺少必需字段: {field}")
-
-        return validated
-
-    async def _create_entity_profile(self, entity_id: int, entity_type: str, profile: Dict[str, Any]):
-        """创建实体档案"""
-        novel = await self._get_novel_info()
-
-        profile_doc = {
-            "novel_id": self.novel_id,
-            "novel_code": novel.code,
-            "entity_id": entity_id,
-            "entity_type": entity_type,
-            "profile": profile,
-            "metadata": {
-                "created_at": datetime.utcnow(),
-                "version": "1.0",
-                "tags": []
+    async def search_content(
+        self,
+        query: str,
+        content_types: Optional[List[str]] = None
+    ) -> Dict[str, List[Any]]:
+        """全文搜索内容"""
+        try:
+            results = {
+                "segments": [],
+                "characters": [],
+                "locations": [],
+                "knowledge": []
             }
-        }
 
-        await self.mongo_db.entity_profiles.insert_one(profile_doc)
+            # 搜索PostgreSQL中的内容段落
+            if not content_types or "segments" in content_types:
+                results["segments"] = await self.pg_repo.search_content_segments(
+                    UUID(self.novel_id), query
+                )
+
+            # 搜索MongoDB中的各类内容
+            if not content_types or "characters" in content_types:
+                results["characters"] = await self.mongo_repo.search_characters(
+                    self.novel_id, query
+                )
+
+            if not content_types or "locations" in content_types:
+                results["locations"] = await self.mongo_repo.search_locations(
+                    self.novel_id, query
+                )
+
+            if not content_types or "knowledge" in content_types:
+                results["knowledge"] = await self.mongo_repo.search_knowledge_base(
+                    self.novel_id, query
+                )
+
+            return results
+
+        except Exception as e:
+            logger.error(f"搜索内容失败: {e}")
+            raise DatabaseError(f"搜索内容失败: {e}")
+
+    async def get_novel_statistics(self) -> Dict[str, Any]:
+        """获取小说统计信息"""
+        try:
+            novel = await self.pg_repo.get_novel_by_id(UUID(self.novel_id))
+            if not novel:
+                raise DatabaseError(f"小说不存在: {self.novel_id}")
+
+            # PostgreSQL统计
+            batch_stats = await self.pg_repo.get_batch_statistics(UUID(self.novel_id))
+
+            # MongoDB统计
+            character_count = await self.mongo_repo.count_characters(self.novel_id)
+            location_count = await self.mongo_repo.count_locations(self.novel_id)
+
+            return {
+                "novel_info": {
+                    "id": str(novel.id),
+                    "name": novel.name,
+                    "title": novel.title,
+                    "status": novel.status,
+                    "total_word_count": novel.word_count,
+                    "chapter_count": novel.chapter_count
+                },
+                "content_statistics": {
+                    "total_batches": batch_stats.get("total_batches", 0),
+                    "completed_batches": batch_stats.get("completed_batches", 0),
+                    "total_segments": batch_stats.get("total_segments", 0),
+                    "total_words": batch_stats.get("total_words", 0)
+                },
+                "world_statistics": {
+                    "character_count": character_count,
+                    "location_count": location_count
+                },
+                "last_updated": datetime.now().isoformat()
+            }
+
+        except Exception as e:
+            logger.error(f"获取小说统计失败: {e}")
+            raise DatabaseError(f"获取小说统计失败: {e}")
 
 
 class GlobalDataManager:
-    """全局数据管理器 - 提供跨小说的数据操作"""
+    """全局数据管理器 - 跨项目的数据操作"""
 
-    def __init__(self, pg_pool: asyncpg.Pool, mongo_db: AsyncIOMotorDatabase):
-        self.pg_pool = pg_pool
-        self.mongo_db = mongo_db
+    def __init__(self, db_manager: DatabaseManager):
+        self.db_manager = db_manager
+        self.pg_repo = PostgreSQLRepository(db_manager.postgres)
+        self.mongo_repo = MongoDBRepository(db_manager.mongodb)
 
-    async def create_novel(self, novel: Novel, template_code: str = None) -> int:
-        """创建新小说"""
-        async with self.pg_pool.acquire() as conn:
-            async with conn.transaction():
-                # 创建小说记录
-                novel_id = await conn.fetchval(
-                    """INSERT INTO novels (title, code, author, genre, world_type, settings)
-                       VALUES ($1, $2, $3, $4, $5, $6) RETURNING id""",
-                    novel.title, novel.code, novel.author, novel.genre,
-                    novel.world_type, json.dumps(novel.settings)
-                )
+    # =============================================================================
+    # 项目管理操作
+    # =============================================================================
 
-                # 应用模板
-                if template_code:
-                    await self._apply_template(conn, novel_id, template_code)
+    async def create_project(self, project_data: ProjectCreate) -> Project:
+        """创建项目"""
+        try:
+            # 检查项目名称是否已存在
+            existing_project = await self.pg_repo.get_project_by_name(project_data.name)
+            if existing_project:
+                raise DatabaseError(f"项目名称 '{project_data.name}' 已存在")
 
-        logger.info(f"创建小说成功: novel_id={novel_id}, title={novel.title}")
-        return novel_id
+            project = await self.pg_repo.create_project(project_data)
+            logger.info(f"创建项目: {project.name} (ID: {project.id})")
+            return project
 
-    async def get_novel_list(self, status: str = None) -> List[Novel]:
-        """获取小说列表"""
-        async with self.pg_pool.acquire() as conn:
-            query = "SELECT * FROM novels"
-            params = []
+        except Exception as e:
+            logger.error(f"创建项目失败: {e}")
+            raise DatabaseError(f"创建项目失败: {e}")
 
-            if status:
-                query += " WHERE status = $1"
-                params.append(status)
+    async def get_projects(
+        self,
+        status: Optional[ProjectStatus] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[Project]:
+        """获取项目列表"""
+        try:
+            return await self.pg_repo.get_projects(status, skip, limit)
+        except Exception as e:
+            logger.error(f"获取项目列表失败: {e}")
+            raise DatabaseError(f"获取项目列表失败: {e}")
 
-            query += " ORDER BY created_at DESC"
+    async def create_novel(self, novel_data: NovelCreate) -> Novel:
+        """创建小说"""
+        try:
+            # 验证项目ID
+            project = await self.pg_repo.get_project_by_id(novel_data.project_id)
+            if not project:
+                raise DatabaseError(f"项目不存在: {novel_data.project_id}")
 
-            rows = await conn.fetch(query, *params)
-
-        return [Novel(**dict(row)) for row in rows]
-
-    async def get_novel_manager(self, novel_id: int) -> NovelDataManager:
-        """获取小说数据管理器"""
-        return NovelDataManager(novel_id, self.pg_pool, self.mongo_db)
-
-    async def _apply_template(self, conn, novel_id: int, template_code: str):
-        """应用小说模板"""
-        # 从 MongoDB 获取模板
-        template = await self.mongo_db.novel_templates.find_one({
-            "template_code": template_code
-        })
-
-        if not template:
-            raise DatabaseError(f"模板 {template_code} 不存在")
-
-        # 创建默认实体类型
-        entity_templates = template.get('entity_templates', {})
-        for entity_type_name, config in entity_templates.items():
-            await conn.execute(
-                """INSERT INTO entity_types (novel_id, name, display_name, schema_definition)
-                   VALUES ($1, $2, $3, $4)""",
-                novel_id, entity_type_name,
-                config.get('display_name', entity_type_name.title()),
-                json.dumps(config)
+            # 检查小说名称在项目内是否已存在
+            existing_novel = await self.pg_repo.get_novel_by_name(
+                novel_data.project_id, novel_data.name
             )
+            if existing_novel:
+                raise DatabaseError(f"小说名称 '{novel_data.name}' 在项目内已存在")
 
-        logger.info(f"应用模板成功: novel_id={novel_id}, template={template_code}")
+            novel = await self.pg_repo.create_novel(novel_data)
+            logger.info(f"创建小说: {novel.name} (ID: {novel.id})")
+            return novel
 
+        except Exception as e:
+            logger.error(f"创建小说失败: {e}")
+            raise DatabaseError(f"创建小说失败: {e}")
 
-# =============================================================================
-# 数据库连接管理
-# =============================================================================
+    async def get_novels_by_project(
+        self,
+        project_id: Union[str, UUID],
+        status: Optional[NovelStatus] = None
+    ) -> List[Novel]:
+        """获取项目下的小说列表"""
+        try:
+            return await self.pg_repo.get_novels_by_project(project_id, status)
+        except Exception as e:
+            logger.error(f"获取小说列表失败: {e}")
+            raise DatabaseError(f"获取小说列表失败: {e}")
 
-class DatabaseManager:
-    """数据库连接管理器"""
-
-    def __init__(self):
-        self.pg_pool: Optional[asyncpg.Pool] = None
-        self.mongo_db: Optional[AsyncIOMotorDatabase] = None
-        self._initialized = False
-
-    async def initialize(self):
-        """初始化数据库连接"""
-        if self._initialized:
-            return
-
-        # 初始化 PostgreSQL 连接池
-        self.pg_pool = await asyncpg.create_pool(
-            host=config.postgres_host,
-            port=config.postgres_port,
-            database=config.postgres_db,
-            user=config.postgres_user,
-            password=config.postgres_password,
-            min_size=5,
-            max_size=20,
-            command_timeout=30
-        )
-
-        # 初始化 MongoDB 连接
-        from motor.motor_asyncio import AsyncIOMotorClient
-        mongo_client = AsyncIOMotorClient(config.mongodb_url)
-        self.mongo_db = mongo_client[config.mongodb_db]
-
-        # 测试连接
-        await self.pg_pool.fetchval("SELECT 1")
-        await mongo_client.admin.command('ping')
-
-        self._initialized = True
-        logger.info("数据库连接初始化成功")
-
-    async def close(self):
-        """关闭数据库连接"""
-        if self.pg_pool:
-            await self.pg_pool.close()
-        # MongoDB 客户端会自动管理连接
-
-        self._initialized = False
-        logger.info("数据库连接已关闭")
-
-    def get_global_manager(self) -> GlobalDataManager:
-        """获取全局数据管理器"""
-        if not self._initialized:
-            raise DatabaseError("数据库未初始化")
-        return GlobalDataManager(self.pg_pool, self.mongo_db)
-
-    def get_novel_manager(self, novel_id: int) -> NovelDataManager:
+    def get_novel_manager(self, novel_id: Union[str, UUID]) -> NovelDataManager:
         """获取小说数据管理器"""
-        if not self._initialized:
-            raise DatabaseError("数据库未初始化")
-        return NovelDataManager(novel_id, self.pg_pool, self.mongo_db)
+        return NovelDataManager(novel_id, self.db_manager)
 
 
 # 全局数据库管理器实例
-db_manager = DatabaseManager()
+_global_manager: Optional[GlobalDataManager] = None
+_database_manager: Optional[DatabaseManager] = None
 
 
-# =============================================================================
-# 便捷函数
-# =============================================================================
+async def init_database() -> None:
+    """初始化数据库连接"""
+    global _database_manager, _global_manager
 
-async def init_database():
-    """初始化数据库"""
-    await db_manager.initialize()
+    try:
+        if _database_manager is None:
+            _database_manager = await get_database_manager()
+            _global_manager = GlobalDataManager(_database_manager)
+            logger.info("数据库初始化完成")
+        else:
+            logger.info("数据库已经初始化")
+    except Exception as e:
+        logger.error(f"数据库初始化失败: {e}")
+        raise DatabaseError(f"数据库初始化失败: {e}")
 
 
-async def close_database():
-    """关闭数据库"""
-    await db_manager.close()
+async def close_database() -> None:
+    """关闭数据库连接"""
+    global _database_manager, _global_manager
+
+    try:
+        if _database_manager:
+            await close_database_manager()
+            _database_manager = None
+            _global_manager = None
+            logger.info("数据库连接已关闭")
+    except Exception as e:
+        logger.error(f"关闭数据库失败: {e}")
 
 
 def get_global_manager() -> GlobalDataManager:
     """获取全局数据管理器"""
-    return db_manager.get_global_manager()
+    if _global_manager is None:
+        raise DatabaseError("数据库未初始化，请先调用 init_database()")
+    return _global_manager
 
 
-def get_novel_manager(novel_id: int) -> NovelDataManager:
+def get_novel_manager(novel_id: Union[str, UUID]) -> NovelDataManager:
     """获取小说数据管理器"""
-    return db_manager.get_novel_manager(novel_id)
+    global_manager = get_global_manager()
+    return global_manager.get_novel_manager(novel_id)
+
+
+async def get_database_health() -> Dict[str, Any]:
+    """获取数据库健康状态"""
+    if _database_manager:
+        return await _database_manager.health_check()
+    else:
+        return {
+            "postgresql": {"connected": False, "error": "数据库未初始化"},
+            "mongodb": {"connected": False, "error": "数据库未初始化"}
+        }

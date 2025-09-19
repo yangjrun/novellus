@@ -1,0 +1,1319 @@
+{
+  "报告元数据": {
+    "生成时间": "2025-09-19T14:25:37.303543",
+    "分析器版本": "智能故事生成器 v1.0",
+    "原始钩子数量": 18,
+    "分析钩子数量": 18,
+    "生成钩子数量": 12
+  },
+  "原始剧情钩子分析": {
+    "整体统计": {
+      "平均综合评分": 49.93263888888888,
+      "最高评分": 54.1125,
+      "最低评分": 45.0625,
+      "评分标准差": 2.6263149814796485,
+      "S级钩子数": 0,
+      "A级钩子数": 0,
+      "B级钩子数": 0,
+      "C级钩子数": 0,
+      "D级钩子数": 18
+    },
+    "质量分布": {
+      "戏剧张力": {
+        "平均分": 6.150000000000001,
+        "最高分": 8.8,
+        "最低分": 4.5
+      },
+      "情感冲击": {
+        "平均分": 4.388888888888889,
+        "最高分": 6.0,
+        "最低分": 4.0
+      },
+      "可扩展性": {
+        "平均分": 6.266666666666667,
+        "最高分": 7.0,
+        "最低分": 6.0
+      },
+      "一致性": {
+        "平均分": 5.805555555555555,
+        "最高分": 7.5,
+        "最低分": 5.0
+      },
+      "读者吸引力": {
+        "平均分": 3.4000000000000004,
+        "最高分": 5.4,
+        "最低分": 3.0
+      }
+    },
+    "类型分析": {
+      "权力斗争": {
+        "数量": 2,
+        "平均评分": 52.44375,
+        "最佳表现": 52.95,
+        "改进空间": 51.9375
+      },
+      "身份认同": {
+        "数量": 3,
+        "平均评分": 47.604166666666664,
+        "最佳表现": 49.5,
+        "改进空间": 45.64583333333333
+      },
+      "综合冲突": {
+        "数量": 9,
+        "平均评分": 50.99791666666667,
+        "最佳表现": 54.1125,
+        "改进空间": 47.0625
+      },
+      "经济冲突": {
+        "数量": 3,
+        "平均评分": 48.35833333333333,
+        "最佳表现": 52.60625,
+        "改进空间": 45.0625
+      },
+      "生存危机": {
+        "数量": 1,
+        "平均评分": 47.03125,
+        "最佳表现": 47.03125,
+        "改进空间": 47.03125
+      }
+    },
+    "详细分析结果": [
+      {
+        "id": "hook_000",
+        "original_description": "失踪的税收官引发的政治危机",
+        "conflict_pair": "人域↔天域",
+        "hook_type": "权力斗争",
+        "dramatic_tension": 7.8,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.8,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.5,
+        "branching_potential": 4.5,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 6.0,
+        "logic_coherence": 7.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 4.2,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 52.95,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "明确权力结构和利益分配，突出政治博弈的复杂性"
+        ],
+        "related_entities": [
+          "税收官",
+          "失踪的税收官引发的政治危机"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.300539"
+      },
+      {
+        "id": "hook_001",
+        "original_description": "伪造链籍证明的黑市网络",
+        "conflict_pair": "人域↔天域",
+        "hook_type": "身份认同",
+        "dramatic_tension": 5.0,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.8,
+        "branching_potential": 4.2,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 7.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 49.5,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深入探讨身份背后的文化冲突和价值观差异"
+        ],
+        "related_entities": [
+          "伪造链籍证明的黑市网络"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.300539"
+      },
+      {
+        "id": "hook_002",
+        "original_description": "征召令下的家庭悲剧",
+        "conflict_pair": "人域↔天域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 6.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 6.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.8,
+        "readability": 6.0,
+        "overall_score": 50.13333333333334,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景",
+          "强化角色的情感动机，增加道德困境和人性化冲突"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.301542"
+      },
+      {
+        "id": "hook_003",
+        "original_description": "天才学徒的神秘失踪",
+        "conflict_pair": "人域↔灵域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 4.6,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 6.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 5.4,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 51.483333333333334,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.301542"
+      },
+      {
+        "id": "hook_004",
+        "original_description": "伪造评印的器械流入市场",
+        "conflict_pair": "人域↔灵域",
+        "hook_type": "身份认同",
+        "dramatic_tension": 5.0,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 4.2,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 6.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 47.666666666666664,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [
+          "伪造评印的器械流入市场"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.301542"
+      },
+      {
+        "id": "hook_005",
+        "original_description": "器械师与评印官的权力斗争",
+        "conflict_pair": "人域↔灵域",
+        "hook_type": "权力斗争",
+        "dramatic_tension": 7.199999999999999,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 7.0,
+        "branching_potential": 4.5,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.2,
+        "lore_consistency": 7.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 51.9375,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "明确权力结构和利益分配，突出政治博弈的复杂性"
+        ],
+        "related_entities": [
+          "器械师",
+          "评印官",
+          "器械师与评印官的权力斗争"
+        ],
+        "conflict_elements": [
+          "权力"
+        ],
+        "created_at": "2025-09-19T14:25:37.301542"
+      },
+      {
+        "id": "hook_006",
+        "original_description": "神秘货物引发的跨域追杀",
+        "conflict_pair": "人域↔荒域",
+        "hook_type": "经济冲突",
+        "dramatic_tension": 5.8500000000000005,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.8,
+        "stakes_magnitude": 10.0,
+        "expandability": 6.0,
+        "branching_potential": 4.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 5.5,
+        "logic_coherence": 7.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 4.2,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 52.60625,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景",
+          "完善经济系统的运作机制，体现经济与政治的交互影响"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_007",
+        "original_description": "边防军官的道德困境",
+        "conflict_pair": "人域↔荒域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 6.6000000000000005,
+        "emotional_impact": 5.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 7.0,
+        "branching_potential": 6.0,
+        "character_growth_space": 5.6,
+        "theme_depth": 4.5,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 5.8,
+        "readability": 6.0,
+        "overall_score": 52.1125,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "深化世界观细节，增加特定域的文化特色和制度背景",
+          "强化角色的情感动机，增加道德困境和人性化冲突"
+        ],
+        "related_entities": [
+          "边防军官",
+          "边防军官的道德困境"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_008",
+        "original_description": "走私路线上的生死逃亡",
+        "conflict_pair": "人域↔荒域",
+        "hook_type": "经济冲突",
+        "dramatic_tension": 5.8500000000000005,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 4.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 47.40625,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_009",
+        "original_description": "禁忌技术的评印争议",
+        "conflict_pair": "天域↔灵域",
+        "hook_type": "身份认同",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 4.2,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 5.5,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 45.64583333333333,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_010",
+        "original_description": "监管官的腐败丑闻",
+        "conflict_pair": "天域↔灵域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.5,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 47.0625,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "深化世界观细节，增加特定域的文化特色和制度背景",
+          "强化角色的情感动机，增加道德困境和人性化冲突"
+        ],
+        "related_entities": [
+          "监管官",
+          "监管官的腐败丑闻"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_011",
+        "original_description": "链法解释引发的宗教危机",
+        "conflict_pair": "天域↔灵域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 7.15,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 6.5,
+        "logic_coherence": 7.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 52.11458333333333,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网"
+        ],
+        "related_entities": [],
+        "conflict_elements": [
+          "危机"
+        ],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_012",
+        "original_description": "断链罪犯的荒域复仇",
+        "conflict_pair": "天域↔荒域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 6.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 8.5,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 7.5,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 51.89583333333333,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "强化角色的情感动机，增加道德困境和人性化冲突"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_013",
+        "original_description": "矿脉深处的古老秘密",
+        "conflict_pair": "天域↔荒域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.8,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 6.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 5.0,
+        "curiosity_hook": 4.2,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 49.78333333333333,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_014",
+        "original_description": "军镇围困战的绝望与希望",
+        "conflict_pair": "天域↔荒域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 8.8,
+        "emotional_impact": 6.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 7.5,
+        "expandability": 6.5,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.8,
+        "readability": 8.0,
+        "overall_score": 54.1125,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [
+          "军镇围困战的绝望与希望"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_015",
+        "original_description": "传说中的究极器械现世",
+        "conflict_pair": "灵域↔荒域",
+        "hook_type": "综合冲突",
+        "dramatic_tension": 5.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 5.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 4.5,
+        "lore_consistency": 5.5,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 4.2,
+        "relatability": 4.0,
+        "readability": 8.0,
+        "overall_score": 50.28333333333333,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [
+          "传说中的究极器械现世"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_016",
+        "original_description": "矿料走私背后的阴谋",
+        "conflict_pair": "灵域↔荒域",
+        "hook_type": "经济冲突",
+        "dramatic_tension": 4.5,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.8,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.0,
+        "branching_potential": 4.0,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 45.0625,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "戏剧张力不足，冲突强度偏低",
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "增加更高风险的冲突要素，提升危机感和紧迫性",
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景"
+        ],
+        "related_entities": [],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      },
+      {
+        "id": "hook_017",
+        "original_description": "遗械猎人的生死冒险",
+        "conflict_pair": "灵域↔荒域",
+        "hook_type": "生存危机",
+        "dramatic_tension": 8.450000000000001,
+        "emotional_impact": 4.0,
+        "surprise_factor": 3.0,
+        "stakes_magnitude": 6.0,
+        "expandability": 6.5,
+        "branching_potential": 3.5,
+        "character_growth_space": 4.0,
+        "theme_depth": 3.0,
+        "lore_consistency": 5.0,
+        "logic_coherence": 6.0,
+        "domain_authenticity": 4.0,
+        "curiosity_hook": 3.0,
+        "relatability": 4.0,
+        "readability": 6.0,
+        "overall_score": 47.03125,
+        "quality_tier": "D",
+        "strengths": [
+          "具备基础的故事要素，有发展空间"
+        ],
+        "weaknesses": [
+          "故事发展潜力有限，扩展性不足",
+          "世界观一致性需要加强，设定细节不够",
+          "读者吸引力偏弱，情感共鸣度不够"
+        ],
+        "improvement_suggestions": [
+          "添加更多关联角色和势力，创造更复杂的利益关系网",
+          "深化世界观细节，增加特定域的文化特色和制度背景",
+          "强化角色的情感动机，增加道德困境和人性化冲突"
+        ],
+        "related_entities": [
+          "遗械猎人"
+        ],
+        "conflict_elements": [],
+        "created_at": "2025-09-19T14:25:37.302542"
+      }
+    ]
+  },
+  "AI生成剧情钩子": {
+    "生成策略": [
+      "中心性分析",
+      "社群边界",
+      "网络路径",
+      "结构洞"
+    ],
+    "生成结果": [
+      {
+        "id": "generated_centrality_detailed_37",
+        "element_type": "plot_hook",
+        "title": "评印官的抉择时刻",
+        "description": "身处权力网络中心的评印官面临前所未有的选择，其决定将影响整个利益网络的平衡",
+        "based_on_entities": [
+          "detailed_37"
+        ],
+        "conflict_pattern": "centrality_based",
+        "complexity_level": 10,
+        "originality_score": 6.634679384317996,
+        "coherence_score": 7.7391219111422815,
+        "dramatic_potential": 6.538351012013569,
+        "network_position": {
+          "centrality_rank": 1,
+          "connection_count": 64
+        },
+        "influence_scope": [
+          "人域域",
+          "灵域域"
+        ],
+        "trigger_conditions": [
+          "评印官状态变化",
+          "外部压力增加",
+          "利益分配失衡"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_centrality_detailed_59",
+        "element_type": "plot_hook",
+        "title": "流民组织的抉择时刻",
+        "description": "身处权力网络中心的流民组织面临前所未有的选择，其决定将影响整个利益网络的平衡",
+        "based_on_entities": [
+          "detailed_59"
+        ],
+        "conflict_pattern": "centrality_based",
+        "complexity_level": 10,
+        "originality_score": 7.300271730710103,
+        "coherence_score": 7.834361626575739,
+        "dramatic_potential": 8.145327856456127,
+        "network_position": {
+          "centrality_rank": 1,
+          "connection_count": 64
+        },
+        "influence_scope": [
+          "人域域",
+          "荒域域"
+        ],
+        "trigger_conditions": [
+          "流民组织状态变化",
+          "外部压力增加",
+          "利益分配失衡"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_centrality_detailed_36",
+        "element_type": "plot_hook",
+        "title": "器械师的抉择时刻",
+        "description": "身处权力网络中心的器械师面临前所未有的选择，其决定将影响整个利益网络的平衡",
+        "based_on_entities": [
+          "detailed_36"
+        ],
+        "conflict_pattern": "centrality_based",
+        "complexity_level": 10,
+        "originality_score": 6.013463484953544,
+        "coherence_score": 7.8137847967648,
+        "dramatic_potential": 7.514597150640924,
+        "network_position": {
+          "centrality_rank": 1,
+          "connection_count": 63
+        },
+        "influence_scope": [
+          "人域域",
+          "灵域域"
+        ],
+        "trigger_conditions": [
+          "器械师状态变化",
+          "外部压力增加",
+          "利益分配失衡"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_centrality_detailed_56",
+        "element_type": "plot_hook",
+        "title": "边防军官的抉择时刻",
+        "description": "身处权力网络中心的边防军官面临前所未有的选择，其决定将影响整个利益网络的平衡",
+        "based_on_entities": [
+          "detailed_56"
+        ],
+        "conflict_pattern": "centrality_based",
+        "complexity_level": 10,
+        "originality_score": 6.5966486169728835,
+        "coherence_score": 8.41955296141622,
+        "dramatic_potential": 7.560140312537917,
+        "network_position": {
+          "centrality_rank": 1,
+          "connection_count": 63
+        },
+        "influence_scope": [
+          "人域域",
+          "荒域域"
+        ],
+        "trigger_conditions": [
+          "边防军官状态变化",
+          "外部压力增加",
+          "利益分配失衡"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_centrality_detailed_58",
+        "element_type": "plot_hook",
+        "title": "边境商人的抉择时刻",
+        "description": "身处权力网络中心的边境商人面临前所未有的选择，其决定将影响整个利益网络的平衡",
+        "based_on_entities": [
+          "detailed_58"
+        ],
+        "conflict_pattern": "centrality_based",
+        "complexity_level": 10,
+        "originality_score": 6.848499741097408,
+        "coherence_score": 8.038167599188819,
+        "dramatic_potential": 7.86973858502106,
+        "network_position": {
+          "centrality_rank": 1,
+          "connection_count": 63
+        },
+        "influence_scope": [
+          "人域域",
+          "荒域域"
+        ],
+        "trigger_conditions": [
+          "边境商人状态变化",
+          "外部压力增加",
+          "利益分配失衡"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_boundary_0",
+        "element_type": "plot_hook",
+        "title": "人域与天域的边界冲突",
+        "description": "失踪的税收官引发的政治危机与失踪的税收官引发的政治危机的对立关系升级，成为人域和天域之间紧张关系的导火索",
+        "based_on_entities": [
+          "hook_entity_0",
+          "hook_entity_0"
+        ],
+        "conflict_pattern": "boundary_conflict",
+        "complexity_level": 8,
+        "originality_score": 7.751352724747617,
+        "coherence_score": 8.48366595068894,
+        "dramatic_potential": 7.957469461381815,
+        "network_position": {
+          "type": "cross_community",
+          "domains": [
+            "人域",
+            "天域"
+          ]
+        },
+        "influence_scope": [
+          "人域",
+          "天域"
+        ],
+        "trigger_conditions": [
+          "跨域关系紧张",
+          "边界事件",
+          "政策变化"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_boundary_1",
+        "element_type": "plot_hook",
+        "title": "人域与天域的边界冲突",
+        "description": "失踪的税收官引发的政治危机与伪造链籍证明的黑市网络的对立关系升级，成为人域和天域之间紧张关系的导火索",
+        "based_on_entities": [
+          "hook_entity_0",
+          "hook_entity_1"
+        ],
+        "conflict_pattern": "boundary_conflict",
+        "complexity_level": 8,
+        "originality_score": 7.949390996552188,
+        "coherence_score": 8.50116129256591,
+        "dramatic_potential": 8.041929721661425,
+        "network_position": {
+          "type": "cross_community",
+          "domains": [
+            "人域",
+            "天域"
+          ]
+        },
+        "influence_scope": [
+          "人域",
+          "天域"
+        ],
+        "trigger_conditions": [
+          "跨域关系紧张",
+          "边界事件",
+          "政策变化"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_boundary_2",
+        "element_type": "plot_hook",
+        "title": "人域与天域的边界冲突",
+        "description": "失踪的税收官引发的政治危机与监管官的腐败丑闻的对立关系升级，成为人域和天域之间紧张关系的导火索",
+        "based_on_entities": [
+          "hook_entity_0",
+          "hook_entity_5"
+        ],
+        "conflict_pattern": "boundary_conflict",
+        "complexity_level": 8,
+        "originality_score": 7.389164151534314,
+        "coherence_score": 8.785607553487504,
+        "dramatic_potential": 8.420293637707637,
+        "network_position": {
+          "type": "cross_community",
+          "domains": [
+            "人域",
+            "天域"
+          ]
+        },
+        "influence_scope": [
+          "人域",
+          "天域"
+        ],
+        "trigger_conditions": [
+          "跨域关系紧张",
+          "边界事件",
+          "政策变化"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_path_0",
+        "element_type": "plot_hook",
+        "title": "连锁效应：从粮税征收到粮税征收",
+        "description": "一个看似无关的事件从粮税征收开始，通过复杂的关系网络传播，最终影响到粮税征收，引发意想不到的后果",
+        "based_on_entities": [
+          "detailed_0",
+          "detailed_0"
+        ],
+        "conflict_pattern": "chain_reaction",
+        "complexity_level": 9,
+        "originality_score": 8.29207275956119,
+        "coherence_score": 7.000825539173857,
+        "dramatic_potential": 7.80205988809737,
+        "network_position": {
+          "type": "critical_path",
+          "path_length": 2
+        },
+        "influence_scope": [
+          "人域域",
+          "人域域"
+        ],
+        "trigger_conditions": [
+          "连锁事件",
+          "系统性变化",
+          "信息传播"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_path_1",
+        "element_type": "plot_hook",
+        "title": "连锁效应：从粮税征收到万器朝链",
+        "description": "一个看似无关的事件从粮税征收开始，通过复杂的关系网络传播，最终影响到万器朝链，引发意想不到的后果",
+        "based_on_entities": [
+          "detailed_0",
+          "detailed_10"
+        ],
+        "conflict_pattern": "chain_reaction",
+        "complexity_level": 9,
+        "originality_score": 7.730927326303296,
+        "coherence_score": 7.325245676684538,
+        "dramatic_potential": 8.182567940822079,
+        "network_position": {
+          "type": "critical_path",
+          "path_length": 2
+        },
+        "influence_scope": [
+          "人域域",
+          "天域域"
+        ],
+        "trigger_conditions": [
+          "连锁事件",
+          "系统性变化",
+          "信息传播"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_structural_hole_0",
+        "element_type": "plot_hook",
+        "title": "关键节点粮税征收的危机",
+        "description": "作为连接人域域 和 天域域的关键节点，粮税征收的任何变化都可能切断重要联系，引发系统性危机",
+        "based_on_entities": [
+          "detailed_0"
+        ],
+        "conflict_pattern": "structural_vulnerability",
+        "complexity_level": 10,
+        "originality_score": 8.616955283058536,
+        "coherence_score": 8.922463331831764,
+        "dramatic_potential": 8.653572440314772,
+        "network_position": {
+          "type": "structural_hole",
+          "bridge_domains": [
+            "人域域",
+            "天域域"
+          ]
+        },
+        "influence_scope": [
+          "人域域",
+          "天域域"
+        ],
+        "trigger_conditions": [
+          "桥接失效",
+          "中介危机",
+          "网络分裂"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      },
+      {
+        "id": "generated_structural_hole_1",
+        "element_type": "plot_hook",
+        "title": "关键节点人役征召的危机",
+        "description": "作为连接人域域 和 天域域的关键节点，人役征召的任何变化都可能切断重要联系，引发系统性危机",
+        "based_on_entities": [
+          "detailed_1"
+        ],
+        "conflict_pattern": "structural_vulnerability",
+        "complexity_level": 10,
+        "originality_score": 8.551407134316657,
+        "coherence_score": 8.979069778416513,
+        "dramatic_potential": 9.00990998741374,
+        "network_position": {
+          "type": "structural_hole",
+          "bridge_domains": [
+            "人域域",
+            "天域域"
+          ]
+        },
+        "influence_scope": [
+          "人域域",
+          "天域域"
+        ],
+        "trigger_conditions": [
+          "桥接失效",
+          "中介危机",
+          "网络分裂"
+        ],
+        "created_at": "2025-09-19T14:25:37.303543"
+      }
+    ],
+    "质量评估": {
+      "平均原创性": 7.472902777843811,
+      "平均连贯性": 8.153585668161409,
+      "平均戏剧潜力": 7.97466316617237,
+      "生成策略分布": {
+        "centrality_based": 5,
+        "boundary_conflict": 3,
+        "chain_reaction": 2,
+        "structural_vulnerability": 2
+      },
+      "复杂度分布": {
+        "10": 7,
+        "8": 3,
+        "9": 2
+      }
+    }
+  },
+  "冲突升级路径分析": {
+    "hook_000": {
+      "初始状态": "失踪的税收官引发的政治危机",
+      "升级等级数": 5,
+      "平均升级概率": 0.5199999999999999,
+      "干预点数量": 3,
+      "可能结果": 3
+    },
+    "hook_001": {
+      "初始状态": "伪造链籍证明的黑市网络",
+      "升级等级数": 5,
+      "平均升级概率": 0.5199999999999999,
+      "干预点数量": 2,
+      "可能结果": 3
+    },
+    "hook_002": {
+      "初始状态": "征召令下的家庭悲剧",
+      "升级等级数": 5,
+      "平均升级概率": 0.5199999999999999,
+      "干预点数量": 1,
+      "可能结果": 3
+    }
+  },
+  "角色动机分析": {
+    "分析角色数": 5,
+    "角色列表": [
+      "巡链官",
+      "缚司",
+      "乡祭/里正",
+      "被降等的黑籍户",
+      "税收官"
+    ],
+    "平均动机复杂度": 3,
+    "关键发现": [
+      "角色动机呈现多样化特征",
+      "冲突利益分化明显",
+      "道德倾向影响决策"
+    ]
+  },
+  "创作指导建议": {
+    "优秀案例学习": {
+      "高质量钩子特征": [
+        "暂无高质量案例可供分析"
+      ],
+      "成功要素": [
+        "强烈的戏剧冲突",
+        "深刻的主题内涵",
+        "完整的世界观背景"
+      ]
+    },
+    "改进建议": {
+      "普遍问题": [
+        "世界观一致性有待加强",
+        "读者吸引力需要提升"
+      ],
+      "提升策略": [
+        "增强角色动机的复杂性",
+        "深化冲突的道德层面",
+        "扩展故事的影响范围"
+      ]
+    },
+    "创作技巧": {
+      "冲突设计": "从个人矛盾升级到系统性危机",
+      "角色塑造": "多重动机驱动，道德困境选择",
+      "世界观运用": "充分利用域特色，体现制度冲突"
+    },
+    "情节发展建议": {
+      "开篇策略": "以小见大，从具体事件引出深层矛盾",
+      "中段推进": "多线并行，相互影响，逐步升级",
+      "高潮设计": "价值观冲突，艰难选择，意外反转",
+      "结局处理": "既解决冲突又留有余韵，体现主题"
+    }
+  },
+  "可视化数据": {
+    "质量评分雷达图": {
+      "维度": [
+        "戏剧价值",
+        "故事潜力",
+        "世界观一致性",
+        "读者吸引力"
+      ],
+      "数据": [
+        {
+          "名称": "失踪的税收官引发的政治危机...",
+          "数值": [
+            5.9,
+            5.5,
+            6.5,
+            4.1
+          ]
+        },
+        {
+          "名称": "伪造链籍证明的黑市网络...",
+          "数值": [
+            4.5,
+            5.5,
+            6.5,
+            3.5
+          ]
+        },
+        {
+          "名称": "征召令下的家庭悲剧...",
+          "数值": [
+            5.75,
+            5.5,
+            6.0,
+            3.9
+          ]
+        },
+        {
+          "名称": "天才学徒的神秘失踪...",
+          "数值": [
+            4.75,
+            5.5,
+            6.0,
+            4.7
+          ]
+        },
+        {
+          "名称": "伪造评印的器械流入市场...",
+          "数值": [
+            4.5,
+            5.1,
+            6.0,
+            3.5
+          ]
+        }
+      ]
+    },
+    "冲突类型分布": {
+      "标签": [
+        "权力斗争",
+        "身份认同",
+        "综合冲突",
+        "经济冲突",
+        "生存危机"
+      ],
+      "数值": [
+        2,
+        3,
+        9,
+        3,
+        1
+      ]
+    },
+    "质量等级分布": {
+      "标签": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "数值": [
+        0,
+        0,
+        0,
+        0,
+        18
+      ]
+    }
+  }
+}
