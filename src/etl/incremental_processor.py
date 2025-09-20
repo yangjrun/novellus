@@ -21,8 +21,8 @@ from datetime import datetime, timedelta
 import uuid
 from collections import defaultdict
 
-from ..database.connections.postgresql import postgres_db
-from ..database.connections.mongodb import mongodb
+from database.connections.postgresql import postgres_db
+from database.connections.mongodb import mongodb
 from .pipeline_manager import ContentType
 from .entity_extractor import ExtractedEntity
 

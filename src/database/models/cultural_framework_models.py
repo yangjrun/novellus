@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any, Union
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 from .core_models import BaseModelWithTimestamp
 
@@ -75,7 +75,7 @@ class CulturalFramework(BaseModelWithTimestamp):
     priority: int = Field(default=5, ge=1, le=10, description="重要性等级")
     completion_status: float = Field(default=1.0, ge=0.0, le=1.0, description="完整度")
 
-    @validator('title')
+    @field_validator('title')
     def validate_title(cls, v):
         if not v or v.isspace():
             raise ValueError('标题不能为空')
@@ -110,7 +110,7 @@ class CulturalEntity(BaseModelWithTimestamp):
     tags: List[str] = Field(default_factory=list, description="标签")
     text_references: List[str] = Field(default_factory=list, description="引用文本片段")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('实体名称不能为空')
@@ -159,7 +159,7 @@ class PlotHook(BaseModelWithTimestamp):
     story_impact: int = Field(default=5, ge=1, le=10, description="故事影响力")
     tags: List[str] = Field(default_factory=list, description="标签")
 
-    @validator('title')
+    @field_validator('title')
     def validate_title(cls, v):
         if not v or v.isspace():
             raise ValueError('钩子标题不能为空')
@@ -186,7 +186,7 @@ class ConceptDictionary(BaseModelWithTimestamp):
     frequency: int = Field(default=1, ge=1, description="出现频率")
     importance: int = Field(default=5, ge=1, le=10, description="重要程度")
 
-    @validator('term')
+    @field_validator('term')
     def validate_term(cls, v):
         if not v or v.isspace():
             raise ValueError('术语不能为空')

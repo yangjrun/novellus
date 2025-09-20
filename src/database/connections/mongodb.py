@@ -7,7 +7,7 @@ import pymongo
 from typing import List, Dict, Any, Optional
 import logging
 
-from ...config import config
+from config import config
 
 logger = logging.getLogger(__name__)
 

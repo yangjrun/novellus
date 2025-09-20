@@ -10,7 +10,7 @@ from enum import Enum
 from collections import defaultdict, Counter
 import logging
 
-from ..database.models.cultural_framework_models import (
+from database.models.cultural_framework_models import (
     DomainType, CulturalDimension, EntityType, RelationType,
     CulturalEntityCreate, CulturalRelationCreate
 )

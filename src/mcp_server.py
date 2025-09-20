@@ -36,6 +36,36 @@ logger = logging.getLogger(__name__)
 # Create the MCP server instance
 mcp = FastMCP(config.server_name)
 
+# 注册法则链工具
+try:
+    from mcp_law_chain_tools import register_law_chain_tools
+    register_law_chain_tools(mcp)
+    logger.info("法则链工具已注册")
+except ImportError as e:
+    logger.warning(f"无法导入法则链工具: {e}")
+except Exception as e:
+    logger.error(f"注册法则链工具失败: {e}")
+
+# 注册Prompt生成工具
+try:
+    from mcp_prompt_tools import register_prompt_tools
+    register_prompt_tools(mcp)
+    logger.info("Prompt生成工具已注册")
+except ImportError as e:
+    logger.warning(f"无法导入Prompt生成工具: {e}")
+except Exception as e:
+    logger.error(f"注册Prompt生成工具失败: {e}")
+
+# 注册人工协作创作工具
+try:
+    from mcp_collaborative_tools import register_collaborative_tools
+    register_collaborative_tools(mcp)
+    logger.info("人工协作创作工具已注册")
+except ImportError as e:
+    logger.warning(f"无法导入人工协作创作工具: {e}")
+except Exception as e:
+    logger.error(f"注册人工协作创作工具失败: {e}")
+
 
 # =============================================================================
 # 基础测试工具

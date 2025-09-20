@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-09-20T19:55:40.428531",
+  "components": {
+    "pgvector": {
+      "status": "installed",
+      "version": "0.8.1",
+      "operations": "working"
+    },
+    "ai_tables": {
+      "ai_models": "ready",
+      "ai_requests": "ready",
+      "ai_response_cache": "ready",
+      "model_performance_metrics": "ready"
+    },
+    "cache_system": {
+      "redis": "unavailable",
+      "database_cache": "working",
+      "recent_entries": 0,
+      "semantic_cache": "ready"
+    },
+    "models": [
+      {
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "status": "active"
+      },
+      {
+        "provider": "ollama",
+        "model": "llama3.2",
+        "status": "active"
+      },
+      {
+        "provider": "anthropic",
+        "model": "claude-3-haiku",
+        "status": "active"
+      }
+    ],
+    "metrics": {
+      "status": "no_data"
+    },
+    "integration_test": "passed"
+  },
+  "issues": [],
+  "recommendations": [
+    "Consider installing Redis for improved cache performance: docker run -p 6379:6379 redis"
+  ]
+}

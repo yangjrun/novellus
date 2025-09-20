@@ -13,7 +13,7 @@ from uuid import UUID, uuid4
 from dataclasses import dataclass, field
 from enum import Enum
 
-from ..database.models.cultural_framework_models import (
+from database.models.cultural_framework_models import (
     DomainType, CulturalDimension, EntityType, RelationType,
     CulturalFrameworkCreate, CulturalEntityCreate, CulturalRelationCreate,
     PlotHookCreate, ConceptDictionaryCreate, CulturalFrameworkBatch

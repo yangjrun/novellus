@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Optional
 from contextlib import asynccontextmanager, contextmanager
 import logging
 
-from ...config import config
+from config import config
 
 logger = logging.getLogger(__name__)
 

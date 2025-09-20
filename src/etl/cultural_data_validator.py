@@ -13,7 +13,7 @@ from datetime import datetime
 from uuid import UUID
 import asyncpg
 
-from ..database.models.cultural_framework_models import (
+from database.models.cultural_framework_models import (
     DomainType, CulturalDimension, EntityType, RelationType,
     CulturalFrameworkCreate, CulturalEntityCreate, CulturalRelationCreate,
     PlotHookCreate, ConceptDictionaryCreate, CulturalFrameworkBatch
@@ -622,7 +622,7 @@ async def validate_database_cultural_data(novel_id: str, pg_pool: asyncpg.Pool, 
             """, novel_id)
 
         # 构建验证用的批量数据
-        from ..database.models.cultural_framework_models import (
+        from database.models.cultural_framework_models import (
             CulturalFrameworkBatch, CulturalFrameworkCreate,
             CulturalEntityCreate, ConceptDictionaryCreate
         )
@@ -687,7 +687,7 @@ async def validate_database_cultural_data(novel_id: str, pg_pool: asyncpg.Pool, 
 if __name__ == "__main__":
     import argparse
     import asyncio
-    from ..config import config
+    from config import config
 
     async def main():
         parser = argparse.ArgumentParser(description="验证文化框架数据质量")

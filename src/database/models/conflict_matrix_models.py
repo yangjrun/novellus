@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any, Tuple
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 import numpy as np
 
 from .core_models import BaseModelWithTimestamp
@@ -173,7 +173,7 @@ class ConflictMatrix(BaseModelWithTimestamp):
     analysis_metadata: Dict[str, Any] = Field(default_factory=dict, description="分析元数据")
     tags: List[str] = Field(default_factory=list, description="标签")
 
-    @validator('intensity_matrix')
+    @field_validator('intensity_matrix')
     def validate_matrix_dimensions(cls, v, values):
         if 'domain_count' in values:
             expected_size = values['domain_count']

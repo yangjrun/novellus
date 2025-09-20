@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 import logging
 
-from ..database.models.cultural_framework_models import DomainType, EntityType
+from database.models.cultural_framework_models import DomainType, EntityType
 
 logger = logging.getLogger(__name__)
 

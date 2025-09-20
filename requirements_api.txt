@@ -1,0 +1,38 @@
+# FastAPI and Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.2
+pydantic-settings==2.1.0
+
+# ASGI Server
+gunicorn==21.2.0
+
+# Database
+asyncpg==0.29.0
+motor==3.3.2
+sqlalchemy==2.0.23
+
+# HTTP Client (for testing)
+httpx==0.25.2
+
+# Caching (optional)
+redis==5.0.1
+aiocache==0.12.2
+
+# Monitoring and Metrics
+prometheus-fastapi-instrumentator==6.1.0
+sentry-sdk==1.39.1
+
+# CORS and Security
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Development and Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1

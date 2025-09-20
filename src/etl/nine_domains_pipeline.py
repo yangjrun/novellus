@@ -16,7 +16,7 @@ from .cross_domain_analyzer import CrossDomainAnalyzer
 from .cultural_data_validator import CulturalDataValidator
 from .cultural_data_importer import CulturalDataImporter, DatabaseConnectionManager
 
-from ..database.models.cultural_framework_models import (
+from database.models.cultural_framework_models import (
     CulturalFrameworkBatch, DomainType, CulturalDimension
 )
 
@@ -323,7 +323,7 @@ class NineDomainsPipeline:
     def _convert_extracted_entity(self, extracted_entity, novel_id: UUID):
         """转换提取的实体格式"""
         try:
-            from ..database.models.cultural_framework_models import CulturalEntityCreate
+            from database.models.cultural_framework_models import CulturalEntityCreate
 
             return CulturalEntityCreate(
                 novel_id=novel_id,
@@ -345,7 +345,7 @@ class NineDomainsPipeline:
     def _convert_cross_domain_relation(self, cross_relation, novel_id: UUID):
         """转换跨域关系格式"""
         try:
-            from ..database.models.cultural_framework_models import CulturalRelationCreate, RelationType
+            from database.models.cultural_framework_models import CulturalRelationCreate, RelationType
 
             # 映射关系类型
             relation_type_map = {

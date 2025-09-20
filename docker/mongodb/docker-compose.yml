@@ -5,6 +5,7 @@ services:
     image: mongo:7.0
     container_name: novellus-mongodb
     restart: unless-stopped
+    command: ["mongod", "--auth", "--bind_ip_all"]
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin123

@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 from .core_models import BaseModelWithTimestamp
 from .character_models import (
@@ -98,7 +98,7 @@ class Item(BaseModelWithTimestamp):
     story_role: ItemStoryRole = Field(default_factory=ItemStoryRole)
     tags: List[str] = Field(default_factory=list)
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('物品名称不能为空')
@@ -173,7 +173,7 @@ class Event(BaseModelWithTimestamp):
     status: EventStatus = Field(default=EventStatus.PLANNED)
     tags: List[str] = Field(default_factory=list)
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('事件名称不能为空')
@@ -213,7 +213,7 @@ class KnowledgeBase(BaseModelWithTimestamp):
     reliability: int = Field(default=5, ge=1, le=10, description="信息可靠度(1-10)")
     tags: List[str] = Field(default_factory=list)
 
-    @validator('title')
+    @field_validator('title')
     def validate_title(cls, v):
         if not v or v.isspace():
             raise ValueError('知识标题不能为空')

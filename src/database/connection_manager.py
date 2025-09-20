@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 数据库连接管理器
 支持PostgreSQL和MongoDB的异步连接管理，包含连接池和错误处理
@@ -10,7 +11,8 @@ from contextlib import asynccontextmanager
 import asyncpg
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 import pymongo.errors
-from ..config import config
+from src.config import MCPConfig
+config = MCPConfig()
 
 logger = logging.getLogger(__name__)
 
@@ -103,7 +105,7 @@ class MongoDBManager:
         try:
             # 构建连接URL
             if config.mongodb_user and config.mongodb_password:
-                url = f"mongodb://{config.mongodb_user}:{config.mongodb_password}@{config.mongodb_host}:{config.mongodb_port}/{config.mongodb_db}"
+                url = f"mongodb://{config.mongodb_user}:{config.mongodb_password}@{config.mongodb_host}:{config.mongodb_port}/{config.mongodb_db}?authSource=admin"
             else:
                 url = f"mongodb://{config.mongodb_host}:{config.mongodb_port}"
 
@@ -249,3 +251,55 @@ async def close_database_manager() -> None:
     if _database_manager:
         await _database_manager.close()
         _database_manager = None
+
+class DatabaseConnectionManager:
+    """
+    Compatibility wrapper for API integration
+    Provides the interface expected by the API core database module
+    """
+    
+    def __init__(self):
+        self._manager = DatabaseManager()
+        self._initialized = False
+    
+    async def initialize(self) -> None:
+        """Initialize the database manager"""
+        await self._manager.initialize()
+        self._initialized = True
+    
+    async def close(self) -> None:
+        """Close the database manager"""
+        await self._manager.close()
+        self._initialized = False
+    
+    async def get_connection(self):
+        """Get a PostgreSQL connection from the pool"""
+        if not self._initialized:
+            raise DatabaseError("DatabaseConnectionManager not initialized")
+        
+        # Get a connection from the PostgreSQL pool
+        return await self._manager.postgres._pool.acquire()
+    
+    async def release_connection(self, connection):
+        """Release a PostgreSQL connection back to the pool"""
+        if not self._initialized:
+            raise DatabaseError("DatabaseConnectionManager not initialized")
+        
+        # Release the connection back to the pool
+        await self._manager.postgres._pool.release(connection)
+    
+    @property
+    def postgres(self):
+        """Access to PostgreSQL manager"""
+        return self._manager.postgres
+    
+    @property 
+    def mongodb(self):
+        """Access to MongoDB manager"""
+        return self._manager.mongodb
+    
+    @property
+    def is_initialized(self) -> bool:
+        """Check if initialized"""
+        return self._initialized and self._manager.is_initialized
+

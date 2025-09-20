@@ -17,8 +17,8 @@ from enum import Enum
 import json
 from pathlib import Path
 
-from ..database.connections.postgresql import postgres_db
-from ..database.connections.mongodb import mongodb
+from database.connections.postgresql import postgres_db
+from database.connections.mongodb import mongodb
 from .types import ContentType, PipelineConfig, ProcessingMetrics, PipelineStatus
 from .text_processor import TextProcessor
 from .entity_extractor import EntityExtractor

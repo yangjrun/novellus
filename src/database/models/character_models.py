@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 from .core_models import BaseModelWithTimestamp
 
@@ -207,13 +207,13 @@ class Character(BaseModelWithTimestamp):
     status: CharacterStatus = Field(default=CharacterStatus.ACTIVE)
     tags: List[str] = Field(default_factory=list)
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('角色名称不能为空')
         return v.strip()
 
-    @validator('tags')
+    @field_validator('tags')
     def validate_tags(cls, v):
         return list(set(tag.strip() for tag in v if tag and tag.strip()))
 
@@ -303,7 +303,7 @@ class Location(BaseModelWithTimestamp):
     status: LocationStatus = Field(default=LocationStatus.ACTIVE)
     tags: List[str] = Field(default_factory=list)
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('地点名称不能为空')

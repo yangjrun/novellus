@@ -14,8 +14,8 @@ import asyncpg
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import ValidationError
 
-from ..config import config
-from ..database.models.cultural_framework_models import (
+from config import config
+from database.models.cultural_framework_models import (
     CulturalFrameworkBatch, CulturalFrameworkCreate, CulturalEntityCreate,
     CulturalRelationCreate, PlotHookCreate, ConceptDictionaryCreate,
     DomainType, CulturalDimension, EntityType

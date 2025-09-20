@@ -1,0 +1,592 @@
+name: Comprehensive Test Suite
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  schedule:
+    # Run tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      test_types:
+        description: 'Test types to run'
+        required: true
+        default: 'unit,integration'
+        type: choice
+        options:
+          - unit
+          - integration
+          - e2e
+          - performance
+          - all
+      performance_baseline:
+        description: 'Establish performance baseline'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+  POSTGRES_VERSION: '15'
+  MONGODB_VERSION: '7.0'
+
+jobs:
+  # Job 1: Basic validation and setup
+  validate:
+    name: Validate & Setup
+    runs-on: ubuntu-latest
+    outputs:
+      test-types: ${{ steps.test-config.outputs.test-types }}
+      run-performance: ${{ steps.test-config.outputs.run-performance }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test]
+
+      - name: Validate configuration
+        run: |
+          python -c "from src.api.core.config import settings; print('✅ Configuration valid')"
+
+      - name: Determine test configuration
+        id: test-config
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TEST_TYPES="${{ github.event.inputs.test_types }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            TEST_TYPES="all"
+          elif [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            TEST_TYPES="unit,integration,e2e"
+          else
+            TEST_TYPES="unit,integration"
+          fi
+
+          echo "test-types=$TEST_TYPES" >> $GITHUB_OUTPUT
+
+          if [[ "$TEST_TYPES" == *"performance"* ]] || [[ "$TEST_TYPES" == "all" ]]; then
+            echo "run-performance=true" >> $GITHUB_OUTPUT
+          else
+            echo "run-performance=false" >> $GITHUB_OUTPUT
+          fi
+
+  # Job 2: Unit tests
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs: validate
+    if: contains(needs.validate.outputs.test-types, 'unit') || contains(needs.validate.outputs.test-types, 'all')
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-${{ matrix.python-version }}-pip-${{ hashFiles('**/pyproject.toml') }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test]
+
+      - name: Run unit tests
+        run: |
+          pytest tests/unit/ \
+            -v \
+            --tb=short \
+            --cov=src \
+            --cov-report=xml \
+            --cov-report=html \
+            --cov-report=term-missing \
+            --junitxml=reports/unit-tests-py${{ matrix.python-version }}.xml \
+            --html=reports/unit-tests-py${{ matrix.python-version }}.html \
+            --self-contained-html
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: unit-test-results-py${{ matrix.python-version }}
+          path: |
+            reports/unit-tests-py${{ matrix.python-version }}.xml
+            reports/unit-tests-py${{ matrix.python-version }}.html
+            htmlcov/
+            coverage.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        if: matrix.python-version == '3.11'
+        with:
+          file: ./coverage.xml
+          flags: unit
+          name: unit-tests
+
+  # Job 3: Integration tests with databases
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: validate
+    if: contains(needs.validate.outputs.test-types, 'integration') || contains(needs.validate.outputs.test-types, 'all')
+    services:
+      postgres:
+        image: postgres:${{ env.POSTGRES_VERSION }}
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_novellus
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      mongodb:
+        image: mongo:${{ env.MONGODB_VERSION }}
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test]
+
+      - name: Wait for services
+        run: |
+          # Wait for PostgreSQL
+          until pg_isready -h localhost -p 5432; do
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
+
+          # Wait for MongoDB
+          until mongosh --host localhost:27017 --eval "quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)"; do
+            echo "Waiting for MongoDB..."
+            sleep 2
+          done
+
+          # Wait for Redis
+          until redis-cli -h localhost -p 6379 ping; do
+            echo "Waiting for Redis..."
+            sleep 2
+          done
+
+      - name: Set up test databases
+        run: |
+          # PostgreSQL setup
+          PGPASSWORD=postgres psql -h localhost -U postgres -c "CREATE DATABASE IF NOT EXISTS test_novellus;"
+
+          # MongoDB setup
+          mongosh --host localhost:27017 --eval "use test_novellus"
+
+      - name: Run integration tests
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_novellus
+          MONGODB_HOST: localhost
+          MONGODB_PORT: 27017
+          MONGODB_DB: test_novellus
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+        run: |
+          pytest tests/integration/ \
+            -v \
+            --tb=short \
+            --junitxml=reports/integration-tests.xml \
+            --html=reports/integration-tests.html \
+            --self-contained-html
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: integration-test-results
+          path: |
+            reports/integration-tests.xml
+            reports/integration-tests.html
+
+  # Job 4: End-to-end tests
+  e2e-tests:
+    name: End-to-End Tests
+    runs-on: ubuntu-latest
+    needs: validate
+    if: contains(needs.validate.outputs.test-types, 'e2e') || contains(needs.validate.outputs.test-types, 'all')
+    services:
+      postgres:
+        image: postgres:${{ env.POSTGRES_VERSION }}
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_novellus
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      mongodb:
+        image: mongo:${{ env.MONGODB_VERSION }}
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test]
+
+      - name: Start API server
+        run: |
+          cd src
+          python -m api.main &
+          echo $! > api_server.pid
+
+          # Wait for server to start
+          for i in {1..30}; do
+            if curl -s http://localhost:8000/health > /dev/null; then
+              echo "API server is ready"
+              break
+            fi
+            echo "Waiting for API server... ($i/30)"
+            sleep 2
+          done
+
+      - name: Run E2E tests
+        env:
+          API_BASE_URL: http://localhost:8000
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_novellus
+          MONGODB_HOST: localhost
+          MONGODB_PORT: 27017
+          MONGODB_DB: test_novellus
+        run: |
+          pytest tests/e2e/ \
+            -v \
+            --tb=short \
+            --junitxml=reports/e2e-tests.xml \
+            --html=reports/e2e-tests.html \
+            --self-contained-html
+
+      - name: Stop API server
+        if: always()
+        run: |
+          if [ -f api_server.pid ]; then
+            kill $(cat api_server.pid) || true
+            rm api_server.pid
+          fi
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: e2e-test-results
+          path: |
+            reports/e2e-tests.xml
+            reports/e2e-tests.html
+
+  # Job 5: Performance tests
+  performance-tests:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: validate
+    if: needs.validate.outputs.run-performance == 'true'
+    services:
+      postgres:
+        image: postgres:${{ env.POSTGRES_VERSION }}
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_novellus
+        ports:
+          - 5432:5432
+
+      mongodb:
+        image: mongo:${{ env.MONGODB_VERSION }}
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test,performance]
+
+      - name: Start API server
+        run: |
+          cd src
+          python -m api.main &
+          echo $! > api_server.pid
+          sleep 10  # Give more time for server startup
+
+      - name: Run performance tests
+        run: |
+          pytest tests/performance/ \
+            -v \
+            --tb=short \
+            --benchmark-json=reports/benchmark.json \
+            --junitxml=reports/performance-tests.xml \
+            --html=reports/performance-tests.html \
+            --self-contained-html
+
+      - name: Run load tests
+        run: |
+          locust \
+            -f tests/performance/locustfile.py \
+            --host=http://localhost:8000 \
+            --users=20 \
+            --spawn-rate=2 \
+            --run-time=2m \
+            --headless \
+            --html=reports/load-test-report.html \
+            --csv=reports/load-test
+
+      - name: Stop API server
+        if: always()
+        run: |
+          if [ -f api_server.pid ]; then
+            kill $(cat api_server.pid) || true
+            rm api_server.pid
+          fi
+
+      - name: Upload performance results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: performance-test-results
+          path: |
+            reports/benchmark.json
+            reports/performance-tests.xml
+            reports/performance-tests.html
+            reports/load-test-report.html
+            reports/load-test_*.csv
+
+  # Job 6: Security tests
+  security-tests:
+    name: Security Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install security tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit safety semgrep
+
+      - name: Run Bandit security scan
+        run: |
+          bandit -r src/ -f json -o reports/bandit.json || true
+          bandit -r src/ -f txt
+
+      - name: Run Safety vulnerability check
+        run: |
+          safety check --json --output reports/safety.json || true
+          safety check
+
+      - name: Run Semgrep security analysis
+        run: |
+          semgrep --config=auto src/ --json --output=reports/semgrep.json || true
+
+      - name: Upload security results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: security-test-results
+          path: |
+            reports/bandit.json
+            reports/safety.json
+            reports/semgrep.json
+
+  # Job 7: Generate comprehensive report
+  generate-report:
+    name: Generate Test Report
+    runs-on: ubuntu-latest
+    needs: [unit-tests, integration-tests, e2e-tests, performance-tests, security-tests]
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,test]
+
+      - name: Download all test artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts/
+
+      - name: Generate comprehensive report
+        run: |
+          python tests/utils/test_runner.py \
+            --test-types all \
+            --html-report \
+            --junit-xml
+
+      - name: Upload comprehensive report
+        uses: actions/upload-artifact@v3
+        with:
+          name: comprehensive-test-report
+          path: |
+            reports/latest_report.html
+            reports/latest_summary.json
+            reports/latest_detailed.json
+
+      - name: Comment PR with results
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const fs = require('fs');
+
+            try {
+              const summary = JSON.parse(fs.readFileSync('reports/latest_summary.json', 'utf8'));
+
+              const comment = `## 🧪 Test Results Summary
+
+              **Overall Status:** ${summary.summary.success_rate_percent >= 90 ? '✅ PASSED' : '❌ FAILED'}
+
+              | Metric | Value |
+              |--------|-------|
+              | Total Tests | ${summary.summary.total_tests} |
+              | Passed | ${summary.summary.passed} |
+              | Failed | ${summary.summary.failed} |
+              | Skipped | ${summary.summary.skipped} |
+              | Success Rate | ${summary.summary.success_rate_percent}% |
+              | Duration | ${summary.summary.total_duration_seconds}s |
+
+              **Test Categories:**
+              ${Object.entries(summary.category_breakdown).map(([category, stats]) =>
+                `- **${category}**: ${stats.passed}/${stats.total} passed (${((stats.passed/stats.total)*100).toFixed(1)}%)`
+              ).join('\n')}
+
+              📊 [View detailed report](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID})
+              `;
+
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (error) {
+              console.error('Failed to create comment:', error);
+            }
+
+  # Job 8: Deploy test results (optional)
+  deploy-results:
+    name: Deploy Test Results
+    runs-on: ubuntu-latest
+    needs: generate-report
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    steps:
+      - name: Download comprehensive report
+        uses: actions/download-artifact@v3
+        with:
+          name: comprehensive-test-report
+          path: test-results/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: test-results/
+          destination_dir: test-reports/${{ github.sha }}
+
+      - name: Update latest results
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: test-results/
+          destination_dir: test-reports/latest

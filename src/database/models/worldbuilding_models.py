@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 from .core_models import BaseModelWithTimestamp
 
@@ -76,7 +76,7 @@ class Domain(BaseModelWithTimestamp):
     resources: Dict[str, Any] = Field(default_factory=dict, description="资源信息")
     dangers: Dict[str, Any] = Field(default_factory=dict, description="危险信息")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('域名称不能为空')
@@ -95,7 +95,7 @@ class CultivationSystem(BaseModelWithTimestamp):
     benefits: Dict[str, Any] = Field(default_factory=dict, description="修炼益处")
     risks: Dict[str, Any] = Field(default_factory=dict, description="修炼风险")
 
-    @validator('system_name')
+    @field_validator('system_name')
     def validate_system_name(cls, v):
         if not v or v.isspace():
             raise ValueError('体系名称不能为空')
@@ -115,7 +115,7 @@ class CultivationStage(BaseModelWithTimestamp):
     typical_abilities: Dict[str, Any] = Field(default_factory=dict, description="典型能力")
     lifespan_increase: int = Field(default=0, ge=0, description="寿命增加（年）")
 
-    @validator('stage_name')
+    @field_validator('stage_name')
     def validate_stage_name(cls, v):
         if not v or v.isspace():
             raise ValueError('阶段名称不能为空')
@@ -136,7 +136,7 @@ class PowerOrganization(BaseModelWithTimestamp):
     relationships: Dict[str, Any] = Field(default_factory=dict, description="对外关系")
     status: EntityStatus = Field(default=EntityStatus.ACTIVE, description="组织状态")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('组织名称不能为空')
@@ -158,13 +158,13 @@ class LawChain(BaseModelWithTimestamp):
     corruption_risk: int = Field(default=0, ge=0, le=100, description="腐化风险(0-100)")
     rarity: ItemRarity = Field(default=ItemRarity.COMMON, description="稀有度")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('法则链名称不能为空')
         return v.strip()
 
-    @validator('chain_type')
+    @field_validator('chain_type')
     def validate_chain_type(cls, v):
         if not v or v.isspace():
             raise ValueError('法则类型不能为空')
@@ -185,13 +185,13 @@ class ChainMark(BaseModelWithTimestamp):
     acquisition_method: Optional[str] = Field(None, description="获得方法")
     removal_method: Optional[str] = Field(None, description="移除方法")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('链痕名称不能为空')
         return v.strip()
 
-    @validator('mark_type')
+    @field_validator('mark_type')
     def validate_mark_type(cls, v):
         if not v or v.isspace():
             raise ValueError('链痕类型不能为空')

@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 from uuid import UUID, uuid4
 from enum import Enum
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class ProjectStatus(str, Enum):
@@ -86,13 +86,13 @@ class Project(BaseModelWithTimestamp):
     status: ProjectStatus = Field(default=ProjectStatus.ACTIVE, description="项目状态")
     metadata: Dict[str, Any] = Field(default_factory=dict, description="扩展元数据")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('项目名称不能为空')
         return v.strip()
 
-    @validator('title')
+    @field_validator('title')
     def validate_title(cls, v):
         if not v or v.isspace():
             raise ValueError('项目标题不能为空')
@@ -112,13 +112,13 @@ class Novel(BaseModelWithTimestamp):
     chapter_count: int = Field(default=0, ge=0, description="章节数")
     metadata: Dict[str, Any] = Field(default_factory=dict, description="扩展元数据")
 
-    @validator('name')
+    @field_validator('name')
     def validate_name(cls, v):
         if not v or v.isspace():
             raise ValueError('小说名称不能为空')
         return v.strip()
 
-    @validator('title')
+    @field_validator('title')
     def validate_title(cls, v):
         if not v or v.isspace():
             raise ValueError('小说标题不能为空')
@@ -140,13 +140,13 @@ class ContentBatch(BaseModelWithTimestamp):
     completed_at: Optional[datetime] = Field(None, description="完成时间")
     metadata: Dict[str, Any] = Field(default_factory=dict, description="扩展元数据")
 
-    @validator('batch_name')
+    @field_validator('batch_name')
     def validate_batch_name(cls, v):
         if not v or v.isspace():
             raise ValueError('批次名称不能为空')
         return v.strip()
 
-    @validator('completed_at')
+    @field_validator('completed_at')
     def validate_completed_at(cls, v, values):
         if v and values.get('status') != BatchStatus.COMPLETED:
             raise ValueError('只有已完成的批次才能设置完成时间')
@@ -170,13 +170,13 @@ class ContentSegment(BaseModelWithTimestamp):
     revision_count: int = Field(default=0, ge=0, description="修订次数")
     metadata: Dict[str, Any] = Field(default_factory=dict, description="扩展元数据")
 
-    @validator('content')
+    @field_validator('content')
     def validate_content(cls, v):
         if not v or v.isspace():
             raise ValueError('段落内容不能为空')
         return v.strip()
 
-    @validator('word_count', always=True)
+    @field_validator('word_count', mode='before')
     def calculate_word_count(cls, v, values):
         content = values.get('content', '')
         if content:
@@ -186,12 +186,12 @@ class ContentSegment(BaseModelWithTimestamp):
             return len(clean_content)
         return 0
 
-    @validator('tags')
+    @field_validator('tags')
     def validate_tags(cls, v):
         # 去除空标签和重复标签
         return list(set(tag.strip() for tag in v if tag and tag.strip()))
 
-    @validator('emotions')
+    @field_validator('emotions')
     def validate_emotions(cls, v):
         # 去除空情感标签和重复标签
         return list(set(emotion.strip() for emotion in v if emotion and emotion.strip()))
