@@ -78,7 +78,10 @@
       "Bash(uv add:*)",
       "Bash(telnet:*)",
       "Bash(docker:*)",
-      "Read(//h/**)"
+      "Read(//h/**)",
+      "Bash(git commit:*)",
+      "Bash(rm:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
