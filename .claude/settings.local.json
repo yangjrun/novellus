@@ -81,7 +81,10 @@
       "Read(//h/**)",
       "Bash(git commit:*)",
       "Bash(rm:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(for file in *REPORT*.md *ANALYSIS*.md EXECUTIVE_SUMMARY.md)",
+      "Bash(do [ -f \"$file\" ])",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
